@@ -1,18 +1,40 @@
 import React, {Component} from 'react';
-import Container from 'reactstrap';
+
+const desktop = '/images/masthead-desktop.jpg';
+const mobile = '/images/masthead-mobile.jpg';
 
 class Masthead extends Component {
-  render(){
-    return(
-      <Container>
+
+
+  state = {
+
+    currentSrc: ''
+
+  };
+
+  onLoad = (event) => {
+    this.setState({
+      currentSrc: event.target.currentSrc
+    });
+  }
+
+
+  render() {
+    return (
         <div className='masthead'>
           <div className='masthead-container'>
             <figure className='masthead-figure' role='presentation'>
-              <picture className='masthead-picture'></picture>
+              <picture className='masthead-picture img-fluid'>
+                <source media="(min-width: 992px)" srcset={desktop} />
+                <source srcset={mobile} />
+                <img className='masthead-fallback' src={desktop} />
+              </picture>
             </figure>
           </div>
         </div>
-      </Container>
     )
   }
+
 }
+
+export default Masthead;
