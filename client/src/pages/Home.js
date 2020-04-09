@@ -3,7 +3,7 @@ import Masthead from '../components/Masthead'
 
 function Home () {
     return (
-        <Masthead desktop='./images/masthead-desktop.jpg' mobile='./images/masthead-mobile.jpg'/>
+        <Masthead />
     );
 }
 

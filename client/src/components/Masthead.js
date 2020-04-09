@@ -1,23 +1,10 @@
 import React, {Component} from 'react';
+import {Container} from 'reactstrap'
 
 const desktop = '/images/masthead-desktop.jpg';
 const mobile = '/images/masthead-mobile.jpg';
 
 class Masthead extends Component {
-
-
-  state = {
-
-    currentSrc: ''
-
-  };
-
-  onLoad = (event) => {
-    this.setState({
-      currentSrc: event.target.currentSrc
-    });
-  }
-
 
   render() {
     return (
@@ -30,6 +17,16 @@ class Masthead extends Component {
                 <img className='masthead-fallback' src={desktop} />
               </picture>
             </figure>
+            <Container>
+            <div className='masthead-overlay'>
+              <div className='masthead-card'>
+                <h1 className='masthead-card-block masthead-title'>GAMR</h1>
+                <div className='masthead-card-block'>
+                  <p>A gaming news aggregator</p>
+                </div>
+              </div>
+            </div>
+            </Container>
           </div>
         </div>
     )
