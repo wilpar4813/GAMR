@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react';
-import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarText} from 'reactstrap';
+import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarText, Form, Input, Button} from 'reactstrap';
 import {ReactSVG} from 'react-svg';
 import Logo from '../svg/logo.svg';
 
@@ -21,9 +21,6 @@ const MainNav = (props) => {
             <NavItem>
               <NavLink href="/components/">Components</NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-            </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Options
@@ -41,8 +38,12 @@ const MainNav = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
+            <Form className='form-inline my-2 my-lg-0 mx-2'>
+              <Input className='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search' />
+              <Button outline color='danger' className='my-2 my-sm-0'>Search</Button>
+            </Form>
+            <Button color='danger'>Log In</Button>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
         </Collapse>
         </Container>
       </Navbar>
