@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
-const Platform = require("./platform.js");
-const ReleaseDate = require("./release-date.js");
-const Screenshot = require("./screenshot.js");
-const Cover = require("./cover.js");
+import mongoose, { Schema } from 'mongoose';
+import { Platform } from "./platform";
+import { ReleaseDate } from "./release-date.js";
+import { Screenshot } from "./screenshot.js"
+import { Cover } from "./cover.js";
 
 const Schema = mongoose.Schema;
 
