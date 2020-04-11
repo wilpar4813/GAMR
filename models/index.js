@@ -1,4 +1,6 @@
 module.exports = {
-    User: require("./user"),
-    Game: require("./Games/game")
+    User: require("./user/user"),
+    Game: require("./Game/game"),
+    Cover: require("./Game/cover"),
+    Genre: require("./Genre/genre")
 }
