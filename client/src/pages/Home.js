@@ -1,11 +1,14 @@
 import React from "react";
-import Login from '../components/Login';
+import Masthead from '../components/Masthead'
+
+
 
 function Home () {
     return (
-        <div>
-            <Login />
-        </div>
+        <Masthead />
+        
+            <
+        
     );
 }
 
