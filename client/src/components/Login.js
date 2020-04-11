@@ -1,6 +1,6 @@
 import React from 'react';
 import {ReactSVG} from 'react-svg';
-import image from 'images/gamer.svg';
+import image from '/images/gamer.svg';
 
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
