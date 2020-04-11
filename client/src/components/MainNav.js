@@ -1,5 +1,7 @@
-import React, {Component, useState} from 'react';
-import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarText, Form, Input, Button} from 'reactstrap';
+import React, { useState} from 'react';
+import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Form, Input, Button} from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub }from '@fortawesome/free-brands-svg-icons'
 import {ReactSVG} from 'react-svg';
 import Logo from '../svg/logo.svg';
 
@@ -19,22 +21,23 @@ const MainNav = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="https://github.com/gordyclint/gamr-database-react-app"><FontAwesomeIcon className='fab' icon={faGithub} /></NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Options
+                Games
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
+                  XBox One
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
-                  Reset
+                  Playstation 4
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                  Nintendo Switch
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
