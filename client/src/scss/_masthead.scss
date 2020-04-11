@@ -1,0 +1,75 @@
+.masthead {
+  overflow: hidden;
+
+  .masthead-container {
+    display: flex;
+    flex-direction: column;
+
+    .masthead-figure {
+      height: 500px;
+
+      .masthead-picture {
+        display: block;
+        position: relative;
+      }
+
+      .masthead-fallback {
+        min-width: 100%;
+        max-width: 1600px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .masthead-overlay {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 500px;
+      margin-top: -500px;
+      padding: 2rem;
+
+      .masthead-card {
+        display: flex;
+        flex-direction: column;
+        width: calc(100%/3);
+        color: white;
+
+        .masthead-card-block {
+          padding: 1rem 2rem;
+          max-width: 100%;
+        }
+        .masthead-title {
+          font-size: 2rem;
+        }
+      }
+
+      @include media-breakpoint-down(sm){
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: .9375rem;
+        padding-right: .9375rem;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        padding-bottom: 1rem;
+        z-index: 1;
+
+        .masthead-card {
+          background-color: $white;
+          border-radius: .25rem;
+          border: 1px solid black;
+          margin-top: -1rem;
+          color: black;
+          width: 100%;
+
+          .masthead-card-block {
+            padding: 1rem 1rem;
+          }
+        }
+      }
+    }
+  }
+}
