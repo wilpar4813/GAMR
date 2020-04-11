@@ -7,13 +7,13 @@ export default {
     getAchievements: function () {
         return axios({
             url: "https://api-v3.igdb.com/achievements",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields achievement_icon,category,created_at,description,external_id,game,language,locked_achievement_icon,name,owners,owners_percentage,rank,slug,tags,updated_at;",
+                "fields achievement_icon,category,created_at,description,external_id,game,language,locked_achievement_icon,name,owners,owners_percentage,rank,slug,tags,updated_at;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -26,12 +26,12 @@ export default {
     getAchievementsIcon: function () {
         return axios({
             url: "https://api-v3.igdb.com/achievement_icons",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields alpha_channel,animated,height,image_id,url,width;",
+            data: "fields alpha_channel,animated,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -44,13 +44,13 @@ export default {
     getAgeRating: function () {
         return axios({
             url: "https://api-v3.igdb.com/age_ratings",
-            method: "POST"
+            method: "GET"
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields category,content_descriptions,rating,rating_cover_url,synopsis;",
+                "fields category,content_descriptions,rating,rating_cover_url,synopsis;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -63,12 +63,12 @@ export default {
     getAgeRatingContentDescriptions: function () {
         return axios({
             url: "https://api-v3.igdb.com/age_rating_content_descriptions",
-            method: "POST"
+            method: "GET"
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields category,description;",
+            data: "fields category,description;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -81,12 +81,12 @@ export default {
     getAlternativeNames: function () {
         return axios({
             url: "https://api-v3.igdb.com/alternative_names",
-            method: "POST"
+            method: "GET"
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields comment,game,name;",
+            data: "fields comment,game,name;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -99,13 +99,13 @@ export default {
     getArtWorks: function () {
         return axios({
             url: "https://api-v3.igdb.com/artworks",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields alpha_channel,animated,game,height,image_id,url,width;",
+                "fields alpha_channel,animated,game,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -118,13 +118,13 @@ export default {
     getCharacters: function () {
         return axios({
             url: "https://api-v3.igdb.com/characters",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields akas,country_name,created_at,description,games,gender,mug_shot,name,people,slug,species,updated_at,url;",
+                "fields akas,country_name,created_at,description,games,gender,mug_shot,name,people,slug,species,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -137,12 +137,12 @@ export default {
     getCharacterMugShots: function () {
         return axios({
             url: "https://api-v3.igdb.com/character_mug_shots",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields alpha_channel,animated,height,image_id,url,width;",
+            data: "fields alpha_channel,animated,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -155,12 +155,12 @@ export default {
     getCollections: function () {
         return axios({
             url: "https://api-v3.igdb.com/collections",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields created_at,games,name,slug,updated_at,url;",
+            data: "fields created_at,games,name,slug,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -173,13 +173,13 @@ export default {
     getCompanies: function () {
         return axios({
             url: "https://api-v3.igdb.com/companies",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields change_date,change_date_category,changed_company_id,country,created_at,description,developed,logo,name,parent,published,slug,start_date,start_date_category,updated_at,url,websites;",
+                "fields change_date,change_date_category,changed_company_id,country,created_at,description,developed,logo,name,parent,published,slug,start_date,start_date_category,updated_at,url,websites;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -192,12 +192,12 @@ export default {
     getCompanyLogos: function () {
         return axios({
             url: "https://api-v3.igdb.com/company_logos",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields alpha_channel,animated,height,image_id,url,width;",
+            data: "fields alpha_channel,animated,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -210,12 +210,12 @@ export default {
     getCompanyWebsites: function () {
         return axios({
             url: "https://api-v3.igdb.com/company_websites",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields category,trusted,url;",
+            data: "fields category,trusted,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -228,13 +228,13 @@ export default {
     getCovers: function () {
         return axios({
             url: "https://api-v3.igdb.com/covers",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields alpha_channel,animated,game,height,image_id,url,width;",
+                "fields alpha_channel,animated,game,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -247,13 +247,13 @@ export default {
     getExternalGames: function () {
         return axios({
             url: "https://api-v3.igdb.com/external_games",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields category,created_at,game,name,uid,updated_at,url,year;",
+                "fields category,created_at,game,name,uid,updated_at,url,year;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -266,13 +266,13 @@ export default {
     getFeeds: function () {
         return axios({
             url: "https://api-v3.igdb.com/feeds",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields category,content,created_at,feed_likes_count,feed_video,games,meta,published_at,pulse,slug,title,uid,updated_at,url,user;",
+                "fields category,content,created_at,feed_likes_count,feed_video,games,meta,published_at,pulse,slug,title,uid,updated_at,url,user;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -285,12 +285,12 @@ export default {
     getFranchises: function () {
         return axios({
             url: "https://api-v3.igdb.com/franchises",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields created_at,games,name,slug,updated_at,url;",
+            data: "fields created_at,games,name,slug,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -303,13 +303,13 @@ export default {
     getGames: function () {
         return axios({
             url: "https://api-v3.igdb.com/games",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,collection,cover,created_at,dlcs,expansions,external_games,first_release_date,follows,franchise,franchises,game_engines,game_modes,genres,hypes,involved_companies,keywords,multiplayer_modes,name,parent_game,platforms,player_perspectives,popularity,pulse_count,rating,rating_count,release_dates,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,time_to_beat,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites;",
+                "fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,collection,cover,created_at,dlcs,expansions,external_games,first_release_date,follows,franchise,franchises,game_engines,game_modes,genres,hypes,involved_companies,keywords,multiplayer_modes,name,parent_game,platforms,player_perspectives,popularity,pulse_count,rating,rating_count,release_dates,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,time_to_beat,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -322,13 +322,13 @@ export default {
     getGameEngines: function () {
         return axios({
             url: "https://api-v3.igdb.com/game_engines",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields companies,created_at,description,logo,name,platforms,slug,updated_at,url;",
+                "fields companies,created_at,description,logo,name,platforms,slug,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -341,12 +341,12 @@ export default {
     getEngineLogos: function () {
         return axios({
             url: "https://api-v3.igdb.com/game_engine_logos",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields alpha_channel,animated,height,image_id,url,width;",
+            data: "fields alpha_channel,animated,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -359,12 +359,12 @@ export default {
     getGameModes: function () {
         return axios({
             url: "https://api-v3.igdb.com/game_modes",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields created_at,name,slug,updated_at,url;",
+            data: "fields created_at,name,slug,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -377,12 +377,12 @@ export default {
     getGameVersions: function () {
         return axios({
             url: "https://api-v3.igdb.com/game_versions",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields created_at,features,game,games,updated_at,url;",
+            data: "fields created_at,features,game,games,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -395,12 +395,12 @@ export default {
     getVersionFeatures: function () {
         return axios({
             url: "https://api-v3.igdb.com/game_version_features",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields category,description,position,title,values;",
+            data: "fields category,description,position,title,values;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -413,12 +413,12 @@ export default {
     getGameVersionFeatureValues: function () {
         return axios({
             url: "https://api-v3.igdb.com/game_version_feature_values",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields game,game_feature,included_feature,note;",
+            data: "fields game,game_feature,included_feature,note;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -431,12 +431,12 @@ export default {
     getGameVideos: function () {
         return axios({
             url: "https://api-v3.igdb.com/game_videos",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields game,name,video_id;",
+            data: "fields game,name,video_id;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -449,12 +449,12 @@ export default {
     getGenres: function () {
         return axios({
             url: "https://api-v3.igdb.com/genres",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields created_at,name,slug,updated_at,url;",
+            data: "fields created_at,name,slug,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -467,13 +467,13 @@ export default {
     getInvolvedCompanys: function () {
         return axios({
             url: "https://api-v3.igdb.com/involved_companies",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields company,created_at,developer,game,porting,publisher,supporting,updated_at;",
+                "fields company,created_at,developer,game,porting,publisher,supporting,updated_at;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -486,12 +486,12 @@ export default {
     getKeywords: function () {
         return axios({
             url: "https://api-v3.igdb.com/keywords",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields created_at,name,slug,updated_at,url;",
+            data: "fields created_at,name,slug,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -504,13 +504,13 @@ export default {
     getMultiPlayerModes: function () {
         return axios({
             url: "https://api-v3.igdb.com/multiplayer_modes",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields campaigncoop,dropin,game,lancoop,offlinecoop,offlinecoopmax,offlinemax,onlinecoop,onlinecoopmax,onlinemax,platform,splitscreen,splitscreenonline;",
+                "fields campaigncoop,dropin,game,lancoop,offlinecoop,offlinecoopmax,offlinemax,onlinecoop,onlinecoopmax,onlinemax,platform,splitscreen,splitscreenonline;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -523,13 +523,13 @@ export default {
     getPages: function () {
         return axios({
             url: "https://api-v3.igdb.com/pages",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields background,battlenet,category,color,company,country,created_at,description,feed,game,name,origin,page_follows_count,page_logo,slug,sub_category,updated_at,uplay,url,user,websites;",
+                "fields background,battlenet,category,color,company,country,created_at,description,feed,game,name,origin,page_follows_count,page_logo,slug,sub_category,updated_at,uplay,url,user,websites;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -542,12 +542,12 @@ export default {
     getPageBackgrounds: function () {
         return axios({
             url: "https://api-v3.igdb.com/page_backgrounds",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields alpha_channel,animated,height,image_id,url,width;",
+            data: "fields alpha_channel,animated,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -560,12 +560,12 @@ export default {
     getPageLogos: function () {
         return axios({
             url: "https://api-v3.igdb.com/page_logos",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields alpha_channel,animated,height,image_id,url,width;",
+            data: "fields alpha_channel,animated,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -578,12 +578,12 @@ export default {
     getPageWebsites: function () {
         return axios({
             url: "https://api-v3.igdb.com/page_websites",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields category,trusted,url;",
+            data: "fields category,trusted,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -596,13 +596,13 @@ export default {
     getPlatforms: function () {
         return axios({
             url: "https://api-v3.igdb.com/platforms",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields abbreviation,alternative_name,category,created_at,generation,name,platform_logo,product_family,slug,summary,updated_at,url,versions,websites;",
+                "fields abbreviation,alternative_name,category,created_at,generation,name,platform_logo,product_family,slug,summary,updated_at,url,versions,websites;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -615,12 +615,12 @@ export default {
     getPlatformLogos: function () {
         return axios({
             url: "https://api-v3.igdb.com/platform_logos",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields alpha_channel,animated,height,image_id,url,width;",
+            data: "fields alpha_channel,animated,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -633,13 +633,13 @@ export default {
     getPlatformVersions: function () {
         return axios({
             url: "https://api-v3.igdb.com/platform_versions",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields companies,connectivity,cpu,graphics,main_manufacturer,media,memory,name,online,os,output,platform_logo,platform_version_release_dates,resolutions,slug,sound,storage,summary,url;",
+                "fields companies,connectivity,cpu,graphics,main_manufacturer,media,memory,name,online,os,output,platform_logo,platform_version_release_dates,resolutions,slug,sound,storage,summary,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -652,12 +652,12 @@ export default {
     getPlatformVersionCompanies: function () {
         return axios({
             url: "https://api-v3.igdb.com/platform_version_companies",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields comment,company,developer,manufacturer;",
+            data: "fields comment,company,developer,manufacturer;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -670,13 +670,13 @@ export default {
     getPlatformVersionReleaseDates: function () {
         return axios({
             url: "https://api-v3.igdb.com/platform_version_release_dates",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields category,created_at,date,human,m,platform_version,region,updated_at,y;",
+                "fields category,created_at,date,human,m,platform_version,region,updated_at,y;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -689,12 +689,12 @@ export default {
     getPlatformWebsites: function () {
         return axios({
             url: "https://api-v3.igdb.com/platform_websites",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields category,trusted,url;",
+            data: "fields category,trusted,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -707,12 +707,12 @@ export default {
     getPlayerPerspectives: function () {
         return axios({
             url: "https://api-v3.igdb.com/player_perspectives",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields created_at,name,slug,updated_at,url;",
+            data: "fields created_at,name,slug,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -725,12 +725,12 @@ export default {
     getProductFamilies: function () {
         return axios({
             url: "https://api-v3.igdb.com/product_families",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields name,slug;",
+            data: "fields name,slug;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -743,13 +743,13 @@ export default {
     getPulses: function () {
         return axios({
             url: "https://api-v3.igdb.com/pulses",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields author,category,created_at,ignored,image,published_at,pulse_image,pulse_source,summary,tags,title,uid,updated_at,videos,website;",
+                "fields author,category,created_at,ignored,image,published_at,pulse_image,pulse_source,summary,tags,title,uid,updated_at,videos,website;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -762,13 +762,13 @@ export default {
     getPulseGroups: function () {
         return axios({
             url: "https://api-v3.igdb.com/pulse_groups",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields created_at,game,name,published_at,pulses,tags,updated_at;",
+                "fields created_at,game,name,published_at,pulses,tags,updated_at;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -781,12 +781,12 @@ export default {
     getPulseSources: function () {
         return axios({
             url: "https://api-v3.igdb.com/pulse_sources",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields game,name,page;",
+            data: "fields game,name,page;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -799,12 +799,12 @@ export default {
     getPulseUrls: function () {
         return axios({
             url: "https://api-v3.igdb.com/pulse_urls",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields trusted,url;",
+            data: "fields trusted,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -817,13 +817,13 @@ export default {
     getReleaseDates: function () {
         return axios({
             url: "https://api-v3.igdb.com/release_dates",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields category,created_at,date,game,human,m,platform,region,updated_at,y;",
+                "fields category,created_at,date,game,human,m,platform,region,updated_at,y;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -836,13 +836,13 @@ export default {
     getScreenshots: function () {
         return axios({
             url: "https://api-v3.igdb.com/screenshots",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields alpha_channel,animated,game,height,image_id,url,width;",
+                "fields alpha_channel,animated,game,height,image_id,url,width;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -855,13 +855,13 @@ export default {
     getSearch: function () {
         return axios({
             url: "https://api-v3.igdb.com/search",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields alternative_name,character,collection,company,description,game,name,person,platform,popularity,published_at,test_dummy,theme;",
+                "fields alternative_name,character,collection,company,description,game,name,person,platform,popularity,published_at,test_dummy,theme;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -874,12 +874,12 @@ export default {
     getThemes: function () {
         return axios({
             url: "https://api-v3.igdb.com/themes",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields created_at,name,slug,updated_at,url;",
+            data: "fields created_at,name,slug,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -892,12 +892,12 @@ export default {
     getTimeToBeats: function () {
         return axios({
             url: "https://api-v3.igdb.com/time_to_beats",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields completely,game,hastly,normally;",
+            data: "fields completely,game,hastly,normally;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -910,13 +910,13 @@ export default {
     getTitles: function () {
         return axios({
             url: "https://api-v3.igdb.com/titles",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
             data:
-                "fields created_at,description,games,name,slug,updated_at,url;",
+                "fields created_at,description,games,name,slug,updated_at,url;"
         })
             .then((response) => {
                 console.log(response.data);
@@ -929,12 +929,12 @@ export default {
     getWebsites: function () {
         return axios({
             url: "https://api-v3.igdb.com/websites",
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY
             },
-            data: "fields category,game,trusted,url;",
+            data: "fields category,game,trusted,url;"
         })
             .then((response) => {
                 console.log(response.data);
