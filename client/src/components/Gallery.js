@@ -7,7 +7,7 @@ const Gallery = (props) => {
     <div className='gallery-bg py-3'>
       <Container>
       <Row>
-      <h2 className='gallery-title text-white mb-3'>Recently Reviewed</h2>
+      <h2 className='border-bottom-white text-white mb-3'>Recently Reviewed</h2>
       </Row>
         <Row>
           <Col className='mb-2' sm='12' md='4'>

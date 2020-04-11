@@ -3832,10 +3832,11 @@ input[type="button"].btn-block {
     z-index: 1;
     color: #495057;
     text-decoration: none;
-    background-color: #f8f9fa; }
+    background-color: #f8f9fa;
+    cursor: pointer; }
   .list-group-item-action:active {
-    color: #212529;
-    background-color: #e9ecef; }
+    color: #fff;
+    background-color: #E72A2F; }
 
 .list-group-item {
   position: relative;
@@ -7193,10 +7194,27 @@ a.text-dark:hover, a.text-dark:focus {
             .masthead .masthead-container .masthead-overlay .masthead-card .masthead-card-block {
               padding: 1rem 1rem; } }
 
-.gallery-title {
+.border-bottom-red {
+  border-bottom: 3px solid #E72A2F; }
+
+.border-bottom-white {
   border-bottom: 3px solid #fff; }
 
 .gallery-bg {
   background-image: url("../svg/gallery-bg.svg");
   background-repeat: no-repeat;
   background-size: cover; }
+
+.rating {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  margin: .25rem;
+  background-color: transparent;
+  padding: .5rem;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  border: 0.125rem solid #28a745; }
