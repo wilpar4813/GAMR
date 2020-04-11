@@ -24,7 +24,7 @@
     "webfontloader": "^1.6.28"
   },
   "scripts": {
-    "scss": "node-sass -o src/css node_modules/bootstrap/scss/bootstrap.scss",
+    "scss": "node-sass -o src/css src/scss/bootstrap.scss",
     "cssmin": "npm run scss && cleancss -o src/css/bootstrap.min.css src/css/bootstrap.css",
     "start": "npm run cssmin && react-scripts start",
     "build": "react-scripts build",
