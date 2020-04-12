@@ -28,6 +28,7 @@
     color: $list-group-action-hover-color;
     text-decoration: none;
     background-color: $list-group-hover-bg;
+    cursor: pointer;
   }
 
   &:active {
