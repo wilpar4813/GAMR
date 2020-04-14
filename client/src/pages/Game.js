@@ -6,3 +6,5 @@ const Game = (props) => {
     <MainNav />
   )
 }
+
+export default Game;
