@@ -1,9 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, ListGroup, ListGroupItem} from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlaystation, faXbox  }from '@fortawesome/free-brands-svg-icons';
-import {ReactSVG} from 'react-svg';
-import NintendoSwitch from '../svg/nintendo-switch.svg';
+import {Container, Row, Col, Media} from 'reactstrap';
 
 const Upcoming = (props) => {
 
@@ -12,17 +8,158 @@ const Upcoming = (props) => {
     <>
       <Container className='py-3'>
         <Row className='py-2'>
-          <h2 className='border-bottom-red'>Upcoming Releases</h2>
+          <h2 className='border-bottom-red'>Upcoming</h2>
         </Row>
         <Row className='py-2'>
           <Col sm='12' md='4'>
-            <h3><FontAwesomeIcon className='fab mr-2' icon={faXbox} />Xbox One</h3>
+            <Row>
+              <h3 className='upcoming-subtile'>Recently Released</h3>
+            </Row>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
           </Col>
           <Col sm='12' md='4'>
-            <h3><FontAwesomeIcon className='fab mr-2' icon={faPlaystation} />Playstation</h3>
+            <Row>
+              <h3 className='upcoming-subtile'>Coming Soon</h3>
+            </Row>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
           </Col>
           <Col sm='12' md='4'>
-            <h3><ReactSVG className='float-left mr-2' src={NintendoSwitch} beforeInjection={svg => {svg.setAttribute('style', 'width: 1.75rem')}}/>Nintendo Switch</h3>
+            <Row>
+              <h3 className='upcoming-subtile'>Most Anticipated</h3>
+            </Row>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
+            <Media className='mb-3'>
+              <Media left href="#">
+                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
+              </Media>
+            <Media body>
+              <Media heading>Game Title</Media>
+              <small className='text-muted'>whatever amount of time here</small>
+            </Media>
+            </Media>
           </Col>
         </Row>
       </Container>
