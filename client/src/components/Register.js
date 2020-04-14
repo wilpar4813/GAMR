@@ -24,6 +24,13 @@ const Register = (props) => {
                   id=""
                   placeholder="Last Name"
                 />
+                <Label className='text-white' for="gameSystem">Game System</Label>
+                <Input
+                  type="text"
+                  name="name"
+                  id=""
+                  placeholder="Preferred Game System"
+                />
                 <Label className='text-white' for="exampleEmail">Email</Label>
                 <Input
                   type="email"
@@ -41,7 +48,15 @@ const Register = (props) => {
                   placeholder="Password"
                 />
               </FormGroup>
-              <Button className='mb-3'color='danger' type='submit' style={{ border: "black" }}>
+              <Button onClick={() => {
+                  props.handleSubmit({
+                      email: props.email,
+                      firstName: props.firstName,
+                      lastName: props.lastName,
+                      userName: props.userName,
+                      password: props.password
+                  })
+              }}className='mb-3'color='danger' type='submit' style={{ border: "black" }}>
                 Submit 
               </Button>
             </Form>
