@@ -7200,6 +7200,9 @@ a.text-dark:hover, a.text-dark:focus {
 .border-bottom-white {
   border-bottom: 3px solid #fff; }
 
+.upcoming-subtile {
+  border-bottom: 3px solid #f1c40f; }
+
 .gallery-bg {
   background-image: url("../svg/gallery-bg.svg");
   background-repeat: no-repeat;
