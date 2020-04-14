@@ -2,5 +2,9 @@ module.exports = {
     User: require("./user/user"),
     Game: require("./Game/game"),
     Cover: require("./Game/cover"),
-    Genre: require("./Genre/genre")
+    // Genre: require("./Genre/genre"),
+    Platform: require("./Game/platform"),
+    PlatformLogo: require("./Game/platformlogo"),
+    ReleaseDate: require("./Game/releasedate"),
+    Screenshot: require("./Game/screenshot")
 }
