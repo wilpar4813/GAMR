@@ -4,14 +4,34 @@ const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
     name: { type: String, required: true },
-    platforms: { type: Schema.Types.ObjectId, ref: "Platform" },
     totalRating: { type: Schema.Types.Decimal128 },
     totalRatingCount: { type: Number },
-    releaseDates: { type: Schema.Types.ObjectId, ref: "ReleaseDate" },
-    screenshots: { type: Schema.Types.ObjectId, ref: "Screenshot" },
-    covers: { type: Schema.Types.ObjectId, ref: "Cover" },
     summary: { type: String },
     url: { type: String },
+    covers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Cover",
+        },
+    ],
+    screenshots: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Screenshot",
+        },
+    ],
+    platforms: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Platform",
+        },
+    ],
+    releaseDates: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "ReleaseDate",
+        },
+    ],
 });
 
 const Game = mongoose.model("Game", gameSchema);

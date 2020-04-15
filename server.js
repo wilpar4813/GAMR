@@ -4,7 +4,7 @@ var PORT     = process.env.PORT || 3001;
 var session = require('express-session');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var db = require('./models');
+// var db = require('./models');
 
 
 // Define middleware here
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Add routes, both API and view
 // app.use(routes);
-const controller = require("./routes/api/controller.js");
+const controller = require("./routes/controller.js");
 controller(app);
 
 // Connect to the Mongo DB
