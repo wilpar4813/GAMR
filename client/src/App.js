@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import Home from "./pages/Home.js";
 import LoginPage from "./pages/LoginPage.js";
 import Register from './pages/Register';
+import Game from './pages/Game';
 
 function App() {
   return (
