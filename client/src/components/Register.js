@@ -11,28 +11,28 @@ const Register = (props) => {
             <Form className='border rounded p-3 d-flex flex-column justify-content-between'>
               <FormGroup>
               <Label className='text-white' for="First Name">First Name</Label>
-                <Input
+                <Input onChange={props.handleOnChange}
                   type="text"
-                  name="name"
+                  name="firstName"
                   id=""
                   placeholder="First Name"
                 />
                  <Label className='text-white' for="Last Name">Last Name</Label>
-                <Input
+                <Input onChange={props.handleOnChange}
                   type="text"
-                  name="name"
+                  name="lastName"
                   id=""
                   placeholder="Last Name"
                 />
                 <Label className='text-white' for="gameSystem">Game System</Label>
-                <Input
+                <Input onChange={props.handleOnChange}
                   type="text"
                   name="name"
                   id=""
                   placeholder="Preferred Game System"
                 />
                 <Label className='text-white' for="exampleEmail">Email</Label>
-                <Input
+                <Input onChange={props.handleOnChange}
                   type="email"
                   name="email"
                   id="exampleEmail"
@@ -41,20 +41,29 @@ const Register = (props) => {
               </FormGroup>
               <FormGroup>
                 <Label className='text-white' for="examplePassword">Password</Label>
-                <Input
+                <Input onChange={props.handleOnChange}
                   type="password"
                   name="password"
                   id="examplePassword"
                   placeholder="Password"
                 />
               </FormGroup>
-              <Button onClick={() => {
-                  props.handleSubmit({
-                      email: props.email,
-                      firstName: props.firstName,
-                      lastName: props.lastName,
-                      userName: props.userName,
-                      password: props.password
+              <FormGroup>
+                <Label className='text-white' for="examplePassword">User Name</Label>
+                <Input onChange={props.handleOnChange}
+                  type="user"
+                  name="userName"
+                  id="userName"
+                  placeholder="User Name"
+                />
+              </FormGroup>
+              <Button onClick={(e) => {
+                  props.handleSubmit(e, {
+                    email: props.email,
+                    firstName: props.firstName,
+                    lastName: props.lastName,
+                    userName: props.userName,
+                    password: props.password
                   })
               }}className='mb-3'color='danger' type='submit' style={{ border: "black" }}>
                 Submit 
