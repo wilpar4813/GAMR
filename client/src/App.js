@@ -18,7 +18,7 @@ function App() {
         <Route exact path={'/'}>
         <Home />
         </Route>
-        <Route path={'games/:id'}>
+        <Route exact path={'/games/:id'}>
           <Game />
         </Route>
       </Switch>
