@@ -3,6 +3,11 @@ const API_KEY = "c349b6bbe3fc4fac8c2a90d68e51410a";
 
 export default {
     // Video Games!
+    createUser: function(userData) {
+        console.log(userData);
+        return axios.post("/register", userData);
+    },
+
     getGameInfo: function (name) {
         return axios({
             url:
