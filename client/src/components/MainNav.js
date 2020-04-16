@@ -45,7 +45,7 @@ const MainNav = (props) => {
               <Input className='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search' />
               <Button outline color='danger' type='submit' className='my-2 my-sm-0'>Search</Button>
             </Form>
-            <Button href='/login' color='danger'>Log In</Button>
+            <Button  href='/login' color='danger'>Log Out</Button>
           </Nav>
         </Collapse>
         </Container>

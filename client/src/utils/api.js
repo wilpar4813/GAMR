@@ -10,7 +10,7 @@ export default {
 
     login: function(userData) {
         console.log(userData);
-        return axios.post("/login", userData);
+        return axios.get("/user", userData);
     },
 
     logout: function() {
