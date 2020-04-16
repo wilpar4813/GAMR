@@ -4,6 +4,7 @@ import Home from "./pages/Home.js";
 import LoginPage from "./pages/LoginPage.js";
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import Game from './pages/Game';
 
 function App() {
   return (
@@ -22,7 +23,12 @@ function App() {
           <Profile />
         </Route>
       </Switch>
-    </Router>
+    <Switch>
+      <Route path={'games/:id'}>
+        <Game />
+      </Route>
+    </Switch>
+  </Router>
   )
 }
 
