@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub }from '@fortawesome/free-brands-svg-icons'
 import {ReactSVG} from 'react-svg';
 import Logo from '../svg/logo.svg';
+import Profile from '../pages/Profile';
 
 const MainNav = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +18,7 @@ const MainNav = (props) => {
         <NavbarBrand href="/">
           <ReactSVG src={Logo}  beforeInjection={svg => {svg.setAttribute('style', 'width: 100%')}} />
         </NavbarBrand>
+        <Button  href='/Profile' color='dark'>Profile</Button>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
