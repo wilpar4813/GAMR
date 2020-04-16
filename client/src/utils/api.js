@@ -8,6 +8,19 @@ export default {
         return axios.post("/register", userData);
     },
 
+    login: function(userData) {
+        console.log(userData);
+        return axios.get("/user", userData);
+    },
+
+    logout: function() {
+        return axios.get("/logout");
+    },
+
+    getUser: function() {
+        return axios.get("/user");
+    },
+
     getGameInfo: function (name) {
         return axios({
             url:
