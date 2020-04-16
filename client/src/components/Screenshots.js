@@ -3,17 +3,17 @@ import {Container, Row, Col,  Carousel, CarouselItem, CarouselControl,} from 're
 
 const items = [
   {
-    src: 'https://via.placeholder.com/640x360.jpg',
+    src: 'https://via.placeholder.com/940x529.jpg',
     altText: 'Slide 1',
     caption: 'Slide 1'
   },
   {
-    src: 'https://via.placeholder.com/640x360.jpg',
+    src: 'https://via.placeholder.com/940x529.jpg',
     altText: 'Slide 2',
     caption: 'Slide 2'
   },
   {
-    src: 'https://via.placeholder.com/640x360.jpg',
+    src: 'https://via.placeholder.com/940x529.jpg',
     altText: 'Slide 3',
     caption: 'Slide 3'
   }
@@ -54,9 +54,9 @@ const Screenshots = (props) => {
   });
 
   return (
-    <Container>
+    <Container className='bg-black'>
       <Row>
-        <Col sm="12" md={{ size: 6, offset: 3 }}>
+        <Col sm="12" md={{ size: 10, offset: 1 }}>
           <Carousel activeIndex={activeIndex} next={next} previous={previous}>
             {slides}
             <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />

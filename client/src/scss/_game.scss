@@ -2,6 +2,11 @@
   background-color: #e6e6e6;
 }
 
+.bg-black {
+  background-color: $black;
+  opacity: .75;
+}
+
 .game-container {
 
   background-color: $white;
