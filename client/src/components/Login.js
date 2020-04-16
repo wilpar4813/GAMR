@@ -24,7 +24,7 @@ const Login = (props) => {
               <FormGroup>
                 <Label className='text-white' for="examplePassword">Password</Label>
                 <Input onChange={ props.handleOnChange }
-                  type="text"
+                  type="password"
                   name="password"
                   id="examplePassword"
                   placeholder="Password"
