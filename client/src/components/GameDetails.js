@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, Button} from 'reactstrap';
+import Screenshots from './Screenshots'
 
-class GameHeader extends Component {
+class GameDetails extends Component {
   render(){
     return (
       <div className='game-bg py-3'>
@@ -30,10 +31,11 @@ class GameHeader extends Component {
             </div>
           </Col>
         </Row>
+        <Screenshots />
       </Container>
       </div>
     )
   }
 }
 
-export default GameHeader;
+export default GameDetails;

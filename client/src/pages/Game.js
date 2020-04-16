@@ -1,13 +1,14 @@
 import React from 'react';
 import MainNav from '../components/MainNav';
-import GameHeader from '../components/GameHeader';
-import Footer from '../components/Footer'
+import GameDetails from '../components/GameDetails';
+import Screenshots from '../components/Screenshots';
+import Footer from '../components/Footer';
 
 const Game = (props) => {
   return (
     <>
     <MainNav />
-    <GameHeader />
+    <GameDetails />
     <Footer />
     </>
   )
