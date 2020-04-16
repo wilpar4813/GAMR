@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Register from '../components/Register';
 import { compare } from 'bcryptjs';
-import api from '../utils/API';
+import api from '../utils/api';
 import { Redirect } from "react-router-dom";
 
 export default class RegisterPage extends Component {

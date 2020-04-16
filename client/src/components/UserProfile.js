@@ -5,7 +5,7 @@ import Profile from '../pages/Profile';
 const userProfile = (props) => {
     <Container>
     <Row>
-        <h1>Hi + " " + props.username</h1>
+        <h1>Hi { " " + props.username}</h1>
     </Row>
 </Container>
 }
