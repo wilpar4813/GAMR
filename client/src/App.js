@@ -24,7 +24,7 @@ function App() {
         </Route>
       </Switch>
     <Switch>
-      <Route path={'games/:id'}>
+      <Route path={'/games/:id'}>
         <Game />
       </Route>
     </Switch>
