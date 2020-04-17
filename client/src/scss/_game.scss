@@ -1,0 +1,38 @@
+.game-bg {
+  background-color: #e6e6e6;
+}
+
+.bg-black {
+  background-color: $black;
+  opacity: .75;
+}
+
+.game-container {
+
+  background-color: $white;
+  border-radius: .25rem;
+  border: 1px solid $black;
+
+  .game-info {
+    position: relative;
+
+    .game-info--data {
+      width: 100%;
+	    min-height: 100% !important;
+	    flex: 1;
+
+      .game-info--description {
+        width: 100%;
+
+        .game-info-plot {
+          font-size: 1.25rem;
+          margin-bottom: 1.25rem;
+          line-height: 1.6;
+        }
+      }
+    }
+    .game-info--stats {
+      width: 100%;
+    }
+  }
+}
