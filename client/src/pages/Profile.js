@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import MainNave from '../components/MainNav';
+import MainNav from '../components/MainNav';
 import Footer from '../components/Footer';
 import api from '../utils/api';
 import {Redirect} from 'react-router-dom';
+import UserProfile from '../components/UserProfile';
 
 class Profile extends Component {
     state ={
@@ -17,6 +18,7 @@ class Profile extends Component {
         this.setState({
             [name] : value
         })
+        
     }
 
     handleOnSubmit = (event) => {
@@ -25,6 +27,7 @@ class Profile extends Component {
             email: this.state.email,
             password: this.state.password
         }
+        console.log(userData, 'USER DATA');
 
         api.getUser("/logout", function (req, res) {
             this.setState({ Redirect : true });
@@ -36,9 +39,11 @@ class Profile extends Component {
         if(this.state.Redirect) {
             return <Redirect to={"/login"} />
         }
+
         return (
             <>
-            <MainNave handleOnChange={this.state.handleOnChange} handleOnSubmit={this.state.handleOnSubmit} />
+            <MainNav handleOnChange={this.state.handleOnChange} handleOnSubmit={this.state.handleOnSubmit} />
+            <UserProfile />
             <Footer />
             </>
         );

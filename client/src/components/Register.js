@@ -58,13 +58,7 @@ const Register = (props) => {
                 />
               </FormGroup>
               <Button onClick={(e) => {
-                  props.handleSubmit(e, {
-                    email: props.email,
-                    firstName: props.firstName,
-                    lastName: props.lastName,
-                    userName: props.userName,
-                    password: props.password
-                  })
+                  props.handleSubmit(e)
               }}className='mb-3'color='danger' type='submit' style={{ border: "black" }}>
                 Submit 
               </Button>

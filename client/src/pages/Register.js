@@ -15,21 +15,22 @@ export default class RegisterPage extends Component {
      }
 
     handleOnChange = (event) => {
+        console.log(event);
         const {name, value} = event.target;
         this.setState({
             [name]: value        
-        })
+        }, ()=>console.log(this.state))
+
     }
 
-   handleSubmit = (event, userData) => {
-       console.log(userData);
+   handleSubmit = (event) => {
        event.preventDefault();
-    //    const userData = {
-    //        name : this.state.firstName + " " + this.state.lastName,
-    //        email: this.state.email,
-    //        password: this.state.password,
-    //        userName: this.state.userName
-    //    }
+       const userData = {
+           name : this.state.firstName + " " + this.state.lastName,
+           email: this.state.email,
+           password: this.state.password,
+           userName: this.state.userName
+       }
     api.createUser(userData).then(data => {
         console.log("success");
         this.setState({Redirect: true})

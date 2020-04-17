@@ -34,7 +34,7 @@ const Login = (props) => {
               <Button onClick={ props.handleOnSubmit } className='mb-3'color='danger' type='submit' style={{ border: "black" }}>
                 Log in
               </Button>
-              <Button href={'/'} className='mb-3' outline color='secondary'>
+              <Button href={'/register'} className='mb-3' outline color='secondary'>
                 Register
               </Button>
             </Form>
