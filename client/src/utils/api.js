@@ -41,6 +41,7 @@ export default {
             });
     },
     popularPS4: function () {
+        console.log("line 43");
         return axios
             .get({
                 url: "https://api-v3.igdb.com/games",
