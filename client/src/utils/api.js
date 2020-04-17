@@ -126,7 +126,7 @@ export default {
                     "user-key": API_KEY,
                 },
                 data:
-                    "fields date, human, game, platform, created_at, fields date, human, game, platform, created_at, game.cover; sort human desc; where human !='TBD'; limit 10;, content, positive_points, negitive_points, user_rating, likes, url; sort date desc; limit 10;",
+                    "fields date, human, game, platform, created_at, fields date, human, game, platform, created_at, game.cover; sort human desc; where human !='TBD'; limit 10;",
             })
             .then((response) => {
                 console.log(response.data);
@@ -145,7 +145,26 @@ export default {
                     "user-key": API_KEY,
                 },
                 data:
-                    "fields date, human, game, platform, created_at, fields date, human, game, platform, created_at, game.cover; sort human desc; where human ='TBD'; limit 10;, content, positive_points, negitive_points, user_rating, likes, url; sort date desc; limit 10;",
+                    "fields date, human, game, platform, created_at, fields date, human, game, platform, created_at, game.cover; sort human desc; where human ='TBD'; limit 10;",
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    },
+    mostAnticiptate: function () {
+        return axios
+            .get({
+                url: "https://api-v3.igdb.com/release_dates",
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data:
+                    "fields date, human, game, platform, created_at, fields date, human, game, platform, created_at, game.cover; sort human desc; where human ='TBD';  sort popularity desc; limit 10;",
             })
             .then((response) => {
                 console.log(response.data);
