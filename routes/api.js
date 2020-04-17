@@ -32,6 +32,25 @@ function routes(app) {
         req.logout();
         res.send(null);
     });
-}
 
+    app.get("/popular_all", function (req, res) {
+        req.popularAll();
+    });
+
+    app.get("/popular_ps4", function (req, res) {
+        req.popularPS4();
+    });
+
+    app.get("/popular_xboxone", function (req, res) {
+        req.popularXboxOne();
+    });
+
+    app.get("/popular_switch", function (req, res) {
+        req.popularSwitch();
+    });
+
+    app.get("/recent_reviews", function (req, res) {
+        req.recentReviews();
+    });
+}
 module.exports = routes;
