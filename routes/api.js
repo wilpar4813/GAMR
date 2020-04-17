@@ -52,5 +52,13 @@ function routes(app) {
     app.get("/recent_reviews", function (req, res) {
         req.recentReviews();
     });
+
+    app.get("/recent_releases", function (req, res) {
+        req.recentReleases();
+    });
+
+    app.get("/coming_soon", function (req, res) {
+        req.comingSoon();
+    });
 }
 module.exports = routes;
