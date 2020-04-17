@@ -60,5 +60,9 @@ function routes(app) {
     app.get("/coming_soon", function (req, res) {
         req.comingSoon();
     });
+
+    app.get("/most_anticipated", function (req, res) {
+        req.mostAnticipated();
+    });
 }
 module.exports = routes;
