@@ -35,12 +35,29 @@ function routes(app) {
         req.logout();
         res.send(null);
     });
+    // app.get("/api/games/recently-released", function (req, res) {
+    //     axios({
+    //         url: "https://api-v3.igdb.com/games",
+    //         method: "POST",,
+    //         headers: { Accept: "application/json", "user-key": api },
+    //         data:
+    //             "fields name,cover,updated_at; sort updated_at desc; limit 5;"
+    //     }).then((game) =>
+    //         axios({
+    //             url: "https://api-v3.igdb.com/covers",
+    //             method: "POST",
+    //             headers: { Accept: "application/json", "user-key": api },
+    //             data: "fields url; where game = " + game[id] + ";",
+    //         }).then((response) => {
+    //             res.json(response.data);
+    //         })
+    //     );
+    // });
 
     app.get("/api/popular_all", function (req, res) {
-        axios
-            .get({
+        axios({
                 url: "https://api-v3.igdb.com/games",
-                method: "GET",
+                method: "POST",
                 headers: {
                     Accept: "application/json",
                     "user-key": API_KEY,
@@ -57,16 +74,15 @@ function routes(app) {
     });
 
     app.get("/api/popular_ps4", function (req, res) {
-        axios
-            .get({
+        axios({
                 url: "https://api-v3.igdb.com/games",
-                method: "GET",
+                method: "POST",
                 headers: {
                     Accept: "application/json",
                     "user-key": API_KEY,
                 },
                 data:
-                    "fields name,genres,platforms,cover; where rating > 90 & platforms = (48);limit 20;",
+                    "fields name,genres,platforms,cover; where rating > 90 & platforms = 48;limit 20;",
             })
             .then((response) => {
                 console.log(response.data);
@@ -77,10 +93,9 @@ function routes(app) {
     });
 
     app.get("/api/popular_xboxone", function (req, res) {
-        axios
-            .get({
+        axios({
                 url: "https://api-v3.igdb.com/games",
-                method: "GET",
+                method: "POST",
                 headers: {
                     Accept: "application/json",
                     "user-key": API_KEY,
@@ -97,10 +112,9 @@ function routes(app) {
     });
 
     app.get("/api/popular_switch", function (req, res) {
-        axios
-            .get({
+        axios({
                 url: "https:api-v3.igdb.com/games",
-                method: "GET",
+                method: "POST",
                 headers: {
                     Accept: "application/json",
                     "user-key": API_KEY,
@@ -117,10 +131,9 @@ function routes(app) {
     });
 
     app.get("/api/recent_reviews", function (req, res) {
-        axios
-            .get({
+        axios({
                 url: "https://api-v3.igdb.com/private/reviews",
-                method: "GET",
+                method: "POST",
                 headers: {
                     Accept: "application/json",
                     "user-key": API_KEY,
@@ -137,10 +150,9 @@ function routes(app) {
     });
 
     app.get("/api/recent_releases", function (req, res) {
-        axios
-            .get({
+        axios({
                 url: "https://api-v3.igdb.com/release_dates",
-                method: "GET",
+                method: "POST",
                 headers: {
                     Accept: "application/json",
                     "user-key": API_KEY,
@@ -157,10 +169,9 @@ function routes(app) {
     });
 
     app.get("/api/coming_soon", function (req, res) {
-        axios
-            .get({
+        axios({
                 url: "https://api-v3.igdb.com/release_dates",
-                method: "GET",
+                method: "POST",
                 headers: {
                     Accept: "application/json",
                     "user-key": API_KEY,
@@ -177,10 +188,9 @@ function routes(app) {
     });
 
     app.get("/api/most_anticipated", function (req, res) {
-        axios
-            .get({
+        axios({
                 url: "https://api-v3.igdb.com/release_dates",
-                method: "GET",
+                method: "POST",
                 headers: {
                     Accept: "application/json",
                     "user-key": API_KEY,
