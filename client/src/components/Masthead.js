@@ -12,8 +12,8 @@ class Masthead extends Component {
           <div className='masthead-container'>
             <figure className='masthead-figure' role='presentation'>
               <picture className='masthead-picture img-fluid'>
-                <source media="(min-width: 992px)" srcset={desktop} />
-                <source srcset={mobile} />
+                <source media="(min-width: 992px)" srcSet={desktop} />
+                <source srcSet={mobile} />
                 <img className='masthead-fallback' src={desktop} />
               </picture>
             </figure>
