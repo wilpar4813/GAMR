@@ -1,5 +1,8 @@
 const db = require("../models");
 const passport = require("passport");
+const axios = require("axios");
+const API_KEY = "c349b6bbe3fc4fac8c2a90d68e51410a";
+
 
 function routes(app) {
     app.post("/register", function (req, res) {
@@ -33,36 +36,164 @@ function routes(app) {
         res.send(null);
     });
 
-    app.get("/popular_all", function (req, res) {
-        req.popularAll();
+    app.get("/api/popular_all", function (req, res) {
+        axios
+            .get({
+                url: "https://api-v3.igdb.com/games",
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data:
+                    "fields name,genres,platforms,cover; where rating > 90; limit 20;",
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     });
 
-    app.get("/popular_ps4", function (req, res) {
-        req.popularPS4();
+    app.get("/api/popular_ps4", function (req, res) {
+        axios
+            .get({
+                url: "https://api-v3.igdb.com/games",
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data:
+                    "fields name,genres,platforms,cover; where rating > 90 & platforms = (48);limit 20;",
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     });
 
-    app.get("/popular_xboxone", function (req, res) {
-        req.popularXboxOne();
+    app.get("/api/popular_xboxone", function (req, res) {
+        axios
+            .get({
+                url: "https://api-v3.igdb.com/games",
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data:
+                    "fields name,genres,platforms,cover; where rating > 90 & platforms = 49; limit 20;",
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     });
 
-    app.get("/popular_switch", function (req, res) {
-        req.popularSwitch();
+    app.get("/api/popular_switch", function (req, res) {
+        axios
+            .get({
+                url: "https:api-v3.igdb.com/games",
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data:
+                    "fields name,genres,platforms,cover; where rating > 90; limit 20;",
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     });
 
-    app.get("/recent_reviews", function (req, res) {
-        req.recentReviews();
+    app.get("/api/recent_reviews", function (req, res) {
+        axios
+            .get({
+                url: "https://api-v3.igdb.com/private/reviews",
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data:
+                    "fields game, title, created_at, updated_at, content, positive_points, negitive_points, user_rating, likes, url; sort created_at desc; limit 10;",
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     });
 
-    app.get("/recent_releases", function (req, res) {
-        req.recentReleases();
+    app.get("/api/recent_releases", function (req, res) {
+        axios
+            .get({
+                url: "https://api-v3.igdb.com/release_dates",
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data:
+                    "fields date, human, game, platform, created_at, fields date, human, game, platform, created_at, game.cover; sort human desc; where human !='TBD'; limit 10;",
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     });
 
-    app.get("/coming_soon", function (req, res) {
-        req.comingSoon();
+    app.get("/api/coming_soon", function (req, res) {
+        axios
+            .get({
+                url: "https://api-v3.igdb.com/release_dates",
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data:
+                    "fields date, human, game, platform, created_at, fields date, human, game, platform, created_at, game.cover; sort human desc; where human ='TBD'; limit 10;",
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     });
 
-    app.get("/most_anticipated", function (req, res) {
-        req.mostAnticipated();
+    app.get("/api/most_anticipated", function (req, res) {
+        axios
+            .get({
+                url: "https://api-v3.igdb.com/release_dates",
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data:
+                    "fields date, human, game, platform, created_at, fields date, human, game, platform, created_at, game.cover; sort human desc; where human ='TBD';  sort popularity desc; limit 10;",
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     });
 }
 module.exports = routes;
