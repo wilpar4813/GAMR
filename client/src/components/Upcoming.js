@@ -18,7 +18,6 @@ const Upcoming = (props) => {
   async function fetchSoon(){
     const res = await api.comingSoon();
 
-    console.log(res);
     setComingSoon(res.data);
   }
 
@@ -31,7 +30,7 @@ const Upcoming = (props) => {
   useEffect(() => {
     fetchReleased();
     fetchSoon();
-    // fetchAnticipated();
+    fetchAnticipated();
   })
 
   return (
@@ -63,7 +62,6 @@ const Upcoming = (props) => {
             <Row>
               <h3 className='upcoming-subtile'>Coming Soon</h3>
             </Row>
-
             {comingSoon.map(
               (upcomingGame) => (
                 <Media className='mb-3'>
@@ -82,51 +80,19 @@ const Upcoming = (props) => {
             <Row>
               <h3 className='upcoming-subtile'>Most Anticipated</h3>
             </Row>
-            <Media className='mb-3'>
-              <Media left href="#">
-                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
-              </Media>
-            <Media body>
-              <Media heading>Game Title</Media>
-              <small className='text-muted'>whatever amount of time here</small>
-            </Media>
-            </Media>
-            <Media className='mb-3'>
-              <Media left href="#">
-                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
-              </Media>
-            <Media body>
-              <Media heading>Game Title</Media>
-              <small className='text-muted'>whatever amount of time here</small>
-            </Media>
-            </Media>
-            <Media className='mb-3'>
-              <Media left href="#">
-                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
-              </Media>
-            <Media body>
-              <Media heading>Game Title</Media>
-              <small className='text-muted'>whatever amount of time here</small>
-            </Media>
-            </Media>
-            <Media className='mb-3'>
-              <Media left href="#">
-                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
-              </Media>
-            <Media body>
-              <Media heading>Game Title</Media>
-              <small className='text-muted'>whatever amount of time here</small>
-            </Media>
-            </Media>
-            <Media className='mb-3'>
-              <Media left href="#">
-                <Media className='mr-2' object src="https://via.placeholder.com/64x64.jpg" alt="Generic placeholder image" />
-              </Media>
-            <Media body>
-              <Media heading>Game Title</Media>
-              <small className='text-muted'>whatever amount of time here</small>
-            </Media>
-            </Media>
+            {mostAnticipated.map(
+              (hypedGame) => (
+                <Media className='mb-3'>
+                  <Media left href="#">
+                    <Media className='mr-2' object src={hypedGame.cover.url} alt="Generic placeholder image" />
+                  </Media>
+                <Media body>
+                  <Media heading>{hypedGame.name}</Media>
+                  <small className='text-muted'>{hypedGame.release_dates[0].human}</small>
+                </Media>
+                </Media>
+              )
+            )}
           </Col>
         </Row>
       </Container>
