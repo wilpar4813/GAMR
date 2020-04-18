@@ -1,9 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Container, Row, Col, Media} from 'reactstrap';
 import api from '../utils/api';
 
 const Upcoming = (props) => {
 
+  const [ hasError, setErrors ] = useState(false);
+  const [ recentReleased, setRecentReleased ] = useState([]);
+  const [ comingSoon, setComingSoon ] = useState([]);
+  const [ mostAnticipated, setMostAnticipated ] = useState([]);
+
+  async function fetchReleased(){
+    const res = await api.recentReleases();
+
+    console.log(res);
+    setRecentReleased(res.data);
+  }
+
+  useEffect(() => {
+    fetchReleased();
+  })
 
   return (
     <>
