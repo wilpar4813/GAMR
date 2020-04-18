@@ -35,18 +35,6 @@ function routes(app) {
         res.send(null);
     });
 
-    // All games
-    app.get("/api/games", function (req, res) {
-        axios({
-            url: "https://api-v3.igdb.com/games",
-            method: "POST",
-            headers: { Accept: "application/json", "user-key": API_KEY },
-            data: "fields *",
-        }).then((response) => {
-            res.json(response.data);
-        });
-    });
-
     app.get("/api/games/popular_all", function (req, res) {
         axios({
             url: "https://api-v3.igdb.com/games",
@@ -101,12 +89,13 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url; where rating > 90; limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url; where rating > 90 & platforms = 130; limit 20;",
         }).then((response) => {
             res.json(response.data);
         });
     });
 
+    // BROKEN - Clint to fix
     app.get("/api/games/recent_reviews", function (req, res) {
         axios({
             url: "https://api-v3.igdb.com/private/reviews",
@@ -116,7 +105,7 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields game.name, game.cover.url, title, created_at, updated_at, content, positive_points, negitive_points, user_rating, likes, url; sort created_at desc; limit 10;",
+                "fields game.name, game.cover.url, title, created_at, updated_at, content, positive_points, negitive_points, user_rating, likes, url; sort created_at desc; limit 8;",
         }).then((response) => {
             res.json(response.data);
         });
@@ -124,14 +113,14 @@ function routes(app) {
 
     app.get("/api/games/recent_releases", function (req, res) {
         axios({
-            url: "https://api-v3.igdb.com/release_dates",
+            url: "https://api-v3.igdb.com/games",
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
             data:
-                'fields date, y, m, human, game.name, platform.name, created_at, game.cover.url; sort date desc; where date < 1587224342; limit 10;',
+                'fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url; sort first_release_date desc; where first_release_date < 1587224342 & first_release_date > 1583038800 & hypes > 10; limit 5;',
         }).then((response) => {
             res.json(response.data);
         });
@@ -139,14 +128,14 @@ function routes(app) {
 
     app.get("/api/games/coming_soon", function (req, res) {
         axios({
-            url: "https://api-v3.igdb.com/release_dates",
+            url: "https://api-v3.igdb.com/games",
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
             data:
-                "fields date, human, game.name, platform.name, created_at, game.cover.url; sort date desc; where date > 1587224342 & date < 1593576000 ; limit 10;",
+                "fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url; sort first_release_date asc; where first_release_date > 1587224342 & first_release_date < 1593576000 & hypes > 2; limit 5;",
         }).then((response) => {
             res.json(response.data);
         });
@@ -154,14 +143,14 @@ function routes(app) {
 
     app.get("/api/games/most_anticipated", function (req, res) {
         axios({
-            url: "https://api-v3.igdb.com/release_dates",
+            url: "https://api-v3.igdb.com/games",
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
             data:
-                "fields date, human, game.name, game.popularity, platform.name, created_at, game.cover.url; sort game.popularity desc; where date > 1587224342 & date < 1593576000 & game.popularity > 4; limit 10;",
+                "fields first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, hypes, name, platforms.name, cover.url; sort hypes desc; where first_release_date > 1587224342 & first_release_date < 1593576000 & hypes > 10; limit 5;",
         }).then((response) => {
             res.json(response.data);
         });
