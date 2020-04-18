@@ -7,7 +7,7 @@ import UserProfile from '../components/UserProfile';
 
 class Profile extends Component {
     state ={
-        email: '',
+        username: '',
         password: '',
         Redirect: null 
     }
@@ -24,7 +24,7 @@ class Profile extends Component {
     handleOnSubmit = (event) => {
         event.preventDefault();
         const userData = {
-            email: this.state.email,
+            username: this.state.username,
             password: this.state.password
         }
 
@@ -32,7 +32,7 @@ class Profile extends Component {
         console.log(userData, 'USER DATA');
 
         api.getUser().then(response => {
-            this.setState({email : response.data.email, Redirect : true })
+            this.setState({username : response.data.username, Redirect : true })
         }) 
 
     }

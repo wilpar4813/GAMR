@@ -10,32 +10,45 @@ import api from "./utils/api";
 
 class App extends Component {
   state = {
-    email: ""
+    username: "",
+    isLogin: false
+  }
+  handleOnChange = (event) => {
+    const { name, value} = event.target;
+    this.setState({
+      [name] : value
+    })
   }
 
   handleOnSubmit = (loggedIn) => {
-    const userData = {
-        email: this.state.email,
-        password: this.state.password
-    }
-    
-    console.log('USER DATA', userData);
+    console.log("loged in", loggedIn)
+     
 
-     api.login(userData).then(response => {
-         console.log(response.data);
-         sessionStorage.setItem("email", response.data.email)
-         this.setState({Redirect: true, email : response.data.email});
-         if(loggedIn === false && response.data.email === undefined) {
-           sessionStorage.setItem("email", "")
-           window.location.href="/"
-         }
-     })
+      api.logout().then(res => {
+        console.log(res.data.username, "logged out");
+        this.setState({ isLogin : false})
+        window.location.href="/login"
+      })
+     
+       
+      
+     
 
  }
+
+  componentDidMount() {
+    api.getUser().then(res => {
+      console.log(res.data.username, "username");
+      if(res.data.username != undefined) {
+        this.setState({ isLogin : true})
+      } 
+      
+    })
+  }
   render() {
     return (
       <Router>
-        <MainNav handleOnSubmit={this.handleOnSubmit} email={this.state.email != undefined ? this.state.email : ""}/>
+        {window.location.pathname != "/login" ? <MainNav isLogin={this.state.isLogin} handleOnChange={this.handleOnChange} handleOnSubmit={this.handleOnSubmit} username={this.state.username != undefined ? this.state.username : ""}/> : ""}
         <Switch>
           <Route exact path={'/login'}>
             <LoginPage />

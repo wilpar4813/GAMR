@@ -13,13 +13,13 @@ import { ButtonToggle } from "reactstrap";
 
 class Home extends Component {
     state = {
-      email: ""
+      username: ""
     }
     handleOnSubmit = (loggedIn) => {
        
 
       const userData = {
-          email: this.state.email,
+          username: this.state.username,
           password: this.state.password
       }
       
@@ -27,10 +27,10 @@ class Home extends Component {
 
        api.login(userData).then(response => {
            console.log(response.data);
-           sessionStorage.setItem("email", response.data.email)
-           this.setState({Redirect: true, email : response.data.email});
-           if(loggedIn === false && response.data.email === undefined) {
-             sessionStorage.setItem("email", "")
+           sessionStorage.setItem("username", response.data.username)
+           this.setState({Redirect: true, username : response.data.username});
+           if(loggedIn === false && response.data.username === undefined) {
+             sessionStorage.setItem("username", "")
              window.location.href="/"
            }
        })
@@ -41,9 +41,9 @@ class Home extends Component {
   componentDidMount() {
 
     api.getUser().then(response => {
-      const userEmail = sessionStorage.getItem("email")
-      if( userEmail != undefined ) {
-        this.setState({ email : userEmail})
+      const username = sessionStorage.getItem("username")
+      if(username != undefined ) {
+        this.setState({ username : username})
       }
     })
   }
@@ -51,8 +51,7 @@ class Home extends Component {
   render() {
     return (
       <>
-      { this.state.email != undefined ? console.log('LOOK HERE', this.state.email) : ''}
-      {/* <MainNav handleOnSubmit={this.handleOnSubmit} email={this.state.email != undefined ? this.state.email : ""}/> */}
+      { this.state.username != undefined ? console.log('LOOK HERE', this.state.username) : ''}
         <Masthead />
         <Popular />
         <Gallery />

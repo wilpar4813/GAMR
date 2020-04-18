@@ -54,16 +54,7 @@ const MainNav = (props) => {
               <Input onChange={props.handleOnChange} className='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search' />
               <Button outline color='danger' type='submit' className='my-2 my-sm-0'>Search</Button>
             </Form>
-  <Button onClick={()=> {
-
-
-  props.email.length > 0 ? 
-  props.handleOnSubmit(true)
-:
-  props.handleOnSubmit(false)
-
-
-    }} href={"/login"}   color='danger' >{props.email.length > 0 ? "logout" : "login"}</Button>
+            {props.isLogin === true ? <Button className="btn btn-danger" onClick={()=> {props.handleOnSubmit(false)}}>Logout</Button> : <Button className="btn btn-danger" onClick={()=> {props.handleOnSubmit(true)}}>Login</Button>}
           </Nav>
         </Collapse>
         </Container>
