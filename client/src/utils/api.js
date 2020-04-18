@@ -21,33 +21,33 @@ export default {
     },
 
     popularAll: function () {
-        return axios.get("/api/popular_all");
+        return axios.get("/api/games/popular_all");
     },
 
     popularPS4: function () {
         console.log("line 43");
-        return axios.get("/api/popular_ps4")
+        return axios.get("/api/games/popular_ps4")
     },
     popularXboxOne: function () {
-        return axios.get("/api/popular_xboxone")
+        return axios.get("/api/games/popular_xboxone")
     },
 
     popularSwitch: function () {
-        return axios.get("/api/popular_switch");
+        return axios.get("/api/games/popular_switch");
     },
 
     recentReviews: function () {
-        return axios.get("/api/recent_reviews");
+        return axios.get("/api/games/recent_reviews");
     },
 
     recentReleases: function () {
-        return axios.get("/api/recent_releases");
+        return axios.get("/api/games/recent_releases");
     },
 
     comingSoon: function () {
-        return axios.get("/api/coming_soon");
+        return axios.get("/api/games/coming_soon");
     },
     mostAnticiptate: function () {
-        return axios.get("/api/most_anticipated");
+        return axios.get("/api/games/most_anticipated");
     }
 };
