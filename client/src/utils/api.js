@@ -47,7 +47,8 @@ export default {
     comingSoon: function () {
         return axios.get("/api/games/coming_soon");
     },
-    mostAnticiptate: function () {
+    
+    mostAnticiptated: function () {
         return axios.get("/api/games/most_anticipated");
     }
 };
