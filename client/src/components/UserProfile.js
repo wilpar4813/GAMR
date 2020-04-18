@@ -25,8 +25,8 @@ const userProfile = (props) => {
       <Row>
         <Col sm="12" md="4">
           <Card>
-            <CardTitle>Recent History</CardTitle>
-            <ListGroup>
+            <CardTitle className="border border-dark">Recent History</CardTitle>
+            <ListGroup className="border border-dark">
               <ListGroupItem>item1</ListGroupItem>
               <ListGroupItem>item2</ListGroupItem>
               <ListGroupItem>item3</ListGroupItem>
@@ -34,8 +34,8 @@ const userProfile = (props) => {
           </Card>
         </Col>
         <Col className="6">
-          <Card>
-            <CardTitle>Your Collection</CardTitle>
+          <Card className="border border-dark"> 
+            <CardTitle >Your Collection</CardTitle>
             <CardText>
               <small>Game1</small>
             </CardText>
@@ -47,12 +47,16 @@ const userProfile = (props) => {
             </CardText>
           </Card>
         </Col>
-        <Row>
+      </Row>
+      <br></br>
+      <Row>
           <Col>
-           CardText
+           <Card className="border border-dark">
+             <CardTitle>Other things</CardTitle>
+             <CardText>the things</CardText>
+           </Card>
           </Col>
         </Row>
-      </Row>
     </Container>
   );
 };
