@@ -42,7 +42,7 @@ const Upcoming = (props) => {
         <Row className='py-2'>
           <Col sm='12' md='4'>
             <Row>
-              <h3 className='upcoming-subtile'>Recently Released</h3>
+              <h3 className='upcoming-subtile mb-3'>Recently Released</h3>
             </Row>
             {recentReleased.map(
               (newGame) => (
@@ -51,7 +51,7 @@ const Upcoming = (props) => {
                     <Media className='mr-2' object src={newGame.cover.url} alt="game title cover art here" />
                   </Media>
                 <Media body>
-                  <Media heading>{newGame.name}</Media>
+                  <Media heading><a href={`/games/${newGame.id}`}>{newGame.name}</a></Media>
                   <small className='text-muted'>{newGame.release_dates[0].human}</small>
                 </Media>
                 </Media>
@@ -60,7 +60,7 @@ const Upcoming = (props) => {
           </Col>
           <Col sm='12' md='4'>
             <Row>
-              <h3 className='upcoming-subtile'>Coming Soon</h3>
+              <h3 className='upcoming-subtile mb-3'>Coming Soon</h3>
             </Row>
             {comingSoon.map(
               (upcomingGame) => (
@@ -69,7 +69,7 @@ const Upcoming = (props) => {
                     <Media className='mr-2' object src={upcomingGame.cover.url} alt="Generic placeholder image" />
                   </Media>
                 <Media body>
-                  <Media heading>{upcomingGame.name}</Media>
+                  <Media heading><a href={`/games/${upcomingGame.id}`}>{upcomingGame.name}</a></Media>
                   <small className='text-muted'>{upcomingGame.release_dates[0].human}</small>
                 </Media>
                 </Media>
@@ -78,7 +78,7 @@ const Upcoming = (props) => {
           </Col>
           <Col sm='12' md='4'>
             <Row>
-              <h3 className='upcoming-subtile'>Most Anticipated</h3>
+              <h3 className='upcoming-subtile mb-3'>Most Anticipated</h3>
             </Row>
             {mostAnticipated.map(
               (hypedGame) => (
@@ -87,7 +87,7 @@ const Upcoming = (props) => {
                     <Media className='mr-2' object src={hypedGame.cover.url} alt="Generic placeholder image" />
                   </Media>
                 <Media body>
-                  <Media heading>{hypedGame.name}</Media>
+                  <Media heading><a href={`/games/${hypedGame.id}`}>{hypedGame.name}</a></Media>
                   <small className='text-muted'>{hypedGame.release_dates[0].human}</small>
                 </Media>
                 </Media>
