@@ -27,11 +27,14 @@ class Profile extends Component {
             email: this.state.email,
             password: this.state.password
         }
+
+        
         console.log(userData, 'USER DATA');
 
-        api.getUser("/logout", function (req, res) {
-            this.setState({ Redirect : true });
-        })
+        api.getUser().then(response => {
+            this.setState({email : response.data.email, Redirect : true })
+        }) 
+
     }
 
 
@@ -42,7 +45,7 @@ class Profile extends Component {
 
         return (
             <>
-            <MainNav handleOnChange={this.state.handleOnChange} handleOnSubmit={this.state.handleOnSubmit} />
+            {/* <MainNav email={this.state.email} handleOnChange={this.state.handleOnChange} handleOnSubmit={this.state.handleOnSubmit} isAuth={this.state.isAuth} /> */}
             <UserProfile />
             <Footer />
             </>

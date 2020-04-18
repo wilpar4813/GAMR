@@ -31,7 +31,7 @@ const Login = (props) => {
                   value={props.password}
                 />
               </FormGroup>
-              <Button onClick={ props.handleOnSubmit } className='mb-3'color='danger' type='submit' style={{ border: "black" }}>
+              <Button onClick={ ()=> {props.handleOnSubmit(false)}} className='mb-3'color='danger' type='submit' style={{ border: "black" }}>
                 Log in
               </Button>
               <Button href={'/register'} className='mb-3' outline color='secondary'>

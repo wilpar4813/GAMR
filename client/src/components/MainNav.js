@@ -11,6 +11,8 @@ const MainNav = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
+    
+
   return (
     <div>
       <Navbar color="light" className='bg-faded' light expand="md">
@@ -47,7 +49,16 @@ const MainNav = (props) => {
               <Input onChange={props.handleOnChange} className='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search' />
               <Button outline color='danger' type='submit' className='my-2 my-sm-0'>Search</Button>
             </Form>
-            <Button onClick={props.handleOnSubmit}  href='/login' color='danger'>Log Out</Button>
+  <Button onClick={()=> {
+
+
+  props.email.length > 0 ? 
+  props.handleOnSubmit(true)
+:
+  props.handleOnSubmit(false)
+
+
+    }} href={"/login"}   color='danger' >{props.email.length > 0 ? "logout" : "login"}</Button>
           </Nav>
         </Collapse>
         </Container>

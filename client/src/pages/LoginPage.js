@@ -18,8 +18,9 @@ class LoginPage extends Component {
         })
     }
 
-    handleOnSubmit = (event) => {
-       event.preventDefault();
+    handleOnSubmit = (loggedIn) => {
+       
+
        const userData = {
            email: this.state.email,
            password: this.state.password
@@ -29,8 +30,15 @@ class LoginPage extends Component {
 
         api.login(userData).then(response => {
             console.log(response.data);
-            this.setState({Redirect: true});
+            sessionStorage.setItem("email", response.data.email)
+            this.setState({Redirect: true, email : response.data.email});
+            if(loggedIn === false && response.data.email.length === 0) {
+              sessionStorage.setItem("email", "")
+            }
         })
+
+
+       
     }
 
 
