@@ -20,6 +20,10 @@ export default {
         return axios.get("/user");
     },
 
+    search: function () {
+        return axios.get("/api/games/search/:keyword");
+    },
+
     popularAll: function () {
         return axios.get("/api/games/popular_all");
     },
