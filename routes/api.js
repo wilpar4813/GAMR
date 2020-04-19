@@ -2,6 +2,7 @@ const db = require("../models");
 const passport = require("passport");
 const axios = require("axios");
 const API_KEY = "c349b6bbe3fc4fac8c2a90d68e51410a";
+const mongoose = require("mongoose");
 
 function routes(app) {
     app.post("/register", function (req, res) {
@@ -155,5 +156,16 @@ function routes(app) {
             res.json(response.data);
         });
     });
+
+    // User Save Routes
+    app.delete("/api/games/:gameId", function (req, res) {
+        var gameId = req.params.gameId;
+        console.log(gameId);
+
+        db.Game.deleteOne({_id: mongoose.Types.ObjectId(gameId)}).then((response) => {
+            res.json(response);
+        })
+    })
+
 }
 module.exports = routes;
