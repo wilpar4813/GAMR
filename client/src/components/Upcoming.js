@@ -4,7 +4,7 @@ import api from '../utils/api';
 
 const Upcoming = (props) => {
 
-  const [ hasError, setErrors ] = useState(false);
+  // const [ hasError, setErrors ] = useState(false);
   const [ recentReleased, setRecentReleased ] = useState([]);
   const [ comingSoon, setComingSoon ] = useState([]);
   const [ mostAnticipated, setAnticipated ] = useState([]);
