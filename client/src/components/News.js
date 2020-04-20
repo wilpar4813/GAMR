@@ -27,10 +27,10 @@ const News = (props) => {
         {news.slice(0, 3).map(
           (story) => (
             <Col className='mb-2' sm='12' md='4'>
-              <Card inverse>
-                <CardImg width="100%" src={story.image} alt="Card image cap" />
+              <Card inverse style={{minHeight: "200px"}}>
+                <CardImg src={story.image} alt="Card image cap" />
                 <CardImgOverlay>
-                  <CardTitle>{story.title}</CardTitle>
+                  <CardTitle className='news-text'>{story.title}</CardTitle>
                   <CardText className='news-text'>{story.summary}</CardText>
                   <CardText>
                     <small className="text-muted"><a href='#'>{story.author}</a></small>
@@ -45,10 +45,10 @@ const News = (props) => {
           {news.slice(3, 4).map(
             (story) => (
               <Col className='mb-2' sm='12' md='8'>
-                <Card inverse>
-                  <CardImg width="100%" src={story.image} alt="Card image cap" />
+                <Card inverse style={{minHeight: "200px"}}>
+                  <CardImg src={story.image} alt="Card image cap" />
                     <CardImgOverlay>
-                      <CardTitle>{story.title}</CardTitle>
+                      <CardTitle className='news-text'>{story.title}</CardTitle>
                       <CardText className='news-text'>{story.summary}</CardText>
                       <CardText>
                         <small className="text-muted"><a href='#'>{story.author}</a></small>
@@ -63,10 +63,10 @@ const News = (props) => {
             {news.slice(4, 6).map(
               (story) => (
                 <Col className='mb-2' sm='12'>
-                  <Card inverse>
-                    <CardImg width="100%" src={story.image} alt="Card image cap" />
+                  <Card inverse style={{minHeight: "200px"}}>
+                    <CardImg src={story.image} alt="Card image cap" />
                     <CardImgOverlay>
-                      <CardTitle>{story.title}</CardTitle>
+                      <CardTitle className='news-text'>{story.title}</CardTitle>
                       <CardText className='news-text'>{story.summary}</CardText>
                       <CardText>
                         <small className="text-muted"><a href='#'>{story.author}</a></small>
@@ -79,31 +79,27 @@ const News = (props) => {
           </Row>
         </Col>
       </Row>
-      </Container>
-    </div>
-
-    //   <Row>
-    //   {news.slice(6, 9).map(
-    //     (story) => (
-    //       <Col className='mb-2' sm='12' md='6'>
-    //         <Card inverse>
-    //           <CardImg width="100%" src={story.image} alt="Card image cap" />
-    //           <CardImgOverlay>
-    //             <CardTitle>{story.title}</CardTitle>
-    //             <CardText className='news-text'>{story.summary}</CardText>
-    //             <CardText>
-    //               <small className="text-muted"><a href='#'>{story.author}</a></small>
-    //             </CardText>
-    //           </CardImgOverlay>
-    //           </Card>
-    //       </Col>
-    //     )
-    //   )}
-    // </Row>
-  // </Container>
-  // </div>
+      <Row>
+      {news.slice(6, 8).map(
+        (story) => (
+          <Col className='mb-2' sm='12' md='6'>
+            <Card inverse style={{minHeight: "200px"}}>
+              <CardImg src={story.image} alt="Card image cap" />
+              <CardImgOverlay>
+                <CardTitle className='news-text'>{story.title}</CardTitle>
+                <CardText className='news-text'>{story.summary}</CardText>
+                <CardText>
+                  <small className="text-muted"><a href='#'>{story.author}</a></small>
+                </CardText>
+              </CardImgOverlay>
+            </Card>
+          </Col>
+        )
+      )}
+      </Row>
+    </Container>
+  </div>
   )
-
 }
 
 export default News;
