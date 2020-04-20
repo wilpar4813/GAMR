@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Masthead from '../components/Masthead';
 import MainNav from '../components/MainNav';
-import Gallery from '../components/Gallery';
+import News from '../components/News';
 import Popular from '../components/Popular';
 import Upcoming from '../components/Upcoming';
 import Footer from '../components/Footer';
@@ -26,7 +26,7 @@ class Home extends Component {
       <MainNav />
         <Masthead />
         <Popular />
-        <Gallery />
+        <News />
         <Upcoming />
         <Footer />
         </>

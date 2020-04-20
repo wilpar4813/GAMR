@@ -1,13 +1,22 @@
 import React from 'react';
 import {Container, Row, Col, Card, CardTitle, CardText, CardImg, CardImgOverlay} from 'reactstrap';
+import api from '../utils/api';
 
-const Gallery = (props) => {
+const News = (props) => {
+
+  const [ news, setNews ] = useState([]);
+
+  async function fetchNews(){
+    const res = await api.recentNews();
+
+    setNews(res.data);
+  }
 
   return(
     <div className='gallery-bg py-3'>
       <Container>
       <Row>
-      <h2 className='border-bottom-white text-white mb-3'>Recently Reviewed</h2>
+      <h2 className='border-bottom-white text-white mb-3'>News</h2>
       </Row>
         <Row>
           <Col className='mb-2' sm='12' md='4'>
@@ -121,4 +130,4 @@ const Gallery = (props) => {
 
 }
 
-export default Gallery;
+export default News;
