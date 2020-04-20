@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Form, Input, Button} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
@@ -11,6 +11,19 @@ const MainNav = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const [ query, setQuery ] = useState('');
+  const [ came, setGame ] = useState([]);
+  const focusSearch=useRef(null);
+
+  useEffect(() => focusSearch.current.focus());
+
+  const getGames = async (query) => {
+    const results = await //game query here
+    ;
+
+    const gameData = await 
+  }
 
   return (
     <div>
