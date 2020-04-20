@@ -3,7 +3,6 @@ import Masthead from '../components/Masthead';
 import MainNav from '../components/MainNav';
 import News from '../components/News';
 import Popular from '../components/Popular';
-import Upcoming from '../components/Upcoming';
 import Footer from '../components/Footer';
 import api from '../utils/api';
 
@@ -27,7 +26,6 @@ class Home extends Component {
         <Masthead />
         <Popular />
         <News />
-        <Upcoming />
         <Footer />
         </>
     );
