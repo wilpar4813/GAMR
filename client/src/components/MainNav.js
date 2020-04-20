@@ -21,7 +21,7 @@ const MainNav = (props) => {
         <NavbarBrand href="/">
           <ReactSVG src={Logo}  beforeInjection={svg => {svg.setAttribute('style', 'width: 100%')}} />
         </NavbarBrand>
-        <Nav clasName='mr-auto' navbar>
+        <Nav className='mr-auto' navbar>
           <NavItem className='d-sm-none d-md-block'>
             <NavLink  href='https://github.com/gordyclint/gamr-database-react-app' ><FontAwesomeIcon className='fas' icon={faGithub} /></NavLink>
           </NavItem>
