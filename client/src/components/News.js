@@ -13,7 +13,7 @@ const News = (props) => {
   }
 
   return(
-    <div className='gallery-bg py-3'>
+    <div className='news-bg py-3'>
       <Container>
       <Row>
       <h2 className='border-bottom-white text-white mb-3'>News</h2>
