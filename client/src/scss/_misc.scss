@@ -10,7 +10,7 @@
   border-bottom: 3px solid #f1c40f;
 }
 
-.gallery-bg {
+.news-bg {
   background-image: url('../svg/gallery-bg.svg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -29,4 +29,12 @@
   font-size: 1rem;
   border-radius: 50%;
   border: .125rem solid $green;
+}
+
+.news-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
