@@ -60,4 +60,8 @@ export default {
     mostAnticiptated: function () {
         return axios.get("/api/games/most_anticipated");
     },
+
+    searchedGames: function () {
+        return axios.get("/api/populategame");
+    }
 };

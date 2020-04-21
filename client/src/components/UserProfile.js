@@ -11,6 +11,7 @@ import {
   ListGroup,
   ListGroupItem,
   Media,
+  Table
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactSVG } from "react-svg";
@@ -23,40 +24,24 @@ const userProfile = (props) => {
         <h1>Welcome to your Profile</h1>
       </Row>
       <Row>
-        <Col sm="12" md="4">
-          <Card>
-            <CardTitle className="border border-dark">Recent History</CardTitle>
-            <ListGroup className="border border-dark">
-              <ListGroupItem>item1</ListGroupItem>
-              <ListGroupItem>item2</ListGroupItem>
-              <ListGroupItem>item3</ListGroupItem>
-            </ListGroup>
-          </Card>
-        </Col>
-        <Col className="6">
-          <Card className="border border-dark"> 
-            <CardTitle >Your Collection</CardTitle>
-            <CardText>
-              <small>Game1</small>
-            </CardText>
-            <CardText>
-              <small>Game2</small>
-            </CardText>
-            <CardText>
-              <small>Game3</small>
-            </CardText>
-          </Card>
-        </Col>
+      <Table hover>
+      <thead>
+        <tr>
+          <th>Recent Histories</th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.searches.map(search => {
+          return(
+            <tr>
+            <td>{search.name}</td>
+          </tr>
+          )
+        })}
+       
+      </tbody>
+    </Table>
       </Row>
-      <br></br>
-      <Row>
-          <Col>
-           <Card className="border border-dark">
-             <CardTitle>Other things</CardTitle>
-             <CardText>the things</CardText>
-           </Card>
-          </Col>
-        </Row>
     </Container>
   );
 };

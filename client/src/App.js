@@ -29,11 +29,6 @@ class App extends Component {
         this.setState({ isLogin : false})
         window.location.href="/login"
       })
-     
-       
-      
-     
-
  }
 
   componentDidMount() {
@@ -42,13 +37,13 @@ class App extends Component {
       if(res.data.username != undefined) {
         this.setState({ isLogin : true})
       } 
-      
     })
   }
+
   render() {
     return (
       <Router>
-        {window.location.pathname != "/login" ? <MainNav isLogin={this.state.isLogin} handleOnChange={this.handleOnChange} handleOnSubmit={this.handleOnSubmit} username={this.state.username != undefined ? this.state.username : ""}/> : ""}
+        {window.location.pathname != "/login" && window.location.pathname != "/register" ?  <MainNav isLogin={this.state.isLogin} handleOnChange={this.handleOnChange} handleOnSubmit={this.handleOnSubmit} username={this.state.username != undefined ? this.state.username : ""}/> : ""}
         <Switch>
           <Route exact path={'/login'}>
             <LoginPage />

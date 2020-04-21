@@ -9,7 +9,16 @@ class Profile extends Component {
     state ={
         username: '',
         password: '',
-        Redirect: null 
+        Redirect: null,
+        searches: []
+    }
+
+    componentDidMount() {
+     api.searchedGames().then(res => {
+         console.log(res.data)
+         this.setState({searches : res.data})
+
+     })   
     }
 
     handleOnChange = (event) => {
@@ -34,8 +43,8 @@ class Profile extends Component {
         api.getUser().then(response => {
             this.setState({username : response.data.username, Redirect : true })
         }) 
-
     }
+
 
 
     render() {
@@ -46,7 +55,7 @@ class Profile extends Component {
         return (
             <>
             {/* <MainNav email={this.state.email} handleOnChange={this.state.handleOnChange} handleOnSubmit={this.state.handleOnSubmit} isAuth={this.state.isAuth} /> */}
-            <UserProfile />
+            <UserProfile searches={this.state.searches} />
             <Footer />
             </>
         );
