@@ -21,26 +21,32 @@ const userProfile = (props) => {
   return (
     <Container>
       <Row>
-        <h1>Welcome to your Profile</h1>
+        <h1>Welcome to your Profile History</h1>
       </Row>
       <Row>
-      <Table hover>
-      <thead>
-        <tr>
-          <th>Recent Histories</th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.searches.map(search => {
-          return(
+        <Table hover dark>
+          <thead>
             <tr>
-            <td>{search.name}</td>
-          </tr>
-          )
-        })}
-       
-      </tbody>
-    </Table>
+              <th>Game</th>
+              <th>Rating</th>
+              <th>Summary</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.searches.map(search => {
+              return (
+                <tr>
+                  <td>{search.name}</td>
+                  <td>{search.totalRatingCount}</td>
+                  <td>{search.summary}</td>
+                  <td>{search.url}</td>
+                </tr>
+              )
+            })}
+
+          </tbody>
+        </Table>
       </Row>
     </Container>
   );
