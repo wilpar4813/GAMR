@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Masthead from '../components/Masthead';
 import MainNav from '../components/MainNav';
-import Gallery from '../components/Gallery';
 import Popular from '../components/Popular';
+import News from '../components/News';
 import Upcoming from '../components/Upcoming';
 import Footer from '../components/Footer';
 import api from '../utils/api';
@@ -54,7 +54,7 @@ class Home extends Component {
       { this.state.username != undefined ? console.log('LOOK HERE', this.state.username) : ''}
         <Masthead />
         <Popular />
-        <Gallery />
+        <News />
         <Upcoming />
         <Footer />
         </>
