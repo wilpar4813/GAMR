@@ -16,8 +16,15 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactSVG } from "react-svg";
 import Popular from "../components/Popular";
+import api from "../utils/api";
 
 const userProfile = (props) => {
+
+  async function searchGame() {
+    const res = await api.search();
+    console.log(res, "Games!!");
+  }
+
   return (
     <Container>
       <Row>

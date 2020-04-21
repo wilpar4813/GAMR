@@ -1,7 +1,8 @@
 const db = require("../models");
 const passport = require("passport");
 const axios = require("axios");
-const API_KEY = "34f8664d1b52f2aec5985888a4fbb477";
+// const API_KEY = "34f8664d1b52f2aec5985888a4fbb477";
+const API_KEY = "f8a0ced30b3d5c9d1a92ff4131b3f985";
 
 function routes(app) {
     app.post("/register", function (req, res) {
@@ -63,7 +64,7 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url; screenshots.url, time_to_beat.normally, franchise.name, where rating > 90; limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90; limit 20;",
         }).then((response) => {
             res.json(response.data);
         });
