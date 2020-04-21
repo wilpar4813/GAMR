@@ -9,7 +9,7 @@ export default {
 
     login: function (userData) {
         console.log(userData);
-        return axios.get("/user", userData);
+        return axios.post("/login", userData);
     },
 
     logout: function () {
@@ -60,4 +60,8 @@ export default {
     mostAnticiptated: function () {
         return axios.get("/api/games/most_anticipated");
     },
+
+    searchedGames: function () {
+        return axios.get("/api/populategame");
+    }
 };
