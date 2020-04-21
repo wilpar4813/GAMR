@@ -1,12 +1,46 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import { Container, Row, Col, Button, ListGroup, ListGroupItem, Card, CardTitle, CardText, CardImg, CardImgOverlay, CardFooter } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faChevronDown, faGamepad} from '@fortawesome/free-solid-svg-icons';
 import { faPlaystation, faXbox  }from '@fortawesome/free-brands-svg-icons';
 import {ReactSVG} from 'react-svg';
 import NintendoSwitch from '../svg/nintendo-switch.svg';
+import api from '../utils/api';
 
 const Popular = (props) => {
+
+  const [showAll, setShowAll] = useState(true);
+  const [showPS, setShowPS] = useState(false);
+  const [showXbox, setShowXbox] = useState(false);
+  const [showSwitch, setShowSwitch] = useState(false);
+  const [ allPopular, setAllPopular ] = useState([]);
+  const [ xboxPop, setXboxPop ] = useState([]);
+  const [ psPop, setPsPop ] = useState([]);
+  const [ switchPop, setSwitchPop ] = useState([]);
+
+  async function fetchPopular(){
+    const res = await api.popularAll();
+
+    setAllPopular(res.data);
+  }
+
+  async function fetchXbox(){
+    const res = await api.popularXboxOne();
+
+    setXboxPop(res.data);
+  }
+
+  async function fetchPS4(){
+    const res = await api.popularPS4();
+
+    setPsPop(res.data);
+  }
+
+  async function fetchSwitch(){
+    const res = await api.popularSwitch();
+
+    setAllPopular(res.data);
+  }
   return(
     <Container className='py-3'>
       <Row>
