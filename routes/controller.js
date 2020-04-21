@@ -48,6 +48,7 @@ function controller(app) {
         let gameId = req.params.id;
         gameId = mongoose.Types.ObjectId(gameId);
         console.log(req.body);
+        req.body.gameId = gameId;
         db.Cover.create(req.body)
             .then((coverdb) =>
                 db.Game.findOneAndUpdate(
@@ -72,6 +73,8 @@ function controller(app) {
         let gameId = req.params.id;
         gameId = mongoose.Types.ObjectId(gameId);
         console.log(req.body);
+        req.body.gameId = gameId;
+
         db.Screenshot.create(req.body)
             .then((screenshotdb) =>
                 db.Game.findOneAndUpdate(
@@ -94,6 +97,8 @@ function controller(app) {
 
     app.post("/api/releasedate/:id", (req, res) => {
         let gameId = req.params.id;
+        req.body.gameId = gameId;
+
         gameId = mongoose.Types.ObjectId(gameId);
         console.log(req.body);
         db.ReleaseDate.create(req.body)
@@ -118,6 +123,7 @@ function controller(app) {
 
     app.post("/api/platform/:id", (req, res) => {
         let gameId = req.params.id;
+        req.body.gameId = gameId;
         gameId = mongoose.Types.ObjectId(gameId);
         console.log(req.body);
         db.Platform.create(req.body)
@@ -140,8 +146,12 @@ function controller(app) {
             });
     });
 
-    app.post("/api/platformlogo/:id", (req, res) => {
+    app.post("/api/platformlogo/:id/:gameId", (req, res) => {
         let platformId = req.params.id;
+        let gameId = req.params.gameId;
+        req.body.platformId = platformId;
+        req.body.gameId = gameId;
+
         platformId = mongoose.Types.ObjectId(platformId);
         console.log(req.body);
         db.PlatformLogo.create(req.body)

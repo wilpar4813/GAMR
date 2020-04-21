@@ -121,7 +121,7 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                'fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url; sort first_release_date desc; where first_release_date < 1587224342 & first_release_date > 1583038800 & hypes > 10; limit 5;',
+                "fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url; sort first_release_date desc; where first_release_date < 1587224342 & first_release_date > 1583038800 & hypes > 10; limit 5;",
         }).then((response) => {
             res.json(response.data);
         });
@@ -158,14 +158,24 @@ function routes(app) {
     });
 
     // User Save Routes
-    app.delete("/api/games/:gameId", function (req, res) {
-        var gameId = req.params.gameId;
-        console.log(gameId);
+    app.delete("/api/games/:userId/:gameId", function (req, res) {
+        var gameId = mongoose.Types.ObjectId(req.params.gameId);
+        var userId = mongoose.Types.ObjectId(req.params.userId);
+        // console.log(gameId);
 
-        db.Game.deleteOne({_id: mongoose.Types.ObjectId(gameId)}).then((response) => {
-            res.json(response);
-        })
-    })
-
+        db.User.update(
+            { _id: userId },
+            { $pull: { games: gameId } },
+            { multi: true },
+            function (err, status) {
+                db.Screenshot.remove({ _id: gameId }).exec();
+                db.Cover.remove({ _id: gameId }).exec();
+                db.Platform.remove({ _id: gameId }).exec();
+                db.PlatformLogo.remove({ _id: gameId }).exec();
+                db.ReleaseDate.remove({ _id: gameId }).exec();
+                res.json(status);
+            }
+        );
+    });
 }
 module.exports = routes;
