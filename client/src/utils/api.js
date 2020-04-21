@@ -9,7 +9,7 @@ export default {
 
     login: function (userData) {
         console.log(userData);
-        return axios.get("/user", userData);
+        return axios.post("/login", userData);
     },
 
     logout: function () {
@@ -20,16 +20,25 @@ export default {
         return axios.get("/user");
     },
 
+    search: function () {
+        return axios.get("/api/games/search/:keyword");
+    },
+
+    recentNews: function () {
+        return axios.get("/api/games/news");
+    },
+
     popularAll: function () {
         return axios.get("/api/games/popular_all");
     },
 
     popularPS4: function () {
         console.log("line 43");
-        return axios.get("/api/games/popular_ps4")
+        return axios.get("/api/games/popular_ps4");
     },
+
     popularXboxOne: function () {
-        return axios.get("/api/games/popular_xboxone")
+        return axios.get("/api/games/popular_xboxone");
     },
 
     popularSwitch: function () {
@@ -47,8 +56,12 @@ export default {
     comingSoon: function () {
         return axios.get("/api/games/coming_soon");
     },
-    
+
     mostAnticiptated: function () {
         return axios.get("/api/games/most_anticipated");
+    },
+
+    searchedGames: function () {
+        return axios.get("/api/populategame");
     }
 };

@@ -1,8 +1,12 @@
 const db = require("../models");
 const passport = require("passport");
 const axios = require("axios");
+<<<<<<< HEAD
 const API_KEY = "c349b6bbe3fc4fac8c2a90d68e51410a";
 const mongoose = require("mongoose");
+=======
+const API_KEY = "34f8664d1b52f2aec5985888a4fbb477";
+>>>>>>> 4ddcf3ea87673b7387a8fa341dddf4ad3501fafe
 
 function routes(app) {
     app.post("/register", function (req, res) {
@@ -36,6 +40,25 @@ function routes(app) {
         res.send(null);
     });
 
+    // Search API
+    app.get("/api/games/search/:keyword", function (req, res) {
+        var keyword = req.params.keyword;
+
+        axios({
+            url: "https://api-v3.igdb.com/games",
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "user-key": API_KEY,
+            },
+            data:
+            `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; limit 10; search "${keyword}";`
+        }).then((response) => {
+            res.json(response.data);
+        });
+    });
+
+    // All Popular Games
     app.get("/api/games/popular_all", function (req, res) {
         axios({
             url: "https://api-v3.igdb.com/games",
@@ -45,12 +68,13 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url; where rating > 90; limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url; screenshots.url, time_to_beat.normally, franchise.name, where rating > 90; limit 20;",
         }).then((response) => {
             res.json(response.data);
         });
     });
 
+    // PS4 Popular Games
     app.get("/api/games/popular_ps4", function (req, res) {
         axios({
             url: "https://api-v3.igdb.com/games",
@@ -60,12 +84,13 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url; where rating > 90 & platforms = 48;limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = 48;limit 20;",
         }).then((response) => {
             res.json(response.data);
         });
     });
 
+    // XboxOne Popular Games
     app.get("/api/games/popular_xboxone", function (req, res) {
         axios({
             url: "https://api-v3.igdb.com/games",
@@ -75,12 +100,13 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url; where rating > 90 & platforms = 49;limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = 49;limit 20;",
         }).then((response) => {
             res.json(response.data);
         });
     });
 
+    // Switch Popular Games
     app.get("/api/games/popular_switch", function (req, res) {
         axios({
             url: "https://api-v3.igdb.com/games",
@@ -90,28 +116,29 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url; where rating > 90 & platforms = 130; limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = 130; limit 20;",
         }).then((response) => {
             res.json(response.data);
         });
     });
 
-    // BROKEN - Clint to fix
-    app.get("/api/games/recent_reviews", function (req, res) {
+    // News API Call
+    app.get("/api/games/news", function (req, res) {
         axios({
-            url: "https://api-v3.igdb.com/private/reviews",
+            url: "https://api-v3.igdb.com/pulses",
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
             data:
-                "fields game.name, game.cover.url, title, created_at, updated_at, content, positive_points, negitive_points, user_rating, likes, url; sort created_at desc; limit 8;",
+                "fields author, image, published_at, summary, title, website; sort published_at desc; where image != null; limit 8;",
         }).then((response) => {
             res.json(response.data);
         });
     });
 
+    // Recent Releases
     app.get("/api/games/recent_releases", function (req, res) {
         axios({
             url: "https://api-v3.igdb.com/games",
@@ -121,12 +148,13 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url; sort first_release_date desc; where first_release_date < 1587224342 & first_release_date > 1583038800 & hypes > 10; limit 5;",
+                "fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date desc; where first_release_date < 1587224342 & first_release_date > 1583038800 & hypes > 10; limit 5;",
         }).then((response) => {
             res.json(response.data);
         });
     });
 
+    // Coming Soon
     app.get("/api/games/coming_soon", function (req, res) {
         axios({
             url: "https://api-v3.igdb.com/games",
@@ -136,12 +164,13 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url; sort first_release_date asc; where first_release_date > 1587224342 & first_release_date < 1593576000 & hypes > 2; limit 5;",
+                "fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date asc; where first_release_date > 1587224342 & first_release_date < 1593576000 & hypes > 2; limit 5;",
         }).then((response) => {
             res.json(response.data);
         });
     });
 
+    // Most Anticipated
     app.get("/api/games/most_anticipated", function (req, res) {
         axios({
             url: "https://api-v3.igdb.com/games",
@@ -151,7 +180,7 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, hypes, name, platforms.name, cover.url; sort hypes desc; where first_release_date > 1587224342 & first_release_date < 1593576000 & hypes > 10; limit 5;",
+                "fields first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, hypes, name, platforms.name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort hypes desc; where first_release_date > 1587224342 & first_release_date < 1593576000 & hypes > 10; limit 5;",
         }).then((response) => {
             res.json(response.data);
         });
