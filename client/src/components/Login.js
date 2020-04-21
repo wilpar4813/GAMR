@@ -12,29 +12,29 @@ const Login = (props) => {
           <Col md='6' >
             <Form className='border rounded p-3 d-flex flex-column justify-content-between'>
               <FormGroup>
-                <Label className='text-white' for="exampleEmail">Email</Label>
+                <Label className='text-white' for="exampleEmail">Username</Label>
                 <Input onChange={ props.handleOnChange }
                   type="text"
-                  name="email"
-                  id="email"
-                  placeholder="Email"
-                  value={props.email}
+                  name="username"
+                  id="username"
+                  placeholder="Username"
+                  value={props.username}
                 />
               </FormGroup>
               <FormGroup>
                 <Label className='text-white' for="examplePassword">Password</Label>
                 <Input onChange={ props.handleOnChange }
-                  type="text"
+                  type="password"
                   name="password"
                   id="examplePassword"
                   placeholder="Password"
                   value={props.password}
                 />
               </FormGroup>
-              <Button onClick={ props.handleOnSubmit } className='mb-3'color='danger' type='submit' style={{ border: "black" }}>
+              <Button onClick={ props.handleOnSubmit} className='mb-3'color='danger' type='submit' style={{ border: "black" }}>
                 Log in
               </Button>
-              <Button href={'/'} className='mb-3' outline color='secondary'>
+              <Button href={'/register'} className='mb-3' outline color='secondary'>
                 Register
               </Button>
             </Form>
