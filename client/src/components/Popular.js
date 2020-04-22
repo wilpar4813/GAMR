@@ -5,6 +5,8 @@ import {faChevronDown, faGamepad} from '@fortawesome/free-solid-svg-icons';
 import { faPlaystation, faXbox  }from '@fortawesome/free-brands-svg-icons';
 import {ReactSVG} from 'react-svg';
 import NintendoSwitch from '../svg/nintendo-switch.svg';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import api from '../utils/api';
 
 const Popular = (props) => {
@@ -15,12 +17,14 @@ const Popular = (props) => {
   const [showSwitch, setShowSwitch] = useState(false);
   const [ allPopular, setAllPopular ] = useState([]);
   const [ xboxPop, setXboxPop ] = useState([]);
-  const [ psPop, setPsPop ] = useState([]);
+  const [ psPop, setPSPop ] = useState([]);
   const [ switchPop, setSwitchPop ] = useState([]);
+  let showItems = 4;
 
   async function fetchPopular(){
     const res = await api.popularAll();
 
+    console.log(res);
     setAllPopular(res.data);
   }
 
@@ -33,14 +37,20 @@ const Popular = (props) => {
   async function fetchPS4(){
     const res = await api.popularPS4();
 
-    setPsPop(res.data);
+    setPSPop(res.data);
   }
 
   async function fetchSwitch(){
     const res = await api.popularSwitch();
 
-    setAllPopular(res.data);
+    setSwitchPop(res.data);
   }
+
+  useEffect(() => {
+
+    fetchPopular();
+
+  })
   return(
     <Container className='py-3'>
       <Row>
@@ -57,55 +67,23 @@ const Popular = (props) => {
         </Col>
         <Col sm='12' md='8'>
           <Row>
-            <Col className='mb-3' sm='12' md='6'>
-              <Card>
-                <CardImg width="100%" src="https://via.placeholder.com/555x312.jpg" alt="Card image cap" />
-                <CardImgOverlay>
-                  <div className='rating d-flex justify-content-center align-items-center'>6.0</div>
-                </CardImgOverlay>
-                <CardFooter>
-                  <CardTitle>Title Here</CardTitle>
-                  <CardText><small>Genre here</small></CardText>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col className='mb-3' sm='12' md='6'>
-              <Card>
-                <CardImg width="100%" src="https://via.placeholder.com/555x312.jpg" alt="Card image cap" />
-                <CardImgOverlay>
-                  <div className='rating d-flex justify-content-center align-items-center'>6.0</div>
-                </CardImgOverlay>
-                <CardFooter>
-                  <CardTitle>Title Here</CardTitle>
-                  <CardText><small>Genre here</small></CardText>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col className='mb-3' sm='12' md='6'>
-              <Card>
-                <CardImg width="100%" src="https://via.placeholder.com/555x312.jpg" alt="Card image cap" />
-                <CardImgOverlay>
-                  <div className='rating d-flex justify-content-center align-items-center'>6.0</div>
-                </CardImgOverlay>
-                <CardFooter>
-                  <CardTitle>Title Here</CardTitle>
-                  <CardText><small>Genre here</small></CardText>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col className='mb-3' sm='12' md='6'>
-              <Card>
-                <CardImg width="100%" src="https://via.placeholder.com/555x312.jpg" alt="Card image cap" />
-                <CardImgOverlay>
-                  <div className='rating d-flex justify-content-center align-items-center'>6.0</div>
-                </CardImgOverlay>
-                <CardFooter>
-                  <CardTitle>Title Here</CardTitle>
-                  <CardText><small>Genre here</small></CardText>
-                </CardFooter>
-              </Card>
-            </Col>
-              <Button className='mx-auto' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
+          {allPopular.slice(0, showItems).map(
+            (game) => (
+              <Col className='mb-3' sm='12' md='6'>
+                <Card>
+                  <CardImg width="100%" src={game.cover.url} alt="Card image cap" />
+                  <CardImgOverlay>
+                    <CircularProgressbar className='rating' value={Math.round(game.rating)} text={Math.round(game.rating)} />;
+                  </CardImgOverlay>
+                  <CardFooter>
+                    <CardTitle>{game.name}</CardTitle>
+                    <CardText><small>franchise</small></CardText>
+                  </CardFooter>
+                </Card>
+              </Col>
+            )
+          )}
+            <Button className='mx-auto' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
           </Row>
         </Col>
       </Row>
