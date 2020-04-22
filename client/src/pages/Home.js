@@ -52,11 +52,11 @@ class Home extends Component {
     return (
       <>
       { this.state.username != undefined ? console.log('LOOK HERE', this.state.username) : ''}
-        {/* <Masthead />
+        <Masthead />
         <Popular />
         <News />
         <Upcoming />
-        <Footer /> */}
+        <Footer />
         </>
     );
   }

@@ -1,8 +1,7 @@
 const db = require("../models");
 const passport = require("passport");
 const axios = require("axios");
-// const API_KEY = "34f8664d1b52f2aec5985888a4fbb477";
-const API_KEY = "72769c7d8d06682882c92a5bc4e9e5c4";
+const API_KEY = "34f8664d1b52f2aec5985888a4fbb477";
 const mongoose = require("mongoose");
 
 function routes(app) {
