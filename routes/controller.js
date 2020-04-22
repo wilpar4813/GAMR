@@ -3,22 +3,7 @@ const db = require("../models");
 const mongoose = require("mongoose");
 
 function controller(app) {
-    app.get("/api/games", (req, res) => {
-        console.log("hello i work");
-        axios
-            .get("https://api-v3.igdb.com/games", {
-                headers: {
-                    Accept: "application/json",
-                    "user-key": "34f8664d1b52f2aec5985888a4fbb477",
-                },
-                data:
-                    "fields name,platforms,total_rating,total_rating_count,release_dates,screenshots,cover,summary,url;",
-            })
-            .then((response) => {
-                console.log(response.data);
-                res.json(response.data);
-            });
-    });
+
 
     app.post("/api/game/:id", (req, res) => {
         let userId = req.params.id;

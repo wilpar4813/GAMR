@@ -41,8 +41,8 @@ class Game extends Component {
     return (
       <>
       {/* <MainNav handleOnSubmit={this.handleOnSubmit} email={this.state.email}/> */}
-      <GameDetails />
-      <Footer />
+      {/* <GameDetails />
+      <Footer /> */}
       </>
     )
   }
