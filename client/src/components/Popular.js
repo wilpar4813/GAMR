@@ -5,9 +5,11 @@ import {faChevronDown, faGamepad} from '@fortawesome/free-solid-svg-icons';
 import { faPlaystation, faXbox  }from '@fortawesome/free-brands-svg-icons';
 import {ReactSVG} from 'react-svg';
 import NintendoSwitch from '../svg/nintendo-switch.svg';
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
+import ProgressProvider from '../utils/ProgressProvider';
 import 'react-circular-progressbar/dist/styles.css';
 import api from '../utils/api';
+
 
 const Popular = (props) => {
 
@@ -19,13 +21,17 @@ const Popular = (props) => {
   const [ xboxPop, setXboxPop ] = useState([]);
   const [ psPop, setPSPop ] = useState([]);
   const [ switchPop, setSwitchPop ] = useState([]);
-  let showItems = 4;
+  const [showItems, setShowItems] = useState(4);
 
   async function fetchPopular(){
     const res = await api.popularAll();
 
     console.log(res);
     setAllPopular(res.data);
+  }
+
+  async function updateShowItems () {
+    setShowItems(showItems +4 ) ;
   }
 
   async function fetchXbox(){
@@ -47,7 +53,6 @@ const Popular = (props) => {
   }
 
   useEffect(() => {
-
     fetchPopular();
 
   })
@@ -59,7 +64,7 @@ const Popular = (props) => {
       <Row>
         <Col className='border-right' sm='12' md='4'>
           <ListGroup>
-            <ListGroupItem tag='a' action><FontAwesomeIcon className='fab mr-2' icon={faGamepad} />All</ListGroupItem>
+            <ListGroupItem tag='a' action className={showAll === true ? "list-group-item-action list-group-item active" : "list-group-item-action list-group-item"}><FontAwesomeIcon className='fab mr-2' icon={faGamepad} />All</ListGroupItem>
             <ListGroupItem tag='a' action><FontAwesomeIcon className='fab mr-2' icon={faXbox} />Xbox One</ListGroupItem>
             <ListGroupItem tag='a' action><FontAwesomeIcon className='fab mr-2' icon={faPlaystation} />Playstation 4</ListGroupItem>
             <ListGroupItem className='d-flex align-items-center' tag='a' action><ReactSVG className='float-left mr-2' src={NintendoSwitch} beforeInjection={svg => {svg.setAttribute('style', 'width: 1rem')}}/>Nintendo Switch</ListGroupItem>
@@ -73,7 +78,15 @@ const Popular = (props) => {
                 <Card>
                   <CardImg width="100%" src={game.cover.url} alt="Card image cap" />
                   <CardImgOverlay>
-                    <CircularProgressbar className='rating' value={Math.round(game.rating)} text={Math.round(game.rating)} />;
+                    <div className='rating'>
+                      <ProgressProvider valueStart={0} valueEnd={Math.round(game.rating)}>
+                        {(value) => <CircularProgressbarWithChildren value={Math.round(game.rating)}>
+                          <div className='w-100 h-100 d-flex justify-content-center align-items-center'>
+                            <p className='CircularProgressbar-text mt-2'>{Math.round(game.rating)}</p>
+                          </div>
+                        </CircularProgressbarWithChildren>}
+                      </ProgressProvider>
+                    </div>;
                   </CardImgOverlay>
                   <CardFooter>
                     <CardTitle>{game.name}</CardTitle>
@@ -83,7 +96,7 @@ const Popular = (props) => {
               </Col>
             )
           )}
-            <Button className='mx-auto' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
+            <Button  onClick={updateShowItems} className='mx-auto' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
           </Row>
         </Col>
       </Row>
