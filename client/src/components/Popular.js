@@ -89,9 +89,9 @@ const Popular = (props) => {
       <Row>
         <Col className='border-right' sm='12' md='4'>
           <ListGroup>
-            <ListGroupItem tag='a' action className={activeItem === 0 ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faGamepad} onClick={getPopular}>All</ListGroupItem>
-            <ListGroupItem tag='a' action className={activeItem === 1 ? "active" : ""} ><FontAwesomeIcon className='fab mr-2' icon={faXbox} onClick={getXbox}>Xbox One</ListGroupItem>
-            <ListGroupItem tag='a' action className={activeItem === 2 ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faPlaystation} onClick={getPS4}>Playstation 4</ListGroupItem>
+            <ListGroupItem tag='a' action className={activeItem === 0 ? "active" : ""} onClick={getPopular}><FontAwesomeIcon className='fab mr-2' icon={faGamepad} />All</ListGroupItem>
+            <ListGroupItem tag='a' action className={activeItem === 1 ? "active" : ""} onClick={getXbox}><FontAwesomeIcon className='fab mr-2' icon={faXbox}  />Xbox One</ListGroupItem>
+            <ListGroupItem tag='a' action className={activeItem === 2 ? "active" : ""} onClick={getPS4}><FontAwesomeIcon className='fab mr-2' icon={faPlaystation}  />Playstation 4</ListGroupItem>
             <ListGroupItem className='d-flex align-items-center' tag='a' action className={activeItem === 3 ? "active" : ""} onClick={getSwitch}><ReactSVG className='float-left mr-2' src={NintendoSwitch} beforeInjection={svg => {svg.setAttribute('style', 'width: 1rem')}}/>Nintendo Switch</ListGroupItem>
           </ListGroup>
         </Col>
