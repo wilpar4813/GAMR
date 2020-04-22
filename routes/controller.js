@@ -3,22 +3,7 @@ const db = require("../models");
 const mongoose = require("mongoose");
 
 function controller(app) {
-    app.get("/api/games", (req, res) => {
-        console.log("hello i work");
-        axios
-            .get("https://api-v3.igdb.com/games", {
-                headers: {
-                    Accept: "application/json",
-                    "user-key": "34f8664d1b52f2aec5985888a4fbb477",
-                },
-                data:
-                    "fields name,platforms,total_rating,total_rating_count,release_dates,screenshots,cover,summary,url;",
-            })
-            .then((response) => {
-                console.log(response.data);
-                res.json(response.data);
-            });
-    });
+
 
     app.post("/api/game/:id", (req, res) => {
         let userId = req.params.id;
@@ -48,6 +33,7 @@ function controller(app) {
         let gameId = req.params.id;
         gameId = mongoose.Types.ObjectId(gameId);
         console.log(req.body);
+        req.body.gameId = gameId;
         db.Cover.create(req.body)
             .then((coverdb) =>
                 db.Game.findOneAndUpdate(
@@ -72,6 +58,8 @@ function controller(app) {
         let gameId = req.params.id;
         gameId = mongoose.Types.ObjectId(gameId);
         console.log(req.body);
+        req.body.gameId = gameId;
+
         db.Screenshot.create(req.body)
             .then((screenshotdb) =>
                 db.Game.findOneAndUpdate(
@@ -94,6 +82,8 @@ function controller(app) {
 
     app.post("/api/releasedate/:id", (req, res) => {
         let gameId = req.params.id;
+        req.body.gameId = gameId;
+
         gameId = mongoose.Types.ObjectId(gameId);
         console.log(req.body);
         db.ReleaseDate.create(req.body)
@@ -118,6 +108,7 @@ function controller(app) {
 
     app.post("/api/platform/:id", (req, res) => {
         let gameId = req.params.id;
+        req.body.gameId = gameId;
         gameId = mongoose.Types.ObjectId(gameId);
         console.log(req.body);
         db.Platform.create(req.body)
@@ -140,8 +131,12 @@ function controller(app) {
             });
     });
 
-    app.post("/api/platformlogo/:id", (req, res) => {
+    app.post("/api/platformlogo/:id/:gameId", (req, res) => {
         let platformId = req.params.id;
+        let gameId = req.params.gameId;
+        req.body.platformId = platformId;
+        req.body.gameId = gameId;
+
         platformId = mongoose.Types.ObjectId(platformId);
         console.log(req.body);
         db.PlatformLogo.create(req.body)
