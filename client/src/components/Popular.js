@@ -23,13 +23,13 @@ const Popular = (props) => {
   const [ switchPop, setSwitchPop ] = useState([]);
   const [showItems, setShowItems] = useState(4);
 
-  async function fetchPopular(){
+  async function fetchPopular() {
     const res = await api.popularAll();
 
     setAllPopular(res.data);
   }
 
-  async function updateShowItems () {
+  async function updateShowItems() {
     const updateTrigger = document.querySelector('update-trigger');
     setShowItems(showItems + 4 ) ;
     if(showItems >= 20){
@@ -37,19 +37,19 @@ const Popular = (props) => {
     }
   }
 
-  async function fetchXbox(){
+  async function fetchXbox() {
     const res = await api.popularXboxOne();
 
     setXboxPop(res.data);
   }
 
-  async function fetchPS4(){
+  async function fetchPS4() {
     const res = await api.popularPS4();
 
     setPSPop(res.data);
   }
 
-  async function fetchSwitch(){
+  async function fetchSwitch() {
     const res = await api.popularSwitch();
 
     setSwitchPop(res.data);
