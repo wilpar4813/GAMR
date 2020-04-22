@@ -17,6 +17,7 @@
     "jquery": "^3.4.1",
     "node-sass": "^4.13.1",
     "react": "^16.6.3",
+    "react-circular-progressbar": "^2.0.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^2.1.1",
