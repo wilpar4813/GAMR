@@ -30,7 +30,11 @@ const Popular = (props) => {
   }
 
   async function updateShowItems () {
-    setShowItems(showItems +4 ) ;
+    const updateTrigger = document.querySelector('update-trigger');
+    setShowItems(showItems + 4 ) ;
+    if(showItems >= 20){
+      updateTrigger.classList.add('d-none');
+    }
   }
 
   async function fetchXbox(){
@@ -95,7 +99,7 @@ const Popular = (props) => {
               </Col>
             )
           )}
-            <Button  onClick={updateShowItems} className='mx-auto' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
+            <Button  onClick={updateShowItems} className='mx-auto update-trigger' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
           </Row>
         </Col>
       </Row>
