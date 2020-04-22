@@ -12,22 +12,14 @@ const MainNav = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-<<<<<<< HEAD
   const [ query, setQuery ] = useState('');
-  const [ came, setGame ] = useState([]);
-  const focusSearch=useRef(null);
+  const [ game, setGame ] = useState([]);
+  const focusSearch = useRef(null);
 
   useEffect(() => focusSearch.current.focus());
 
-  const getGames = async (query) => {
-    const results = await //game query here
-    ;
 
-    const gameData = await 
   }
-=======
-    
->>>>>>> master
 
   return (
     <div>
