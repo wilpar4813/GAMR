@@ -1,7 +1,36 @@
 const db = require("../models");
 const passport = require("passport");
 const axios = require("axios");
+const mongoose = require("mongoose");
+const moment = require("moment");
 const API_KEY = "";
+
+
+// Image Swap Function
+function imageSwap(response) {
+    for (let i = 0; i < response.data.length; i++) {
+        response.data[i].cover.url = response.data[i].cover.url.replace(
+            "/t_thumb/",
+            "/t_cover_big_2x/"
+        );
+        if (response.data[i].screenshots != undefined) {
+            for (
+                let j = 0;
+                j < response.data[i].screenshots.length;
+                j++
+            ) {
+                response.data[i].screenshots[j].url = response.data[
+                    i
+                ].screenshots[j].url.replace(
+                    "/t_thumb/",
+                    "/t_screenshot_huge/"
+                );
+            }
+        }
+    }
+
+    return response;
+}
 
 function routes(app) {
     app.post("/register", function (req, res) {
@@ -62,8 +91,9 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90; limit 20;",
+                "fields name,rating,genres.name, cover.url, platforms.name, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90; limit 20;",
         }).then((response) => {
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -78,8 +108,9 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = 48;limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = (48);limit 20;",
         }).then((response) => {
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -94,8 +125,9 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = 49;limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = (49);limit 20;",
         }).then((response) => {
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -110,8 +142,9 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = 130; limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = (130); limit 20;",
         }).then((response) => {
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -142,7 +175,7 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date desc; where first_release_date < 1587224342 & first_release_date > 1583038800 & hypes > 10; limit 5;",
+                `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date desc; where first_release_date < ${moment().format("X")} & first_release_date > ${moment().subtract(1, "months").format("X")} & hypes > 10; limit 5;`,
         }).then((response) => {
             res.json(response.data);
         });
@@ -158,8 +191,9 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date asc; where first_release_date > 1587224342 & first_release_date < 1593576000 & hypes > 2; limit 5;",
+                `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date asc; where first_release_date > ${moment().format("X")} & first_release_date < ${moment().add(3, "months").format("X")} & hypes > 2; limit 5;`,
         }).then((response) => {
+
             res.json(response.data);
         });
     });
@@ -174,7 +208,7 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, hypes, name, platforms.name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort hypes desc; where first_release_date > 1587224342 & first_release_date < 1593576000 & hypes > 10; limit 5;",
+                `fields first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, hypes, name, platforms.name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort hypes desc; where first_release_date > ${moment().format("X")} & first_release_date < ${moment().add(6, "months").format("X")} & hypes > 10; limit 5;`,
         }).then((response) => {
             res.json(response.data);
         });
