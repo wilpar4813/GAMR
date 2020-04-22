@@ -64,10 +64,10 @@ const Popular = (props) => {
       <Row>
         <Col className='border-right' sm='12' md='4'>
           <ListGroup>
-            <ListGroupItem tag='a' action className={showAll === true ? "list-group-item-action list-group-item active" : "list-group-item-action list-group-item"}><FontAwesomeIcon className='fab mr-2' icon={faGamepad} />All</ListGroupItem>
-            <ListGroupItem tag='a' action><FontAwesomeIcon className='fab mr-2' icon={faXbox} />Xbox One</ListGroupItem>
-            <ListGroupItem tag='a' action><FontAwesomeIcon className='fab mr-2' icon={faPlaystation} />Playstation 4</ListGroupItem>
-            <ListGroupItem className='d-flex align-items-center' tag='a' action><ReactSVG className='float-left mr-2' src={NintendoSwitch} beforeInjection={svg => {svg.setAttribute('style', 'width: 1rem')}}/>Nintendo Switch</ListGroupItem>
+            <ListGroupItem tag='a' action className={showAll === true ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faGamepad} />All</ListGroupItem>
+            <ListGroupItem tag='a' action className={showXbox === true ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faXbox} />Xbox One</ListGroupItem>
+            <ListGroupItem tag='a' action className={showPS === true ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faPlaystation} />Playstation 4</ListGroupItem>
+            <ListGroupItem className='d-flex align-items-center' tag='a' action className={showSwitch === true ? "active" : ""}><ReactSVG className='float-left mr-2' src={NintendoSwitch} beforeInjection={svg => {svg.setAttribute('style', 'width: 1rem')}}/>Nintendo Switch</ListGroupItem>
           </ListGroup>
         </Col>
         <Col sm='12' md='8'>
