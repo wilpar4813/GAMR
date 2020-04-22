@@ -26,7 +26,6 @@ const Popular = (props) => {
   async function fetchPopular(){
     const res = await api.popularAll();
 
-    console.log(res);
     setAllPopular(res.data);
   }
 
