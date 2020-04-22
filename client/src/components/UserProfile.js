@@ -18,12 +18,8 @@ import { ReactSVG } from "react-svg";
 import Popular from "../components/Popular";
 import api from "../utils/api";
 
-const userProfile = (props) => {
 
-  async function searchGame() {
-    const res = await api.search();
-    console.log(res, "Games!!");
-  }
+const userProfile = (props) => {
 
   return (
     <Container>
