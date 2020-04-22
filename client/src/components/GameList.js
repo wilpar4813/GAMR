@@ -5,7 +5,7 @@ import ProgressProvider from '../utils/ProgressProvider';
 import 'react-circular-progressbar/dist/styles.css';
 
 const GameList = (props) => {
-{allPopular.slice(0, showItems).map(
+{props.games.slice(0, props.showItems).map(
   (game) => (
     <Col className='mb-3' sm='12' md='6'>
       <Card>

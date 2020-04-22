@@ -12,10 +12,11 @@ import api from '../utils/api';
 
 const Popular = (props) => {
 
-  const [showAll, setShowAll] = useState(true);
-  const [showPS, setShowPS] = useState(false);
-  const [showXbox, setShowXbox] = useState(false);
-  const [showSwitch, setShowSwitch] = useState(false);
+  // const [showAll, setShowAll] = useState(true);
+  // const [showPS, setShowPS] = useState(false);
+  // const [showXbox, setShowXbox] = useState(false);
+  // const [showSwitch, setShowSwitch] = useState(false);
+  const [activeItem, setActiveItem] = useState(0)
   const [ allPopular, setAllPopular ] = useState([]);
   const [ xboxPop, setXboxPop ] = useState([]);
   const [ psPop, setPSPop ] = useState([]);
@@ -48,10 +49,27 @@ const Popular = (props) => {
     setPSPop(res.data);
   }
 
-  async function fetchSwitch() {
+  async function getSwitch(){
+
     const res = await api.popularSwitch();
 
     setSwitchPop(res.data);
+
+    setActiveItem(3);
+  }
+
+
+  function getGames() {
+    if (showXbox) {
+      return xboxPop;
+    }
+    if (showPS) {
+      return psPop;
+    }
+    if (showSwitch){
+      return switchPop;
+    }
+    return allPopular;
   }
 
   useEffect(() => {
@@ -66,15 +84,15 @@ const Popular = (props) => {
       <Row>
         <Col className='border-right' sm='12' md='4'>
           <ListGroup>
-            <ListGroupItem tag='a' action className={showAll === true ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faGamepad} />All</ListGroupItem>
-            <ListGroupItem tag='a' action className={showXbox === true ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faXbox} />Xbox One</ListGroupItem>
-            <ListGroupItem tag='a' action className={showPS === true ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faPlaystation} />Playstation 4</ListGroupItem>
-            <ListGroupItem className='d-flex align-items-center' tag='a' action className={showSwitch === true ? "active" : ""}><ReactSVG className='float-left mr-2' src={NintendoSwitch} beforeInjection={svg => {svg.setAttribute('style', 'width: 1rem')}}/>Nintendo Switch</ListGroupItem>
+            <ListGroupItem tag='a' action className={activeItem === 0 ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faGamepad} />All</ListGroupItem>
+            <ListGroupItem tag='a' action className={activeItem === 1 ? "active" : ""} onClick={showXbox}><FontAwesomeIcon className='fab mr-2' icon={faXbox} />Xbox One</ListGroupItem>
+            <ListGroupItem tag='a' action className={activeItem === 2 ? "active" : ""}><FontAwesomeIcon className='fab mr-2' icon={faPlaystation} />Playstation 4</ListGroupItem>
+            <ListGroupItem className='d-flex align-items-center' tag='a' action className={activeItem === 3 ? "active" : ""}><ReactSVG className='float-left mr-2' src={NintendoSwitch} beforeInjection={svg => {svg.setAttribute('style', 'width: 1rem')}}/>Nintendo Switch</ListGroupItem>
           </ListGroup>
         </Col>
         <Col sm='12' md='8'>
           <Row>
-          <GameList />
+          <GameList games={getGames()} showItems={showItems}/>
             <Button  onClick={updateShowItems} className='mx-auto update-trigger' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
           </Row>
         </Col>
