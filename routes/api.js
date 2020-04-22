@@ -1,7 +1,7 @@
 const db = require("../models");
 const passport = require("passport");
 const axios = require("axios");
-const API_KEY = "83d7fd4abd2b146be0152208aa8e0bd1";
+const API_KEY = "";
 
 function routes(app) {
     app.post("/register", function (req, res) {
