@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 
 class LoginPage extends Component {
     state = {
-        email: '',
+        username: '',
         password: '',
         Redirect: null
     }
@@ -20,27 +20,31 @@ class LoginPage extends Component {
 
     handleOnSubmit = (event) => {
        event.preventDefault();
+
        const userData = {
-           email: this.state.email,
+           username: this.state.username,
            password: this.state.password
        }
        
-       console.log('USER DATA', userData);
+       
 
-        api.login(userData).then(response => {
-            console.log(response.data);
-            this.setState({Redirect: true});
+        api.login(userData).then(res => {
+           console.log("Res", res)
+           if(res.data.username != undefined) {
+             window.location.href="/"
+           }
         })
+
+
+       
     }
 
 
   render() {
-      if(this.state.Redirect) {
-          return <Redirect to={"/"} />
-      }
+      
     return (
       <div className="vh-100 bg-dark">
-        <Login   email={this.state.email} password={this.state.password}  handleOnChange={this.handleOnChange} handleOnSubmit={this.handleOnSubmit} />
+        <Login   username={this.state.username} password={this.state.password}  handleOnChange={this.handleOnChange} handleOnSubmit={this.handleOnSubmit} />
       </div>
     );
   }

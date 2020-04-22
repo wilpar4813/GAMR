@@ -3856,9 +3856,9 @@ input[type="button"].btn-block {
     background-color: #fff; }
   .list-group-item.active {
     z-index: 2;
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff; }
+    color: #fff !important;
+    background-color: #E72A2F;
+    border-color: #E72A2F; }
   .list-group-item + .list-group-item {
     border-top-width: 0; }
     .list-group-item + .list-group-item.active {
@@ -7203,7 +7203,10 @@ a.text-dark:hover, a.text-dark:focus {
 .upcoming-subtile {
   border-bottom: 3px solid #f1c40f; }
 
-.gallery-bg {
+.news-overlay {
+  background: rgba(0, 0, 0, 0.4); }
+
+.news-bg {
   background-image: url("../svg/gallery-bg.svg");
   background-repeat: no-repeat;
   background-size: cover; }
@@ -7212,15 +7215,24 @@ a.text-dark:hover, a.text-dark:focus {
   position: absolute;
   top: .5rem;
   right: .5rem;
+  width: 5rem;
+  height: 5rem;
   margin: .25rem;
   background-color: transparent;
   padding: .5rem;
   z-index: 2;
-  width: 2.5rem;
-  height: 2.5rem;
   font-size: 1rem;
-  border-radius: 50%;
-  border: 0.125rem solid #28a745; }
+  color: #fff; }
+
+.CircularProgressbar-text {
+  color: #fff !important; }
+
+.news-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .game-bg {
   background-color: #e6e6e6; }

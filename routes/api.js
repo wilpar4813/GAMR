@@ -1,7 +1,7 @@
 const db = require("../models");
 const passport = require("passport");
 const axios = require("axios");
-const API_KEY = "34f8664d1b52f2aec5985888a4fbb477";
+const API_KEY = "";
 
 function routes(app) {
     app.post("/register", function (req, res) {
@@ -46,8 +46,7 @@ function routes(app) {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
-            data:
-            `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; limit 10; search "${keyword}";`
+            data: `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; limit 10; search "${keyword}";`,
         }).then((response) => {
             res.json(response.data);
         });
@@ -63,7 +62,7 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields name,rating,genres.name,platforms.name,cover.url; screenshots.url, time_to_beat.normally, franchise.name, where rating > 90; limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90; limit 20;",
         }).then((response) => {
             res.json(response.data);
         });
@@ -127,7 +126,7 @@ function routes(app) {
                 "user-key": API_KEY,
             },
             data:
-                "fields author, image, published_at, summary, title, website; sort published_at desc; where image != null; limit 8;",
+                "fields author, image, published_at, summary, title, website.url; sort published_at desc; where image != null; limit 8;",
         }).then((response) => {
             res.json(response.data);
         });
@@ -179,6 +178,53 @@ function routes(app) {
         }).then((response) => {
             res.json(response.data);
         });
+    });
+
+    // User Save Routes
+    app.delete("/api/games/:userId/:gameId", function (req, res) {
+        var gameId = mongoose.Types.ObjectId(req.params.gameId);
+        var userId = mongoose.Types.ObjectId(req.params.userId);
+        var coverId = mongoose.Types.ObjectId(req.params.coverId);
+        var screenshotId = mongoose.Types.ObjectId(req.params.screenshotId);
+        var releaseDateId = mongoose.Types.ObjectId(req.params.releaseDateId);
+        var platformId = mongoose.Types.ObjectId(req.params.platformId);
+        var platformLogoId = mongoose.Types.ObjectId(req.params.platformLogoId);
+
+        // console.log(gameId);
+
+        db.User.updateOne(
+            { _id: userId },
+            { $pull: { games: gameId } },
+            { multi: true },
+            function (err, status) {
+                console.log(status);
+            }
+        );
+
+        db.Game.updateMany(
+            { _id: gameId },
+            {
+                $pull: {
+                    screenshots: screenshotId,
+                    covers: coverId,
+                    releaseDates: releaseDateId,
+                    platforms: platformId,
+                },
+            },
+            { multi: true },
+            function (err, status) {
+                console.log(status);
+            }
+        );
+
+        db.Platform.updateOne(
+            { _id: platformId },
+            { $pull: { platformLogos: platformLogoId } },
+            { multi: true },
+            function (err, status) {
+                console.log(status);
+            }
+        );
     });
 }
 module.exports = routes;

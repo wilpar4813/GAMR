@@ -9,7 +9,7 @@ export default {
 
     login: function (userData) {
         console.log(userData);
-        return axios.get("/user", userData);
+        return axios.post("/login", userData);
     },
 
     logout: function () {
@@ -20,8 +20,8 @@ export default {
         return axios.get("/user");
     },
 
-    search: function () {
-        return axios.get("/api/games/search/:keyword");
+    search: function (keyword) {
+        return axios.get("/api/games/search/:" + keyword);
     },
 
     recentNews: function () {
@@ -60,4 +60,12 @@ export default {
     mostAnticiptated: function () {
         return axios.get("/api/games/most_anticipated");
     },
+
+    searchedGames: function () {
+        return axios.get("/api/populategame");
+    },
+
+    deleteGame: function (userId, gameId) {
+        return axios.get("/api/games/:" + userId + "/:" + gameId);
+    }
 };
