@@ -17,10 +17,11 @@ const GameDetails = (props) => {
   }
 
   async function getGame(){
-    const res = await api.search(id)
-    .then((res) => {
-      setGameData(res.data);
-    })
+    const res = await api.search(gameID)
+    // .then((res) => {
+    //   setGameData(res.data);
+    // })
+    console.log(res);
   }
 
   useEffect(() => {

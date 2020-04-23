@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Container, Row, Col, Media} from 'reactstrap';
+import {Container, Row, Col, Media, Button} from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faPlusSquare} from '@fortawesome/free-regular-svg-icons';
 import api from '../utils/api';
 
 const Upcoming = (props) => {
@@ -8,6 +10,12 @@ const Upcoming = (props) => {
   const [ recentReleased, setRecentReleased ] = useState([]);
   const [ comingSoon, setComingSoon ] = useState([]);
   const [ mostAnticipated, setAnticipated ] = useState([]);
+  const [followed, setFollowed ] = useState(false);
+
+  async function handleOnclick(){
+    //add follow to database here
+    setFollowed(true)
+  }
 
   async function fetchReleased(){
     const res = await api.recentReleases();
@@ -53,6 +61,7 @@ const Upcoming = (props) => {
                 <Media body>
                   <Media heading><a href={`/games/${newGame.id}`}>{newGame.name}</a></Media>
                   <small className='text-muted'>{newGame.release_dates[0].human}</small>
+
                 </Media>
                 </Media>
               )
@@ -89,6 +98,7 @@ const Upcoming = (props) => {
                 <Media body>
                   <Media heading><a href={`/games/${hypedGame.id}`}>{hypedGame.name}</a></Media>
                   <small className='text-muted'>{hypedGame.release_dates[0].human}</small>
+                  <Button outline onClick={handleOnclick}><FontAwesomeIcon className={followed  === false ? "far" : "fas"} src={faPlusSquare} /></Button>
                 </Media>
                 </Media>
               )

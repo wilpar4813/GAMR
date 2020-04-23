@@ -24,11 +24,10 @@ const SearchForm = (props) => {
   }
 
   return(
-    <Container className='py'>
+    <Container className='py-3'>
     <Row>
     <Col sm='12'>
     <Form>
-
       <FormGroup>
         <Label for="search">Search</Label>
         <Input
