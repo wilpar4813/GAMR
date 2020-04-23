@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage.js";
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Game from './pages/Game';
+import Search from './pages/Search';
 import MainNav from "./components/MainNav.js";
 import api from "./utils/api";
 
@@ -22,7 +23,7 @@ class App extends Component {
 
   handleOnSubmit = (loggedIn) => {
     console.log("loged in", loggedIn)
-     
+
 
       api.logout().then(res => {
         console.log(res.data.username, "logged out");
@@ -36,7 +37,7 @@ class App extends Component {
       console.log(res.data.username, "username");
       if(res.data.username != undefined) {
         this.setState({ isLogin : true})
-      } 
+      }
     })
   }
 
@@ -57,16 +58,17 @@ class App extends Component {
           <Route exact path={'/profile'}>
             <Profile />
           </Route>
+          <Route path={'/games/:id'}>
+            <Game />
+          </Route>
+          <Route path={'/search'}>
+            <Search />
+          </Route>
         </Switch>
-      <Switch>
-        <Route path={'/games/:id'}>
-          <Game />
-        </Route>
-      </Switch>
     </Router>
     )
   }
-  
+
 }
 
 export default App;
