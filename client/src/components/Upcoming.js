@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Row, Col, Media, Button} from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faPlus, faCheck} from '@fortawesome/free-solid-svg-icons';
 import api from '../utils/api';
 
 const Upcoming = (props) => {
@@ -59,7 +61,7 @@ const Upcoming = (props) => {
                 <Media body>
                   <Media heading><a href={`/games/${newGame.id}`}>{newGame.name}</a></Media>
                   <small className='text-muted'>{newGame.release_dates[0].human}</small>
-
+                  <Button color='link' className='upcoming-follow-trigger' onClick={handleOnclick}><FontAwesomeIcon className='fas' icon={followed === true ? faCheck : faPlus} /></Button>
                 </Media>
                 </Media>
               )
@@ -78,6 +80,7 @@ const Upcoming = (props) => {
                 <Media body>
                   <Media heading><a href={`/games/${upcomingGame.id}`}>{upcomingGame.name}</a></Media>
                   <small className='text-muted'>{upcomingGame.release_dates[0].human}</small>
+                  <Button color='link' className='upcoming-follow-trigger' onClick={handleOnclick}><FontAwesomeIcon className='fas' icon={followed === true ? faCheck : faPlus} /></Button>
                 </Media>
                 </Media>
               )
@@ -96,6 +99,7 @@ const Upcoming = (props) => {
                 <Media body>
                   <Media heading><a href={`/games/${hypedGame.id}`}>{hypedGame.name}</a></Media>
                   <small className='text-muted'>{hypedGame.release_dates[0].human}</small>
+                  <Button color='link' className='upcoming-follow-trigger' onClick={handleOnclick}><FontAwesomeIcon className='fas' icon={followed === true ? faCheck : faPlus} /></Button>
                 </Media>
                 </Media>
               )
