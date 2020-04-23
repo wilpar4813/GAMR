@@ -16,13 +16,13 @@ class Home extends Component {
       username: ""
     }
     handleOnSubmit = (loggedIn) => {
-       
+
 
       const userData = {
           username: this.state.username,
           password: this.state.password
       }
-      
+
       console.log('USER DATA', userData);
 
        api.login(userData).then(response => {
@@ -36,7 +36,7 @@ class Home extends Component {
        })
 
 
-      
+
    }
   componentDidMount() {
 

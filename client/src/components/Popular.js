@@ -1,12 +1,86 @@
-import React from 'react';
-import { Container, Row, Col, Button, ListGroup, ListGroupItem, Card, CardTitle, CardText, CardImg, CardImgOverlay, CardFooter } from 'reactstrap';
+import React, {useState, useEffect } from 'react';
+import { Container, Row, Col, Button, ListGroup, ListGroupItem} from 'reactstrap';
+import GameList from './GameList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faChevronDown, faGamepad} from '@fortawesome/free-solid-svg-icons';
 import { faPlaystation, faXbox  }from '@fortawesome/free-brands-svg-icons';
 import {ReactSVG} from 'react-svg';
 import NintendoSwitch from '../svg/nintendo-switch.svg';
 
+import api from '../utils/api';
+
+
 const Popular = (props) => {
+
+  const [activeItem, setActiveItem] = useState(0)
+  const [ allPopular, setAllPopular ] = useState([]);
+  const [ xboxPop, setXboxPop ] = useState([]);
+  const [ psPop, setPSPop ] = useState([]);
+  const [ switchPop, setSwitchPop ] = useState([]);
+  const [showItems, setShowItems] = useState(4);
+
+
+
+  async function updateShowItems() {
+    const updateTrigger = document.querySelector('update-trigger');
+    setShowItems(showItems + 4 ) ;
+    if(showItems >= 20){
+      updateTrigger.classList.add('d-none');
+    }
+  }
+
+  async function getPopular(){
+
+    const res = await api.popularAll();
+
+    setAllPopular(res.data);
+
+    setActiveItem(0);
+  }
+
+  async function getXbox() {
+    const res = await api.popularXboxOne();
+
+    setXboxPop(res.data);
+
+    setActiveItem(1)
+  }
+
+  async function getPS4() {
+    const res = await api.popularPS4();
+
+    setPSPop(res.data);
+
+    setActiveItem(2)
+  }
+
+  async function getSwitch(){
+
+    const res = await api.popularSwitch();
+
+    setSwitchPop(res.data);
+
+    setActiveItem(3);
+  }
+
+
+  function getGames() {
+    if (activeItem === 1) {
+      return xboxPop;
+    }
+    if (activeItem === 2) {
+      return psPop;
+    }
+    if (activeItem === 3){
+      return switchPop;
+    }
+    return allPopular;
+  }
+
+  useEffect(() => {
+    getPopular();
+
+  } ,[])
   return(
     <Container className='py-3'>
       <Row>
@@ -15,63 +89,16 @@ const Popular = (props) => {
       <Row>
         <Col className='border-right' sm='12' md='4'>
           <ListGroup>
-            <ListGroupItem tag='a' action><FontAwesomeIcon className='fab mr-2' icon={faGamepad} />All</ListGroupItem>
-            <ListGroupItem tag='a' action><FontAwesomeIcon className='fab mr-2' icon={faXbox} />Xbox One</ListGroupItem>
-            <ListGroupItem tag='a' action><FontAwesomeIcon className='fab mr-2' icon={faPlaystation} />Playstation 4</ListGroupItem>
-            <ListGroupItem className='d-flex align-items-center' tag='a' action><ReactSVG className='float-left mr-2' src={NintendoSwitch} beforeInjection={svg => {svg.setAttribute('style', 'width: 1rem')}}/>Nintendo Switch</ListGroupItem>
+            <ListGroupItem tag='a' action className={activeItem === 0 ? "active" : ""} onClick={getPopular}><FontAwesomeIcon className='fab mr-2' icon={faGamepad} />All</ListGroupItem>
+            <ListGroupItem tag='a' action className={activeItem === 1 ? "active" : ""} onClick={getXbox}><FontAwesomeIcon className='fab mr-2' icon={faXbox}  />Xbox One</ListGroupItem>
+            <ListGroupItem tag='a' action className={activeItem === 2 ? "active" : ""} onClick={getPS4}><FontAwesomeIcon className='fab mr-2' icon={faPlaystation}  />Playstation 4</ListGroupItem>
+            <ListGroupItem className='d-flex align-items-center' tag='a' action className={activeItem === 3 ? "active" : ""} onClick={getSwitch}><ReactSVG className='float-left mr-2' src={NintendoSwitch} beforeInjection={svg => {svg.setAttribute('style', 'width: 1rem')}}/>Nintendo Switch</ListGroupItem>
           </ListGroup>
         </Col>
         <Col sm='12' md='8'>
           <Row>
-            <Col className='mb-3' sm='12' md='6'>
-              <Card>
-                <CardImg width="100%" src="https://via.placeholder.com/555x312.jpg" alt="Card image cap" />
-                <CardImgOverlay>
-                  <div className='rating d-flex justify-content-center align-items-center'>6.0</div>
-                </CardImgOverlay>
-                <CardFooter>
-                  <CardTitle>Title Here</CardTitle>
-                  <CardText><small>Genre here</small></CardText>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col className='mb-3' sm='12' md='6'>
-              <Card>
-                <CardImg width="100%" src="https://via.placeholder.com/555x312.jpg" alt="Card image cap" />
-                <CardImgOverlay>
-                  <div className='rating d-flex justify-content-center align-items-center'>6.0</div>
-                </CardImgOverlay>
-                <CardFooter>
-                  <CardTitle>Title Here</CardTitle>
-                  <CardText><small>Genre here</small></CardText>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col className='mb-3' sm='12' md='6'>
-              <Card>
-                <CardImg width="100%" src="https://via.placeholder.com/555x312.jpg" alt="Card image cap" />
-                <CardImgOverlay>
-                  <div className='rating d-flex justify-content-center align-items-center'>6.0</div>
-                </CardImgOverlay>
-                <CardFooter>
-                  <CardTitle>Title Here</CardTitle>
-                  <CardText><small>Genre here</small></CardText>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col className='mb-3' sm='12' md='6'>
-              <Card>
-                <CardImg width="100%" src="https://via.placeholder.com/555x312.jpg" alt="Card image cap" />
-                <CardImgOverlay>
-                  <div className='rating d-flex justify-content-center align-items-center'>6.0</div>
-                </CardImgOverlay>
-                <CardFooter>
-                  <CardTitle>Title Here</CardTitle>
-                  <CardText><small>Genre here</small></CardText>
-                </CardFooter>
-              </Card>
-            </Col>
-              <Button className='mx-auto' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
+          <GameList games={getGames()} showItems={showItems}/>
+            <Button  onClick={updateShowItems} className='mx-auto update-trigger' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
           </Row>
         </Col>
       </Row>

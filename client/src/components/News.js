@@ -29,7 +29,7 @@ const News = (props) => {
             <Col className='mb-2' sm='12' md='4'>
               <Card inverse style={{minHeight: "200px"}}>
                 <CardImg src={story.image} alt="Card image cap" />
-                <CardImgOverlay>
+                <CardImgOverlay className='news-overlay'>
                   <CardTitle className='news-text'>{story.title}</CardTitle>
                   <CardText className='news-text'>{story.summary}</CardText>
                   <CardText>
@@ -47,7 +47,7 @@ const News = (props) => {
               <Col className='mb-2' sm='12' md='8'>
                 <Card inverse style={{minHeight: "200px"}}>
                   <CardImg src={story.image} alt="Card image cap" />
-                    <CardImgOverlay>
+                    <CardImgOverlay className='news-overlay'>
                       <CardTitle className='news-text'>{story.title}</CardTitle>
                       <CardText className='news-text'>{story.summary}</CardText>
                       <CardText>
@@ -65,7 +65,7 @@ const News = (props) => {
                 <Col className='mb-2' sm='12'>
                   <Card inverse style={{minHeight: "200px"}}>
                     <CardImg src={story.image} alt="Card image cap" />
-                    <CardImgOverlay>
+                    <CardImgOverlay className='news-overlay'>
                       <CardTitle className='news-text'>{story.title}</CardTitle>
                       <CardText className='news-text'>{story.summary}</CardText>
                       <CardText>
@@ -85,7 +85,7 @@ const News = (props) => {
           <Col className='mb-2' sm='12' md='6'>
             <Card inverse style={{minHeight: "200px"}}>
               <CardImg src={story.image} alt="Card image cap" />
-              <CardImgOverlay>
+              <CardImgOverlay className='news-overlay'>
                 <CardTitle className='news-text'>{story.title}</CardTitle>
                 <CardText className='news-text'>{story.summary}</CardText>
                 <CardText>
