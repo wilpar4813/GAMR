@@ -25,6 +25,7 @@ const Popular = (props) => {
     const updateTrigger = document.querySelector('update-trigger');
     setShowItems(showItems + 4 ) ;
     if(showItems >= 20){
+      setShowItems(20);
       updateTrigger.classList.add('d-none');
     }
   }
