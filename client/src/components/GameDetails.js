@@ -17,7 +17,7 @@ const GameDetails = (props) => {
   }
 
   async function getGame(){
-    const res = api.search(id)
+    const res = await api.search(id)
     .then((res) => {
       setGameData(res.data);
     })
