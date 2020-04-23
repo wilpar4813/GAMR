@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Row, Col, Media, Button} from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPlusSquare} from '@fortawesome/free-regular-svg-icons';
 import api from '../utils/api';
 
 const Upcoming = (props) => {
@@ -98,7 +96,6 @@ const Upcoming = (props) => {
                 <Media body>
                   <Media heading><a href={`/games/${hypedGame.id}`}>{hypedGame.name}</a></Media>
                   <small className='text-muted'>{hypedGame.release_dates[0].human}</small>
-                  <Button outline onClick={handleOnclick}><FontAwesomeIcon className={followed  === false ? "far" : "fas"} src={faPlusSquare} /></Button>
                 </Media>
                 </Media>
               )
