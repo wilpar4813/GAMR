@@ -47,8 +47,8 @@ const Upcoming = (props) => {
             {recentReleased.map(
               (newGame) => (
                 <Media className='mb-3'>
-                  <Media left href="#">
-                    <Media className='mr-2' object src={newGame.cover.url} alt="game title cover art here" />
+                  <Media left>
+                    <Media className='mr-2' object src={newGame.cover.url} alt={`${newGame.name} cover image`} />
                   </Media>
                 <Media body>
                   <Media heading><a href={`/games/${newGame.id}`}>{newGame.name}</a></Media>
@@ -65,8 +65,8 @@ const Upcoming = (props) => {
             {comingSoon.map(
               (upcomingGame) => (
                 <Media className='mb-3'>
-                  <Media left href="#">
-                    <Media className='mr-2' object src={upcomingGame.cover.url} alt="Generic placeholder image" />
+                  <Media left>
+                    <Media className='mr-2' object src={upcomingGame.cover.url} alt={`${upcomingGame.name} cover image`} />
                   </Media>
                 <Media body>
                   <Media heading><a href={`/games/${upcomingGame.id}`}>{upcomingGame.name}</a></Media>
@@ -83,8 +83,8 @@ const Upcoming = (props) => {
             {mostAnticipated.map(
               (hypedGame) => (
                 <Media className='mb-3'>
-                  <Media left href="#">
-                    <Media className='mr-2' object src={hypedGame.cover.url} alt="Generic placeholder image" />
+                  <Media left>
+                    <Media className='mr-2' object src={hypedGame.cover.url} alt={`${hypedGame.name} cover image`} />
                   </Media>
                 <Media body>
                   <Media heading><a href={`/games/${hypedGame.id}`}>{hypedGame.name}</a></Media>

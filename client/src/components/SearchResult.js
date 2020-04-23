@@ -7,15 +7,13 @@ const SearchResult = (props) => {
     (result) => (
       <Col className='mb-3' sm='12'>
         <Media className='border-bottom py-2'>
-          <Media left className='mr-3' href={`/games/${result.id}`}>
-            <Media object src={result.cover.url} />
+          <Media left>
+            <Media className='mr-2' object src={result.cover.url} alt="game title cover art here" />
           </Media>
           <Media body>
-            <Media heading>
-              {result.name}
+            <Media heading><a href={`/games/${result.id}`}>{result.name}</a></Media>
+              {result.summary}
             </Media>
-          {result.summary}
-          </Media>
         </Media>
     </Col>
     )
