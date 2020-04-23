@@ -8,7 +8,7 @@ const SearchResult = (props) => {
       <Col className='mb-3' sm='12'>
         <Media className='border-bottom'>
           <Media left href={`/games/${result.id}`}>
-            <Media object data-src={result.cover.url} alt={`${result.name} cover image`} />
+            <Media object src={result.cover.url} alt={`${result.name} cover image`} />
           </Media>
           <Media body>
             <Media heading>
