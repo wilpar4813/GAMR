@@ -16,11 +16,6 @@ const MainNav = (props) => {
   const [ game, setGame ] = useState([]);
   const focusSearch = useRef(null);
 
-  useEffect(() => focusSearch.current.focus());
-
-
-  }
-
   return (
     <div>
       <Navbar color="light" className='bg-faded' light expand="md">
@@ -57,10 +52,9 @@ const MainNav = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <Form className='form-inline my-2 my-lg-0 mx-2'>
-              <Input onChange={props.handleOnChange} className='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search' />
-              <Button outline color='danger' type='submit' className='my-2 my-sm-0'>Search</Button>
-            </Form>
+            <NavItem>
+              <NavLink className='d-sm-inline-block' href="/search">Search</NavLink>
+            </NavItem>
             {props.isLogin === true ? <Button className="btn btn-danger" onClick={()=> {props.handleOnSubmit(false)}}>Logout</Button> : <Button className="btn btn-danger" onClick={()=> {props.handleOnSubmit(true)}}>Login</Button>}
           </Nav>
         </Collapse>
