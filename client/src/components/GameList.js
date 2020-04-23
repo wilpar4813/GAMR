@@ -9,7 +9,7 @@ const GameList = (props) => {
     (game) => (
       <Col className='mb-3' sm='12' md='6'>
         <Card>
-          <CardImg src={game.cover.url} alt="Card image cap" />
+          <CardImg src={game.cover.url} alt={`${game.name} cover image`} />
           <CardImgOverlay>
             <div className='rating'>
               <ProgressProvider valueStart={0} valueEnd={Math.round(game.rating)}>

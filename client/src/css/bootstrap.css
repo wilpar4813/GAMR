@@ -7206,6 +7206,9 @@ a.text-dark:hover, a.text-dark:focus {
 .news-overlay {
   background: rgba(0, 0, 0, 0.4); }
 
+.upcoming-follow-trigger {
+  color: #E72A2F; }
+
 .news-bg {
   background-image: url("../svg/gallery-bg.svg");
   background-repeat: no-repeat;

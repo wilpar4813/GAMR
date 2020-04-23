@@ -28,7 +28,7 @@ const News = (props) => {
           (story) => (
             <Col className='mb-2' sm='12' md='4'>
               <Card inverse style={{minHeight: "200px"}}>
-                <CardImg src={story.image} alt="Card image cap" />
+                <CardImg src={story.image} alt={`${story.title} preview image`} />
                 <CardImgOverlay className='news-overlay'>
                   <CardTitle className='news-text'>{story.title}</CardTitle>
                   <CardText className='news-text'>{story.summary}</CardText>
@@ -46,7 +46,7 @@ const News = (props) => {
             (story) => (
               <Col className='mb-2' sm='12' md='8'>
                 <Card inverse style={{minHeight: "200px"}}>
-                  <CardImg src={story.image} alt="Card image cap" />
+                  <CardImg src={story.image} alt={`${story.title} preview image`} />
                     <CardImgOverlay className='news-overlay'>
                       <CardTitle className='news-text'>{story.title}</CardTitle>
                       <CardText className='news-text'>{story.summary}</CardText>
@@ -64,7 +64,7 @@ const News = (props) => {
               (story) => (
                 <Col className='mb-2' sm='12'>
                   <Card inverse style={{minHeight: "200px"}}>
-                    <CardImg src={story.image} alt="Card image cap" />
+                    <CardImg src={story.image} alt={`${story.title} preview image`} />
                     <CardImgOverlay className='news-overlay'>
                       <CardTitle className='news-text'>{story.title}</CardTitle>
                       <CardText className='news-text'>{story.summary}</CardText>
@@ -84,7 +84,7 @@ const News = (props) => {
         (story) => (
           <Col className='mb-2' sm='12' md='6'>
             <Card inverse style={{minHeight: "200px"}}>
-              <CardImg src={story.image} alt="Card image cap" />
+              <CardImg src={story.image} alt={`${story.title} preview image`} />
               <CardImgOverlay className='news-overlay'>
                 <CardTitle className='news-text'>{story.title}</CardTitle>
                 <CardText className='news-text'>{story.summary}</CardText>

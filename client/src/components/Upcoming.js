@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Container, Row, Col, Media} from 'reactstrap';
+import {Container, Row, Col, Media, Button} from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faPlus, faCheck} from '@fortawesome/free-solid-svg-icons';
 import api from '../utils/api';
 
 const Upcoming = (props) => {
@@ -8,6 +10,12 @@ const Upcoming = (props) => {
   const [ recentReleased, setRecentReleased ] = useState([]);
   const [ comingSoon, setComingSoon ] = useState([]);
   const [ mostAnticipated, setAnticipated ] = useState([]);
+  const [followed, setFollowed ] = useState(false);
+
+  async function handleOnclick(){
+    //add follow to database here
+    setFollowed(true)
+  }
 
   async function fetchReleased(){
     const res = await api.recentReleases();
@@ -47,12 +55,13 @@ const Upcoming = (props) => {
             {recentReleased.map(
               (newGame) => (
                 <Media className='mb-3'>
-                  <Media left href="#">
-                    <Media className='mr-2' object src={newGame.cover.url} alt="game title cover art here" />
+                  <Media left>
+                    <Media className='mr-2' object src={newGame.cover.url} alt={`${newGame.name} cover image`} />
                   </Media>
                 <Media body>
                   <Media heading><a href={`/games/${newGame.id}`}>{newGame.name}</a></Media>
                   <small className='text-muted'>{newGame.release_dates[0].human}</small>
+                  <Button color='link' className='upcoming-follow-trigger' onClick={handleOnclick}><FontAwesomeIcon className='fas' icon={followed === true ? faCheck : faPlus} /></Button>
                 </Media>
                 </Media>
               )
@@ -65,12 +74,13 @@ const Upcoming = (props) => {
             {comingSoon.map(
               (upcomingGame) => (
                 <Media className='mb-3'>
-                  <Media left href="#">
-                    <Media className='mr-2' object src={upcomingGame.cover.url} alt="Generic placeholder image" />
+                  <Media left>
+                    <Media className='mr-2' object src={upcomingGame.cover.url} alt={`${upcomingGame.name} cover image`} />
                   </Media>
                 <Media body>
                   <Media heading><a href={`/games/${upcomingGame.id}`}>{upcomingGame.name}</a></Media>
                   <small className='text-muted'>{upcomingGame.release_dates[0].human}</small>
+                  <Button color='link' className='upcoming-follow-trigger' onClick={handleOnclick}><FontAwesomeIcon className='fas' icon={followed === true ? faCheck : faPlus} /></Button>
                 </Media>
                 </Media>
               )
@@ -83,12 +93,13 @@ const Upcoming = (props) => {
             {mostAnticipated.map(
               (hypedGame) => (
                 <Media className='mb-3'>
-                  <Media left href="#">
-                    <Media className='mr-2' object src={hypedGame.cover.url} alt="Generic placeholder image" />
+                  <Media left>
+                    <Media className='mr-2' object src={hypedGame.cover.url} alt={`${hypedGame.name} cover image`} />
                   </Media>
                 <Media body>
                   <Media heading><a href={`/games/${hypedGame.id}`}>{hypedGame.name}</a></Media>
                   <small className='text-muted'>{hypedGame.release_dates[0].human}</small>
+                  <Button color='link' className='upcoming-follow-trigger' onClick={handleOnclick}><FontAwesomeIcon className='fas' icon={followed === true ? faCheck : faPlus} /></Button>
                 </Media>
                 </Media>
               )
