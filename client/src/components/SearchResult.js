@@ -1,8 +1,5 @@
 import React from 'react';
-import {Col, Card, CardTitle, CardText, CardImg, CardImgOverlay, CardFooter } from 'reactstrap';
-import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
-import ProgressProvider from '../utils/ProgressProvider';
-import 'react-circular-progressbar/dist/styles.css';
+import {Col, Card, Media } from 'reactstrap';
 
 const SearchResult = (props) => {
 
