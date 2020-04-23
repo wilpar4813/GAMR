@@ -75,7 +75,7 @@ function routes(app) {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
-            data: `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; limit 10; search "${keyword}";`,
+            data: `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, summary, time_to_beat.normally, franchise.name; limit 10; search "${keyword}";`,
         }).then((response) => {
             res.json(response.data);
         });
