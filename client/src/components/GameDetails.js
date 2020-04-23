@@ -1,21 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button} from 'reactstrap';
-import Screenshots from './Screenshots'
+import Screenshots from './Screenshots';
+import api from '../utils/api';
 
 const GameDetails = (props) => {
 
   const [gameID, setGameID] = useState('');
+  const [gameData, setGameData] = useState([]);
 
-  function getID(){
+  async function getID(){
     const url = window.location.pathname;
     const urlArray= url.split('/');
 
     let id = urlArray[2];
-    console.log(id);
+    setGameID(id);
+  }
+
+  async function getGame(){
+    const res = api.search(id)
+    .then((res) => {
+      setGameData(res.data);
+    })
   }
 
   useEffect(() => {
     getID();
+    getGame();
   })
 
     return (
