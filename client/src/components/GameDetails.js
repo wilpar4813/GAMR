@@ -1,15 +1,29 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button} from 'reactstrap';
 import Screenshots from './Screenshots'
 
-class GameDetails extends Component {
-  render(){
+const GameDetails = (props) => {
+
+  const [gameID, setGameID] = useState('');
+
+  function getID(){
+    const url = window.location.pathname;
+    const urlArray= url.split('/');
+
+    let id = urlArray[2];
+    console.log(id);
+  }
+
+  useEffect(() => {
+    getID();
+  })
+
     return (
       <div className='game-bg py-3'>
       <Container className='py-3 game-container'>
         <Row className='d-flex flex-row game-info'>
           <Col sm='4' md='4'>
-            <img className='movie-info--image' src='https://images.igdb.com/igdb/image/upload/t_cover_big/co1rbi.jpg' />
+            <img className='game-info--image' src='https://images.igdb.com/igdb/image/upload/t_cover_big/co1rbi.jpg' />
           </Col>
           <Col sm='8' md='8' className='game-info--data d-flex flex-column justify-content-between align-items-start'>
             <div className='game-info--description'>
@@ -35,7 +49,6 @@ class GameDetails extends Component {
       </Container>
       </div>
     )
-  }
 }
 
 export default GameDetails;
