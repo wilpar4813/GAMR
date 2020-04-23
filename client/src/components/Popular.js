@@ -18,14 +18,14 @@ const Popular = (props) => {
   const [ psPop, setPSPop ] = useState([]);
   const [ switchPop, setSwitchPop ] = useState([]);
   const [showItems, setShowItems] = useState(4);
+  const [updateTrigger, setUpdateTrigger] = useState(false);
 
 
 
   async function updateShowItems() {
-    const updateTrigger = document.querySelector('update-trigger');
     setShowItems(showItems + 4 ) ;
     if(showItems >= 20){
-      updateTrigger.classList.add('d-none');
+      setUpdateTrigger(true);
     }
   }
 
@@ -98,7 +98,7 @@ const Popular = (props) => {
         <Col sm='12' md='8'>
           <Row>
           <GameList games={getGames()} showItems={showItems}/>
-            <Button  onClick={updateShowItems} className='mx-auto update-trigger' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
+            <Button  onClick={updateShowItems} className={updateTrigger === true ? "mx-auto d-none" : "mx-auto"} id='update-trigger' color='link'>Load More <FontAwesomeIcon className='fas' icon={faChevronDown} /></Button>
           </Row>
         </Col>
       </Row>
