@@ -20,9 +20,6 @@ const SearchForm = (props) => {
 
   async function handleOnChange(event) {
     const { name, value } = event.target;
-    console.log([name]);
-    console.log(value);
-    console.log(event.target);
     setQuery((value));
   }
 
