@@ -3,7 +3,7 @@ const passport = require("passport");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const moment = require("moment");
-const API_KEY = "";
+const API_KEY = "72769c7d8d06682882c92a5bc4e9e5c4";
 
 // Image Swap Function
 function imageSwap(response) {
@@ -61,7 +61,7 @@ function routes(app) {
         res.send(null);
     });
 
-    // Search API
+    // Search API - Keyword
     app.get("/api/games/search/:keyword", function (req, res) {
         var keyword = req.params.keyword;
 
@@ -78,6 +78,24 @@ function routes(app) {
             res.json(response.data);
         });
     });
+
+        // Search API - ID
+        app.get("/api/games/:id", function (req, res) {
+            var id = req.params.id;
+            axios({
+                url: "https://api-v3.igdb.com/games",
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data: `fields hypes, first_release_date, release_dates.date, platforms.name, screenshots.url, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; where id = ${id};`,
+            }).then((response) => {
+                response = imageSwap(response);
+                console.log(response.data, "Hello");
+                res.json(response.data);
+            });
+        });
 
     // All Popular Games
     app.get("/api/games/popular_all", function (req, res) {
