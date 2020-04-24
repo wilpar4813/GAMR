@@ -14,20 +14,24 @@ const GameDetails = (props) => {
     const urlArray= url.split('/');
 
     let id = urlArray[2];
-    setGameID(id);
+
+    let idArray = id.split('%20').join(" ");
+
+
+    setGameID(idArray);
+
+    getGame(idArray)
   }
 
-  async function getGame(){
-    const res = await api.search(gameID)
-    // .then((res) => {
-    //   setGameData(res.data);
-    // })
-    console.log(res);
+  async function getGame(query){
+    const res = await api.search(query);
+    setGameData(res.data[0]);
+
+    console.log(res.data[0]);
   }
 
   useEffect(() => {
     getID();
-    getGame();
   })
 
     return (
@@ -35,12 +39,11 @@ const GameDetails = (props) => {
       <Container className='py-3 game-container'>
         <Row className='d-flex flex-row game-info'>
           <Col sm='4' md='4'>
-            <img className='game-info--image' src='https://images.igdb.com/igdb/image/upload/t_cover_big/co1rbi.jpg' />
+            <img className='game-info--image' src={gameData.cover ? gameData.cover.url: "No Data Available"} />
           </Col>
           <Col sm='8' md='8' className='game-info--data d-flex flex-column justify-content-between align-items-start'>
             <div className='game-info--description'>
-              <h1 className='game-info--title'>Game Title Here</h1>
-              <small className='text-muted'>Game studio here</small>
+              <h1 className='game-info--title'>{gameData.name ? gameData.name: "No Data Available"}</h1>
               <div className='my-3'>
                 <Button className='' color='danger'>Follow</Button>
               </div>
@@ -48,16 +51,15 @@ const GameDetails = (props) => {
                 <p><b>Genre: </b><span className='game-info--genre'>Genre here</span></p>
                 <p><b>Platforms: </b><span className='game-info--genre'>Platforms here</span></p>
               </div>
-              <p className='game-info--plot'>Plot Here</p>
+              <p className='game-info--plot'>{gameData.summary ? gameData.summary: "No Data Available"}</p>
             </div>
             <div className='game-info--stats d-flex justify-content-between align-items-center'>
-              <div><p>Release Date: <span className='release-date'>date here</span></p></div>
+              <div><p>Release Date: <span className='release-date'>{gameData.first_release_date ? gameData.first_release_date: "No Data Available"}</span></p></div>
               <div><p>Time to beat: <span className='beat-time'>normal time here</span></p></div>
-              <div><p>Franchise: <span className='franchise'>franchise here</span></p></div>
+              <div><p>Franchise: <span className='franchise'>{gameData.franchise ? gameData.franchise.name: "No Data Available"}</span></p></div>
             </div>
           </Col>
         </Row>
-        <Screenshots />
       </Container>
       </div>
     )
