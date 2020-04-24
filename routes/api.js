@@ -75,6 +75,7 @@ function routes(app) {
             },
             data: `fields hypes, first_release_date, release_dates.date, platforms.name, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; search "${keyword}";`,
         }).then((response) => {
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -159,6 +160,7 @@ function routes(app) {
             data:
                 "fields author, image, published_at, summary, title, website.url; sort published_at desc; where image != null; limit 8;",
         }).then((response) => {
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -172,9 +174,14 @@ function routes(app) {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
-            data:
-                `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date desc; where first_release_date < ${moment().format("X")} & first_release_date > ${moment().subtract(1, "months").format("X")} & hypes > 10; limit 5;`,
+            data: `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date desc; where first_release_date < ${moment().format(
+                "X"
+            )} & first_release_date > ${moment()
+                .subtract(1, "months")
+                .format("X")} & hypes > 10; limit 5;`,
         }).then((response) => {
+            response = imageSwap(response);
+
             res.json(response.data);
         });
     });
@@ -188,9 +195,13 @@ function routes(app) {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
-            data:
-                `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date asc; where first_release_date > ${moment().format("X")} & first_release_date < ${moment().add(3, "months").format("X")} & hypes > 2; limit 5;`,
+            data: `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date asc; where first_release_date > ${moment().format(
+                "X"
+            )} & first_release_date < ${moment()
+                .add(3, "months")
+                .format("X")} & hypes > 2; limit 5;`,
         }).then((response) => {
+            response = imageSwap(response);
 
             res.json(response.data);
         });
@@ -205,9 +216,13 @@ function routes(app) {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
-            data:
-                `fields first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, hypes, name, platforms.name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort hypes desc; where first_release_date > ${moment().format("X")} & first_release_date < ${moment().add(6, "months").format("X")} & hypes > 10; limit 5;`,
+            data: `fields first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, hypes, name, platforms.name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort hypes desc; where first_release_date > ${moment().format(
+                "X"
+            )} & first_release_date < ${moment()
+                .add(6, "months")
+                .format("X")} & hypes > 10; limit 5;`,
         }).then((response) => {
+            response = imageSwap(response);
             res.json(response.data);
         });
     });

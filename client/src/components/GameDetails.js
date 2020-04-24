@@ -19,15 +19,17 @@ const GameDetails = (props) => {
 
 
     setGameID(idArray);
-
+    console.log(idArray)
     getGame(idArray)
   }
 
   async function getGame(query){
-    const res = await api.search(query);
-    setGameData(res.data[0]);
+     api.search(query).then(res => {
+     console.log(res.data[0], "Game Data")
+      setGameData(res.data[0]);
 
-    console.log(res.data[0]);
+      console.log(res.data[0]);
+     });
   }
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const GameDetails = (props) => {
       <Container className='py-3 game-container'>
         <Row className='d-flex flex-row game-info'>
           <Col sm='4' md='4'>
-            <img className='game-info--image' src={gameData.cover ? gameData.cover.url: "No Data Available"} />
+            <img className='game-info--image' src={gameData.cover != null ? gameData.cover.url: "No Data Available"} />
           </Col>
           <Col sm='8' md='8' className='game-info--data d-flex flex-column justify-content-between align-items-start'>
             <div className='game-info--description'>
