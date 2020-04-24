@@ -3,7 +3,7 @@ const passport = require("passport");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const moment = require("moment");
-const API_KEY = "72769c7d8d06682882c92a5bc4e9e5c4";
+const API_KEY = "";
 
 // Image Swap Function
 function imageSwap(response) {
@@ -72,7 +72,7 @@ function routes(app) {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
-            data: `fields hypes, first_release_date, release_dates.date, platforms.name, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; search "${keyword}";`,
+            data: `fields hypes, first_release_date, release_dates.date, platforms.name, screenshots.url, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; search "${keyword}";`,
         }).then((response) => {
             response = imageSwap(response);
             res.json(response.data);
