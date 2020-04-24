@@ -53,8 +53,8 @@ class Home extends Component {
       <>
       { this.state.username != undefined ? console.log('LOOK HERE', this.state.username) : ''}
         <Masthead />
-        {/* <Popular />
-        <News />
+        <Popular />
+        {/* <News />
         <Upcoming /> */}
         <Footer />
         </>

@@ -8,15 +8,18 @@ const API_KEY = "72769c7d8d06682882c92a5bc4e9e5c4";
 // Image Swap Function
 function imageSwap(response) {
     for (let i = 0; i < response.data.length; i++) {
-        response.data[i].cover.url = response.data[i].cover.url.replace(
-            "/t_thumb/",
-            "/t_cover_big_2x/"
-        );
+        if (response.data[i].cover != undefined) {
+            for (let j = 0; j < response.data[i].cover.length; j++) {
+                response.data[i].cover[j].url = response.data[i].cover[
+                    j
+                ].url.replace("/t_thumb/", "/t_cover_big_2x/");
+            }
+        }
         if (response.data[i].screenshots != undefined) {
-            for (let j = 0; j < response.data[i].screenshots.length; j++) {
-                response.data[i].screenshots[j].url = response.data[
+            for (let k = 0; k < response.data[i].screenshots.length; k++) {
+                response.data[i].screenshots[k].url = response.data[
                     i
-                ].screenshots[j].url.replace(
+                ].screenshots[k].url.replace(
                     "/t_thumb/",
                     "/t_screenshot_huge/"
                 );
@@ -26,16 +29,6 @@ function imageSwap(response) {
 
     return response;
 }
-
-function arrayCheck(response) {
-    for (let i = 0; i < response.data.length; i++) {
-        if (response.data[i] = undefined) {
-            return "Not Available";
-        }
-    }
-}
-
-
 
 function routes(app) {
     app.post("/register", function (req, res) {
@@ -80,9 +73,9 @@ function routes(app) {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
-            data: `fields hypes, first_release_date, release_dates.date, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; limit 10; search "${keyword}";`,
+            data: `fields hypes, first_release_date, release_dates.date, platforms.name, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; search "${keyword}";`,
         }).then((response) => {
-            response = imageSwap(response) = arrayCheck(response);
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -99,7 +92,7 @@ function routes(app) {
             data:
                 "fields name,rating,genres.name, cover.url, platforms.name, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90; limit 20;",
         }).then((response) => {
-            response = imageSwap(response) = arrayCheck(response);
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -116,7 +109,7 @@ function routes(app) {
             data:
                 "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = (48);limit 20;",
         }).then((response) => {
-            response = imageSwap(response) = arrayCheck(response);
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -133,7 +126,7 @@ function routes(app) {
             data:
                 "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = (49);limit 20;",
         }).then((response) => {
-            response = imageSwap(response) = arrayCheck(response);
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -150,7 +143,7 @@ function routes(app) {
             data:
                 "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = (130); limit 20;",
         }).then((response) => {
-            response = imageSwap(response) = arrayCheck(response);
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -167,7 +160,7 @@ function routes(app) {
             data:
                 "fields author, image, published_at, summary, title, website.url; sort published_at desc; where image != null; limit 8;",
         }).then((response) => {
-            response = imageSwap(response) = arrayCheck(response);
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
@@ -187,7 +180,8 @@ function routes(app) {
                 .subtract(1, "months")
                 .format("X")} & hypes > 10; limit 5;`,
         }).then((response) => {
-            response = imageSwap(response) = arrayCheck(response);
+            response = imageSwap(response);
+
             res.json(response.data);
         });
     });
@@ -207,7 +201,8 @@ function routes(app) {
                 .add(3, "months")
                 .format("X")} & hypes > 2; limit 5;`,
         }).then((response) => {
-            response = imageSwap(response) = arrayCheck(response);
+            response = imageSwap(response);
+
             res.json(response.data);
         });
     });
@@ -227,7 +222,7 @@ function routes(app) {
                 .add(6, "months")
                 .format("X")} & hypes > 10; limit 5;`,
         }).then((response) => {
-            response = imageSwap(response) = arrayCheck(response);
+            response = imageSwap(response);
             res.json(response.data);
         });
     });
