@@ -25,8 +25,6 @@ const GameDetails = (props) => {
   async function getGame(query){
     const res = await api.search(query);
     setGameData(res.data[0]);
-
-    console.log(res.data[0]);
   }
 
   useEffect(() => {
@@ -59,6 +57,7 @@ const GameDetails = (props) => {
             </div>
           </Col>
         </Row>
+        <Screenshots screenshots={gameData.screenshots}
       </Container>
       </div>
     )

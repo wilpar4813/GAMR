@@ -9,7 +9,6 @@ const API_KEY = "";
 function imageSwap(response) {
     for (let i = 0; i < response.data.length; i++) {
         if (response.data[i].cover != undefined) {
-            // console.log(response.data[i].cover, "Hello");
             response.data[i].cover.url = response.data[i].cover.url.replace(
                 "/t_thumb/",
                 "/t_cover_big_2x/"
@@ -61,7 +60,7 @@ function routes(app) {
         res.send(null);
     });
 
-    // Search API
+    // Search API - Keyword
     app.get("/api/games/search/:keyword", function (req, res) {
         var keyword = req.params.keyword;
 
@@ -72,12 +71,30 @@ function routes(app) {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
-            data: `fields hypes, first_release_date, release_dates.date, platforms.name, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; search "${keyword}";`,
+            data: `fields hypes, first_release_date, release_dates.date, platforms.name, screenshots.url, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; search "${keyword}";`,
         }).then((response) => {
             response = imageSwap(response);
             res.json(response.data);
         });
     });
+
+        // Search API - ID
+        app.get("/api/games/:id", function (req, res) {
+            var id = req.params.id;
+            axios({
+                url: "https://api-v3.igdb.com/games",
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "user-key": API_KEY,
+                },
+                data: `fields hypes, first_release_date, release_dates.date, platforms.name, screenshots.url, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; where id = ${id};`,
+            }).then((response) => {
+                response = imageSwap(response);
+                console.log(response.data, "Hello");
+                res.json(response.data);
+            });
+        });
 
     // All Popular Games
     app.get("/api/games/popular_all", function (req, res) {
