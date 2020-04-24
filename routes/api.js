@@ -3,17 +3,16 @@ const passport = require("passport");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const moment = require("moment");
-const API_KEY = "72769c7d8d06682882c92a5bc4e9e5c4";
+const API_KEY = "";
 
 // Image Swap Function
 function imageSwap(response) {
     for (let i = 0; i < response.data.length; i++) {
         if (response.data[i].cover != undefined) {
-            for (let j = 0; j < response.data[i].cover.length; j++) {
-                response.data[i].cover[j].url = response.data[i].cover[
-                    j
-                ].url.replace("/t_thumb/", "/t_cover_big_2x/");
-            }
+            response.data[i].cover.url = response.data[i].cover.url.replace(
+                "/t_thumb/",
+                "/t_cover_big_2x/"
+            );
         }
         if (response.data[i].screenshots != undefined) {
             for (let k = 0; k < response.data[i].screenshots.length; k++) {

@@ -57,7 +57,7 @@ const GameDetails = (props) => {
             </div>
           </Col>
         </Row>
-        <Screenshots screenshots={gameData.screenshots}
+        <Screenshots screenshots={gameData.screenshots} />
       </Container>
       </div>
     )
