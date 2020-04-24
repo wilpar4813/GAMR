@@ -26,7 +26,6 @@ function imageSwap(response) {
             }
         }
     }
-
     return response;
 }
 
