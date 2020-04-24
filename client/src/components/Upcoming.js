@@ -59,9 +59,8 @@ const Upcoming = (props) => {
                     <Media className='mr-2' object src={newGame.cover.url} alt={`${newGame.name} cover image`} />
                   </Media>
                 <Media body>
-                  <Media heading><a href={`/games/${newGame.id}`}>{newGame.name}</a></Media>
+                  <Media heading><a href={`/games/${newGame.name}`}>{newGame.name}</a></Media>
                   <small className='text-muted'>{newGame.release_dates[0].human}</small>
-                  <Button color='link' className='upcoming-follow-trigger' onClick={handleOnclick}><FontAwesomeIcon className='fas' icon={followed === true ? faCheck : faPlus} /></Button>
                 </Media>
                 </Media>
               )
@@ -78,9 +77,8 @@ const Upcoming = (props) => {
                     <Media className='mr-2' object src={upcomingGame.cover.url} alt={`${upcomingGame.name} cover image`} />
                   </Media>
                 <Media body>
-                  <Media heading><a href={`/games/${upcomingGame.id}`}>{upcomingGame.name}</a></Media>
+                  <Media heading><a href={`/games/${upcomingGame.name}`}>{upcomingGame.name}</a></Media>
                   <small className='text-muted'>{upcomingGame.release_dates[0].human}</small>
-                  <Button color='link' className='upcoming-follow-trigger' onClick={handleOnclick}><FontAwesomeIcon className='fas' icon={followed === true ? faCheck : faPlus} /></Button>
                 </Media>
                 </Media>
               )
@@ -97,9 +95,8 @@ const Upcoming = (props) => {
                     <Media className='mr-2' object src={hypedGame.cover.url} alt={`${hypedGame.name} cover image`} />
                   </Media>
                 <Media body>
-                  <Media heading><a href={`/games/${hypedGame.id}`}>{hypedGame.name}</a></Media>
+                  <Media heading><a href={`/games/${hypedGame.name}`}>{hypedGame.name}</a></Media>
                   <small className='text-muted'>{hypedGame.release_dates[0].human}</small>
-                  <Button color='link' className='upcoming-follow-trigger' onClick={handleOnclick}><FontAwesomeIcon className='fas' icon={followed === true ? faCheck : faPlus} /></Button>
                 </Media>
                 </Media>
               )

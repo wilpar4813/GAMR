@@ -9,26 +9,24 @@ const API_KEY = "";
 // Image Swap Function
 function imageSwap(response) {
     for (let i = 0; i < response.data.length; i++) {
-        response.data[i].cover.url = response.data[i].cover.url.replace(
-            "/t_thumb/",
-            "/t_cover_big_2x/"
-        );
+        if (response.data[i].cover != undefined) {
+            for (let j = 0; j < response.data[i].cover.length; j++) {
+                response.data[i].cover[j].url = response.data[i].cover[
+                    j
+                ].url.replace("/t_thumb/", "/t_cover_big_2x/");
+            }
+        }
         if (response.data[i].screenshots != undefined) {
-            for (
-                let j = 0;
-                j < response.data[i].screenshots.length;
-                j++
-            ) {
-                response.data[i].screenshots[j].url = response.data[
+            for (let k = 0; k < response.data[i].screenshots.length; k++) {
+                response.data[i].screenshots[k].url = response.data[
                     i
-                ].screenshots[j].url.replace(
+                ].screenshots[k].url.replace(
                     "/t_thumb/",
                     "/t_screenshot_huge/"
                 );
             }
         }
     }
-
     return response;
 }
 
@@ -75,7 +73,7 @@ function routes(app) {
                 Accept: "application/json",
                 "user-key": API_KEY,
             },
-            data: `fields hypes, first_release_date, release_dates.date, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; limit 10; search "${keyword}";`,
+            data: `fields hypes, first_release_date, release_dates.date, platforms.name, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; search "${keyword}";`,
         }).then((response) => {
             res.json(response.data);
         });
