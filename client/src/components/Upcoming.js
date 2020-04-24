@@ -14,6 +14,7 @@ const Upcoming = (props) => {
 
   async function handleOnclick(){
     //add follow to database here
+    
     setFollowed(true)
   }
 

@@ -7,7 +7,8 @@ const GameDetails = (props) => {
 
   const [gameID, setGameID] = useState('');
   const [gameData, setGameData] = useState([]);
-
+  const [followGame, setFollowGame] = useState([]);
+  
   async function getID(){
     const url = window.location.pathname;
     const urlArray= url.split('/');
