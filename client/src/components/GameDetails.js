@@ -42,8 +42,7 @@ const GameDetails = (props) => {
           </Col>
           <Col sm='8' md='8' className='game-info--data d-flex flex-column justify-content-between align-items-start'>
             <div className='game-info--description'>
-              <h1 className='game-info--title'>{gameData.name}</h1>
-              <small className='text-muted'>Game studio here</small>
+              <h1 className='game-info--title'>{gameData.name ? gameData.name: "No Data Available"}</h1>
               <div className='my-3'>
                 <Button className='' color='danger'>Follow</Button>
               </div>
@@ -51,12 +50,12 @@ const GameDetails = (props) => {
                 <p><b>Genre: </b><span className='game-info--genre'>Genre here</span></p>
                 <p><b>Platforms: </b><span className='game-info--genre'>Platforms here</span></p>
               </div>
-              <p className='game-info--plot'>{gameData.summary}</p>
+              <p className='game-info--plot'>{gameData.summary ? gameData.summary: "No Data Available"}</p>
             </div>
             <div className='game-info--stats d-flex justify-content-between align-items-center'>
-              <div><p>Release Date: <span className='release-date'>{gameData.first_release_date}</span></p></div>
+              <div><p>Release Date: <span className='release-date'>{gameData.first_release_date ? gameData.first_release_date: "No Data Available"}</span></p></div>
               <div><p>Time to beat: <span className='beat-time'>normal time here</span></p></div>
-              <div><p>Franchise: <span className='franchise'>franchise here</span></p></div>
+              <div><p>Franchise: <span className='franchise'>{gameData.franchise ? gameData.franchise.name: "No Data Available"}</span></p></div>
             </div>
           </Col>
         </Row>
