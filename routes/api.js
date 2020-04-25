@@ -3,7 +3,7 @@ const passport = require("passport");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const moment = require("moment");
-const API_KEY = "";
+const api = "e36f00fd88f474fdadec34e09a4715d2";
 
 // Image Swap Function
 function imageSwap(response) {
@@ -60,53 +60,18 @@ function routes(app) {
         res.send(null);
     });
 
-    // Search API - Keyword
-    app.get("/api/games/search/:keyword", function (req, res) {
-        var keyword = req.params.keyword;
-
-        axios({
-            url: "https://api-v3.igdb.com/games",
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "user-key": API_KEY,
-            },
-            data: `fields hypes, first_release_date, release_dates.date, platforms.name, screenshots.url, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; search "${keyword}";`,
-        }).then((response) => {
-            response = imageSwap(response);
-            res.json(response.data);
-        });
-    });
-
-        // Search API - ID
-        app.get("/api/games/:id", function (req, res) {
-            var id = req.params.id;
-            axios({
-                url: "https://api-v3.igdb.com/games",
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "user-key": API_KEY,
-                },
-                data: `fields hypes, first_release_date, release_dates.date, platforms.name, screenshots.url, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; where id = ${id};`,
-            }).then((response) => {
-                response = imageSwap(response);
-                console.log(response.data, "Hello");
-                res.json(response.data);
-            });
-        });
-
     // All Popular Games
     app.get("/api/games/popular_all", function (req, res) {
+        console.log(req.url, "hello");
         axios({
             url: "https://api-v3.igdb.com/games",
             method: "POST",
             headers: {
                 Accept: "application/json",
-                "user-key": API_KEY,
+                "user-key": api,
             },
             data:
-                "fields name,rating,genres.name, cover.url, platforms.name, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90; limit 20;",
+                "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90; limit 20;",
         }).then((response) => {
             response = imageSwap(response);
             res.json(response.data);
@@ -120,7 +85,7 @@ function routes(app) {
             method: "POST",
             headers: {
                 Accept: "application/json",
-                "user-key": API_KEY,
+                "user-key": api,
             },
             data:
                 "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = (48);limit 20;",
@@ -137,7 +102,7 @@ function routes(app) {
             method: "POST",
             headers: {
                 Accept: "application/json",
-                "user-key": API_KEY,
+                "user-key": api,
             },
             data:
                 "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = (49);limit 20;",
@@ -154,7 +119,7 @@ function routes(app) {
             method: "POST",
             headers: {
                 Accept: "application/json",
-                "user-key": API_KEY,
+                "user-key": api,
             },
             data:
                 "fields name,rating,genres.name,platforms.name,cover.url, screenshots.url, time_to_beat.normally, franchise.name; where rating > 90 & platforms = (130); limit 20;",
@@ -171,7 +136,7 @@ function routes(app) {
             method: "POST",
             headers: {
                 Accept: "application/json",
-                "user-key": API_KEY,
+                "user-key": api,
             },
             data:
                 "fields author, image, published_at, summary, title, website.url; sort published_at desc; where image != null; limit 8;",
@@ -188,7 +153,7 @@ function routes(app) {
             method: "POST",
             headers: {
                 Accept: "application/json",
-                "user-key": API_KEY,
+                "user-key": api,
             },
             data: `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date desc; where first_release_date < ${moment().format(
                 "X"
@@ -209,7 +174,7 @@ function routes(app) {
             method: "POST",
             headers: {
                 Accept: "application/json",
-                "user-key": API_KEY,
+                "user-key": api,
             },
             data: `fields hypes, first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort first_release_date asc; where first_release_date > ${moment().format(
                 "X"
@@ -230,7 +195,7 @@ function routes(app) {
             method: "POST",
             headers: {
                 Accept: "application/json",
-                "user-key": API_KEY,
+                "user-key": api,
             },
             data: `fields first_release_date, release_dates.date, release_dates.human, release_dates.platform.name, hypes, name, platforms.name, cover.url, screenshots.url, time_to_beat.normally, franchise.name; sort hypes desc; where first_release_date > ${moment().format(
                 "X"
@@ -242,6 +207,44 @@ function routes(app) {
             res.json(response.data);
         });
     });
+
+    // Search API - Keyword
+    app.get("/api/games/search/:keyword", function (req, res) {
+        var keyword = req.params.keyword;
+
+        axios({
+            url: "https://api-v3.igdb.com/games",
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "user-key": api,
+            },
+            data: `fields hypes, first_release_date, release_dates.date, platforms.name, screenshots.url, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; search "${keyword}";`,
+        }).then((response) => {
+            response = imageSwap(response);
+            res.json(response.data);
+        });
+    });
+
+    // Search API - ID
+    app.get("/api/games/:id", function (req, res) {
+        var id = req.params.id;
+        axios({
+            url: "https://api-v3.igdb.com/games",
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "user-key": api,
+            },
+            data: `fields hypes, first_release_date, release_dates.date, platforms.name, screenshots.url, release_dates.human, summary, release_dates.platform.name, name, cover.url, screenshots.url, time_to_beat.normally, franchise.name, genres.name; limit 10; where id = ${id};`,
+        }).then((response) => {
+            response = imageSwap(response);
+            console.log(response.data, "Hello");
+            res.json(response.data);
+        });
+    });
+
+    
 
     // User Save Routes
     app.delete("/api/games/:userId/:gameId", function (req, res) {
