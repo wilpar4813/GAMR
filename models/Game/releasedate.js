@@ -5,8 +5,14 @@ const Schema = mongoose.Schema;
 
 const releaseDateSchema = new Schema ({
     date: { type: Number }, 
-    human: { type: Date },
-    gameId: { type: mongoose.Types.ObjectId}
+    human: { type: String },
+    gameId: { type: mongoose.Types.ObjectId},
+    platformNames: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "PlatformName",
+        },
+    ],
 });
 
 const ReleaseDate = mongoose.model("ReleaseDate", releaseDateSchema);

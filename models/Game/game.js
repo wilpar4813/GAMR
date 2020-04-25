@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
     name: { type: String, required: true },
-    totalRating: { type: Schema.Types.Decimal128 },
-    totalRatingCount: { type: Number },
+    firstReleaseDate: { type: Number },
     summary: { type: String },
     url: { type: String },
+    timeToBeat: {type: String},
     covers: [
         {
             type: Schema.Types.ObjectId,
@@ -21,10 +21,10 @@ const gameSchema = new Schema({
             ref: "Screenshot",
         },
     ],
-    platforms: [
+    gamePlatforms: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Platform",
+            ref: "GamePlatform",
         },
     ],
     releaseDates: [
@@ -33,6 +33,19 @@ const gameSchema = new Schema({
             ref: "ReleaseDate",
         },
     ],
+    genres: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Genre",
+        }
+    ],
+    franchises: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Franchise",
+        }
+    ],
+
 });
 
 const Game = mongoose.model("Game", gameSchema);

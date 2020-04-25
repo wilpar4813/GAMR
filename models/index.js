@@ -3,8 +3,8 @@ module.exports = {
     Game: require("./Game/game"),
     Cover: require("./Game/cover"),
     // Genre: require("./Genre/genre"),
-    Platform: require("./Game/platform"),
+    Platform: require("./Game/gamePlatform"),
     PlatformLogo: require("./Game/platformlogo"),
-    ReleaseDate: require("./Game/releasedate"),
+    ReleaseDate: require("./Game/releaseDate"),
     Screenshot: require("./Game/screenshot")
 }

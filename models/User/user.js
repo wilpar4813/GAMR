@@ -24,7 +24,6 @@ var UserSchema = mongoose.Schema({
             type: Schema.Types.ObjectId,
             ref: "Game",
         },
-        
     ],
     
 
