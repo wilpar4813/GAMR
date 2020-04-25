@@ -9,7 +9,7 @@ const SearchResult = (props) => {
       <Col className='mb-3' sm='12'>
         <Media className='border-bottom py-2'>
           <Media left>
-            <Media className='mr-2' object src={result.cover ? result.cover.url: "No Data Available"} alt={`${result.name} cover image`} />
+            <Media className='mr-2' object src={result.cover ? result.cover.url: "No Data Available"} alt={`${result.name} cover image`} style={{ height: "250px", width: "250px" }}/>
           </Media>
           <Media body>
             <Media heading><a href={`/games/${result.name}`}>{result.name}</a></Media>
