@@ -33,6 +33,7 @@ const GameDetails = ({gameData}) => {
             </div>
           </Col>
         </Row>
+
         {console.log(gameData, "---====-gameData")}
         <ScreenShots gameData={gameData[0]} />
       </Container>
