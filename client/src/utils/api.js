@@ -24,6 +24,10 @@ export default {
         return axios.get("/api/games/search/" + keyword);
     },
 
+    gameIdSearch: function (id) {
+        return axios.get("/api/games/" + id);
+    },
+
     recentNews: function () {
         return axios.get("/api/games/news");
     },
@@ -67,5 +71,5 @@ export default {
 
     deleteGame: function (userId, gameId) {
         return axios.get("/api/games/:" + userId + "/:" + gameId);
-    }
+    },
 };

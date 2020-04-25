@@ -7,17 +7,16 @@ import api from '../utils/api';
 class Game extends Component {
 
   state = {
-    email : ""
+    email : "",
+    gameData: []
   }
 
   handleOnSubmit = (loggedIn) => {
-       
-
+      
     const userData = {
         email: this.state.email,
         password: this.state.password
     }
-    
     console.log('USER DATA', userData);
 
      api.login(userData).then(response => {
@@ -28,20 +27,57 @@ class Game extends Component {
            sessionStorage.setItem("email", "")
          }
      })
-
-
-    
  }
+
   componentDidMount() {
+    this.getID();
+
+    console.log("getID")
     api.getUser().then(response => {
       this.setState({ email : response.data.email })
+     
     })
+
   }
+
+  // const [gameID, setGameID] = useState('');
+  // const [gameData, setGameData] = useState([]);
+  // const [followGame, setFollowGame] = useState([]);
+
+  // useEffect(() => {
+  //   console.log("loading")
+    
+  // })
+
+   getID(){
+    const url = window.location.pathname;
+    const urlArray= url.split('/');
+
+    let id = urlArray[2];
+
+    let idArray = id.split('%20').join(" ");
+    this.getGame(idArray)
+  }
+
+    getGame(id){
+
+      console.log("ID", id)
+     api.gameIdSearch(id).then(res => {
+     console.log(res.data[0], "....Game Data")
+     this.setState({gameData : [res.data[0]]})
+      
+      console.log(res.data[0]);
+     });
+  }
+
+   
+
   render () {
     return (
       <>
+      {console.log(this.state.gameData, "Game Data here")}
       {/* <MainNav handleOnSubmit={this.handleOnSubmit} email={this.state.email}/> */}
-      <GameDetails />
+      <GameDetails gameData={this.state.gameData} />
       <Footer />
       </>
     )
