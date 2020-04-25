@@ -2,8 +2,6 @@ const db = require("../models");
 const mongoose = require("mongoose");
 
 function controller(app) {
-
-
     app.post("/api/game/:id", (req, res) => {
         let userId = req.params.id;
         userId = mongoose.Types.ObjectId(userId);
@@ -105,33 +103,31 @@ function controller(app) {
             });
     });
 
-        // Genre Schema
-        app.post("/api/genre/:id", (req, res) => {
-            let gameId = req.params.id;
-            gameId = mongoose.Types.ObjectId(gameId);
-            console.log(req.body);
-            req.body.gameId = gameId;
-            db.GamePlatform.create(req.body)
-                .then((genreId) =>
-                    db.Game.findOneAndUpdate(
-                        { _id: gameId },
-                        {
-                            $push: {
-                                genres: genreId._id,
-                            },
+    // Genre Schema
+    app.post("/api/genre/:id", (req, res) => {
+        let gameId = req.params.id;
+        gameId = mongoose.Types.ObjectId(gameId);
+        console.log(req.body);
+        req.body.gameId = gameId;
+        db.GamePlatform.create(req.body)
+            .then((genreId) =>
+                db.Game.findOneAndUpdate(
+                    { _id: gameId },
+                    {
+                        $push: {
+                            genres: genreId._id,
                         },
-                        { new: true }
-                    )
+                    },
+                    { new: true }
                 )
-                .then((gameDb) => {
-                    res.json(gameDb);
-                })
-                .catch((err) => {
-                    res.json(err);
-                });
-        });
-
-
+            )
+            .then((gameDb) => {
+                res.json(gameDb);
+            })
+            .catch((err) => {
+                res.json(err);
+            });
+    });
 
     app.post("/api/screenshot/:id", (req, res) => {
         let gameId = req.params.id;
@@ -185,13 +181,9 @@ function controller(app) {
             });
     });
 
-    app.post("/api/platform-name/:id/:gameId", (req, res) => {
-        let gameId = req.params.id;
-        req.body.gameId = gameId;
-
-        let releaseDateId = req.params.releaseDateId;
+    app.post("/api/platform-name/:id", (req, res) => {
+        let releaseDateId = req.params.id;
         req.body.releaseDateId = releaseDateId;
-
         releaseDateId = mongoose.Types.ObjectId(releaseDateId);
 
         console.log(req.body);
@@ -215,7 +207,6 @@ function controller(app) {
             });
     });
 
-    
     app.get("/api/saved-games", (req, res) => {
         db.User.find({})
             .populate("games")
@@ -223,13 +214,12 @@ function controller(app) {
             .then((userDb) => {
                 db.Game.find({})
                     .populate("covers")
+                    .populate("franchises")
                     .populate("screenshots")
                     .populate("gamePlatforms")
                     .populate("releaseDates")
                     .populate("platformNames")
                     .populate("genres")
-                    .populate("genres")
-                    .populate("franchises")
                     .then((gameDb) => {
                         res.json(gameDb);
                     });
@@ -238,6 +228,84 @@ function controller(app) {
                 res.json(err);
             });
     });
+
+    // // Delete Routes
+
+    // app.delete("/api/platform-name/:id", function (req, res) {
+
+    //     console.log(req.params);
+
+    //     let releaseDateId = req.params.id;
+    //     releaseDateId = mongoose.Types.ObjectId(releaseDateId);
+
+    //     let platformNameId = req.body.platformNameId;
+
+    //     // let releaseDateId = req.params.id;
+    //     // req.body.releaseDateId = releaseDateId;
+    //     // releaseDateId = mongoose.Types.ObjectId(releaseDateId);
+
+    //     // let platformNameId = mongoose.Types.ObjectId(platformNameId);
+    //     // req.body.platformNameId = platformNameId;
+    //     // platformNameId = mongoose.Types.ObjectId(platformNameId);
+
+
+    //     // console.log(releaseDateId, "Release ID");
+    //     // console.log(platformNameId, "Platform Name ID");
+
+    //     db.ReleaseDate.update(
+    //         { _id: releaseDateId },
+    //         { $pull: { platformNames: platformNameId } },
+    //         { multi: true },
+    //         function (err, status) {
+    //             console.log(status);
+    //         }
+    //     );
+    // });
+
+    // app.delete("/api/release-date/:id", function (req, res) {
+    //     let gameId = req.params.id;
+    //     req.body.gameId = gameId;
+
+    //     gameId = mongoose.Types.ObjectId(gameId);
+
+
+    //     console.log(gameId);
+
+    //     db.Game.update(
+    //         { _id: gameId },
+    //         {
+    //             $pull: {
+    //                 covers: coverId._id,
+    //                 screenshots: screenshotId._id,
+    //                 releaseDates: releaseDateId._id,
+    //                 gamePlatforms: gamePlatformId._id,
+    //                 genres: genreId._id,
+    //                 franchises: franchiseId._id,
+    //             },
+    //         },
+    //         { multi: true },
+    //         function (err, status) {
+    //             console.log(status);
+    //         }
+    //     );
+    // });
+
+    // app.delete("/api/games/:id", function (req, res) {
+    //     let userId = req.params.id;
+    //     req.body.userId = userId;
+    //     userId = mongoose.Types.ObjectId(userId);
+
+    //     console.log(userId, "User ID");
+
+    //     db.User.update(
+    //         { _id: userId },
+    //         { $pull: { games: gameId } },
+    //         { multi: true },
+    //         function (err, status) {
+    //             console.log(status);
+    //         }
+    //     );
+    // });
 }
 
 module.exports = controller;

@@ -7,5 +7,5 @@ module.exports = {
     PlatformName: require("./Game/platformName"),
     ReleaseDate: require("./Game/releaseDate"),
     Screenshot: require("./Game/screenshot"),
-    User: require("./User/user")
+    User: require("./user")
 }

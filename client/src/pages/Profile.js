@@ -45,27 +45,27 @@ class Profile extends Component {
         }) 
     }
 
-    handleSaveBtn = (gameData) => {
-        gameData = {
-            covers: [gameData.cover.url],
-            screenshots: [gameData.screenshots],
-            platforms: [gameData.platforms],
-            releaseDates: [gameData.release_dates],
-            name: gameData.name,
+    // handleSaveBtn = (gameData) => {
+    //     gameData = {
+    //         covers: [gameData.cover.url],
+    //         screenshots: [gameData.screenshots],
+    //         platforms: [gameData.platforms],
+    //         releaseDates: [gameData.release_dates],
+    //         name: gameData.name,
             
-            title: gameData.volumeInfo.title,
-            authors: gameData.volumeInfo.authors.join(" "),
-            description: gameData.volumeInfo.description,
-            image:
-                gameData.volumeInfo.imageLinks !== undefined
-                    ? gameData.volumeInfo.imageLinks.thumbnail
-                    : "/assets/images/no-img.png",
-            link: gameData.volumeInfo.previewLink,
-        };
-        API.saveBook(gameData).then((res) => {
-            console.log(res);
-        });
-    };
+    //         title: gameData.volumeInfo.title,
+    //         authors: gameData.volumeInfo.authors.join(" "),
+    //         description: gameData.volumeInfo.description,
+    //         image:
+    //             gameData.volumeInfo.imageLinks !== undefined
+    //                 ? gameData.volumeInfo.imageLinks.thumbnail
+    //                 : "/assets/images/no-img.png",
+    //         link: gameData.volumeInfo.previewLink,
+    //     };
+    //     API.saveBook(gameData).then((res) => {
+    //         console.log(res);
+    //     });
+    // };
 
 
 

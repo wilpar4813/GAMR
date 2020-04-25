@@ -9,7 +9,6 @@ const SearchForm = (props) => {
   const [results, setResults]=useState([]);
 
   async function handleSubmit(event) {
-    alert('clicked');
     event.preventDefault();
     // this.getGames();
     api.search(query)

@@ -1,7 +1,6 @@
 const db = require("../models");
 const passport = require("passport");
 const axios = require("axios");
-const mongoose = require("mongoose");
 const moment = require("moment");
 const API_KEY = "";
 
@@ -244,51 +243,5 @@ function routes(app) {
         });
     });
 
-    // User Save Routes
-    app.delete("/api/games/:userId/:gameId", function (req, res) {
-        var gameId = mongoose.Types.ObjectId(req.params.gameId);
-        var userId = mongoose.Types.ObjectId(req.params.userId);
-        var coverId = mongoose.Types.ObjectId(req.params.coverId);
-        var screenshotId = mongoose.Types.ObjectId(req.params.screenshotId);
-        var releaseDateId = mongoose.Types.ObjectId(req.params.releaseDateId);
-        var platformId = mongoose.Types.ObjectId(req.params.platformId);
-        var platformLogoId = mongoose.Types.ObjectId(req.params.platformLogoId);
-
-        // console.log(gameId);
-
-        db.User.updateOne(
-            { _id: userId },
-            { $pull: { games: gameId } },
-            { multi: true },
-            function (err, status) {
-                console.log(status);
-            }
-        );
-
-        db.Game.updateMany(
-            { _id: gameId },
-            {
-                $pull: {
-                    screenshots: screenshotId,
-                    covers: coverId,
-                    releaseDates: releaseDateId,
-                    platforms: platformId,
-                },
-            },
-            { multi: true },
-            function (err, status) {
-                console.log(status);
-            }
-        );
-
-        db.Platform.updateOne(
-            { _id: platformId },
-            { $pull: { platformLogos: platformLogoId } },
-            { multi: true },
-            function (err, status) {
-                console.log(status);
-            }
-        );
-    });
 }
 module.exports = routes;
