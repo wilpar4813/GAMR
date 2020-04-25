@@ -35,7 +35,7 @@ const GameDetails = ({gameData}) => {
         </Row>
 
         {console.log(gameData, "---====-gameData")}
-        <ScreenShots gameData={gameData[0]} />
+        {/* <ScreenShots gameData={gameData[0]} /> */}
       </Container>
       </div>
     )

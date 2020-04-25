@@ -10,16 +10,17 @@ class Profile extends Component {
         username: '',
         password: '',
         Redirect: null,
-        searches: []
+        savdeGames: []
     }
 
-    componentDidMount() {
-     api.savedGames().then(res => {
-         console.log(res.data)
-         this.setState({searches : res.data})
+    // componentDidMount() {
+    //  api.savedGames().then(res => {
+    //      console.log(res.data)
+    //      this.setState({games : res.data})
 
-     })   
-    }
+    //      console.log(this.state.games)
+    //  })   
+    // }
 
     handleOnChange = (event) => {
         const {name , value} = event.target
