@@ -65,7 +65,7 @@ export default {
         return axios.get("/api/games/most_anticipated");
     },
 
-    savedGames: function () {
+    searchedGames: function () {
         return axios.get("/api/saved-games");
     },
 

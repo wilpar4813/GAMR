@@ -10,17 +10,16 @@ class Profile extends Component {
         username: '',
         password: '',
         Redirect: null,
-        savdeGames: []
+        searches: []
     }
 
-    // componentDidMount() {
-    //  api.savedGames().then(res => {
-    //      console.log(res.data)
-    //      this.setState({games : res.data})
+    componentDidMount() {
+     api.searchedGames().then(res => {
+         console.log(res.data)
+         this.setState({searches : res.data})
 
-    //      console.log(this.state.games)
-    //  })   
-    // }
+     })   
+    }
 
     handleOnChange = (event) => {
         const {name , value} = event.target
@@ -45,28 +44,6 @@ class Profile extends Component {
             this.setState({username : response.data.username, Redirect : true })
         }) 
     }
-
-    // handleSaveBtn = (gameData) => {
-    //     gameData = {
-    //         covers: [gameData.cover.url],
-    //         screenshots: [gameData.screenshots],
-    //         platforms: [gameData.platforms],
-    //         releaseDates: [gameData.release_dates],
-    //         name: gameData.name,
-            
-    //         title: gameData.volumeInfo.title,
-    //         authors: gameData.volumeInfo.authors.join(" "),
-    //         description: gameData.volumeInfo.description,
-    //         image:
-    //             gameData.volumeInfo.imageLinks !== undefined
-    //                 ? gameData.volumeInfo.imageLinks.thumbnail
-    //                 : "/assets/images/no-img.png",
-    //         link: gameData.volumeInfo.previewLink,
-    //     };
-    //     API.saveBook(gameData).then((res) => {
-    //         console.log(res);
-    //     });
-    // };
 
 
 
