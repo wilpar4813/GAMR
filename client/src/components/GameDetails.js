@@ -1,18 +1,42 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button} from 'reactstrap';
-import ScreenShots from './Screenshots';
+import Screenshots from './Screenshots';
 import api from '../utils/api';
 
-const GameDetails = ({gameData}) => {
+const GameDetails = (props) => {
 
+  const [gameID, setGameID] = useState('');
+  const [gameData, setGameData] = useState([]);
+
+  async function getID(){
+    const url = window.location.pathname;
+    const urlArray= url.split('/');
+
+    let id = urlArray[2];
+
+    let idArray = id.split('%20').join(" ");
+
+
+    setGameID(idArray);
+
+    getGame(idArray)
+  }
+
+  async function getGame(query){
+    const res = await api.search(query);
+    setGameData(res.data[0]);
+  }
+
+  useEffect(() => {
+    getID();
+  })
 
     return (
-      
       <div className='game-bg py-3'>
       <Container className='py-3 game-container'>
         <Row className='d-flex flex-row game-info'>
           <Col sm='4' md='4'>
-            <img className='game-info--image' src={gameData.cover != null ? gameData.cover.url: "No Data Available"} />
+            <img className='game-info--image' src={gameData.cover ? gameData.cover.url: "No Data Available"} />
           </Col>
           <Col sm='8' md='8' className='game-info--data d-flex flex-column justify-content-between align-items-start'>
             <div className='game-info--description'>
@@ -33,9 +57,7 @@ const GameDetails = ({gameData}) => {
             </div>
           </Col>
         </Row>
-
-        {console.log(gameData, "---====-gameData")}
-        <ScreenShots gameData={gameData[0]} />
+        <Screenshots screenshots={gameData.screenshots} />
       </Container>
       </div>
     )
