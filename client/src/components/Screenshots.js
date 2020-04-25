@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, Row, Col,  Carousel, CarouselItem, CarouselControl,} from 'reactstrap';
+
 
 const Screenshots = (props) => {
 
@@ -14,7 +15,7 @@ const Screenshots = (props) => {
 
   const previous = () => {
     if (animating) return;
-    const nextIndex = activeIndex === 0 ? props.ScreenShots.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? props.screenShots.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   }
 
@@ -23,31 +24,36 @@ const Screenshots = (props) => {
     setActiveIndex(newIndex);
   }
 
-  const slides = items.map((item) => {
-    return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.src}
-      >
-        <img src={item.url} />
-      </CarouselItem>
-    );
-  });
+  // const slides = props.screenShots.map((item) => {
+  //   return (
+  //     <CarouselItem
+  //       onExiting={() => setAnimating(true)}
+  //       onExited={() => setAnimating(false)}
+  //       key={item.id}
+  //     >
+  //       <img src={item.url} />
+  //     </CarouselItem>
+  //   );
+  // });
 
   return (
+    <>
+      {!props.screenShots ? <div>Loading...</div> :
     <Container className='bg-black'>
       <Row>
         <Col sm="12" md={{ size: 10, offset: 1 }}>
           <Carousel activeIndex={activeIndex} next={next} previous={previous}>
-            {slides}
+            {props.screenShots.map(i=> i.url)}
             <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
             <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
           </Carousel>
         </Col>
       </Row>
     </Container>
-  )
+
+}
+</>
+)
 }
 
 export default Screenshots;

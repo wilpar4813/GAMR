@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button} from 'reactstrap';
-import Screenshots from './Screenshots';
 import api from '../utils/api';
 
 const GameDetails = (props) => {
@@ -36,7 +35,7 @@ const GameDetails = (props) => {
       <Container className='py-3 game-container'>
         <Row className='d-flex flex-row game-info'>
           <Col sm='4' md='4'>
-            <img className='game-info--image' src={gameData.cover ? gameData.cover.url: "No Data Available"} />
+            <img className='game-info--image' src={gameData.cover == !null ? gameData.cover.url: "No Data Available"} />
           </Col>
           <Col sm='8' md='8' className='game-info--data d-flex flex-column justify-content-between align-items-start'>
             <div className='game-info--description'>
@@ -57,7 +56,6 @@ const GameDetails = (props) => {
             </div>
           </Col>
         </Row>
-        <Screenshots screenshots={gameData.screenshots}
       </Container>
       </div>
     )

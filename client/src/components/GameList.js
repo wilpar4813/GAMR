@@ -23,8 +23,7 @@ const GameList = (props) => {
             </div>
           </CardImgOverlay>
           <CardFooter>
-            <CardTitle>{game.name}</CardTitle>
-            <CardText><small>franchise</small></CardText>
+            <CardTitle><a href={`/games/${game.name}`}>{game.name}</a></CardTitle>
           </CardFooter>
         </Card>
       </Col>
