@@ -14,25 +14,32 @@ const Upcoming = (props) => {
 
   async function handleOnclick(){
     //add follow to database here
+    
     setFollowed(true)
   }
 
   async function fetchReleased(){
-    const res = await api.recentReleases();
+     api.recentReleases().then(res => {
+      setRecentReleased(res.data);
+    });
 
-    setRecentReleased(res.data);
+    
   }
 
   async function fetchSoon(){
-    const res = await api.comingSoon();
+     api.comingSoon().then(res => {
+      setComingSoon(res.data);
+     });
 
-    setComingSoon(res.data);
+    
   }
 
   async function fetchAnticipated(){
-    const res = await api.mostAnticiptated();
+    api.mostAnticiptated().then(res => {
+      setAnticipated(res.data);
+    });
 
-    setAnticipated(res.data);
+    
   }
 
   useEffect(() => {

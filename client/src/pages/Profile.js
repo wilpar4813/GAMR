@@ -76,7 +76,6 @@ class Profile extends Component {
 
         return (
             <>
-            {/* <MainNav email={this.state.email} handleOnChange={this.state.handleOnChange} handleOnSubmit={this.state.handleOnSubmit} isAuth={this.state.isAuth} /> */}
             <UserProfile searches={this.state.searches} />
             <Footer />
             </>
