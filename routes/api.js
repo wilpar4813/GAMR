@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const moment = require("moment");
 const API_KEY = "";
 
-
 // Image Swap Function
 function imageSwap(response) {
     for (let i = 0; i < response.data.length; i++) {

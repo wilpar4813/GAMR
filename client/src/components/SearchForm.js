@@ -9,14 +9,13 @@ const SearchForm = (props) => {
   const [results, setResults]=useState([]);
 
   async function handleSubmit(event) {
-    alert('clicked');
+    //alert('clicked');
     event.preventDefault();
     // this.getGames();
     api.search(query)
     .then(function(res){
       setResults(res.data);
     })
-
   }
 
   async function handleOnChange(event) {
