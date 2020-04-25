@@ -14,7 +14,7 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-     api.searchedGames().then(res => {
+     api.savedGames().then(res => {
          console.log(res.data)
          this.setState({searches : res.data})
 
