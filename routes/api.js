@@ -3,7 +3,7 @@ const passport = require("passport");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const moment = require("moment");
-const api = "e36f00fd88f474fdadec34e09a4715d2";
+const api = "07c181e9c7a0e3dac161112d94838ce5";
 
 // Image Swap Function
 function imageSwap(response) {
