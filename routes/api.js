@@ -244,7 +244,7 @@ function routes(app) {
         });
     });
 
-    
+
 
     // User Save Routes
     app.delete("/api/games/:userId/:gameId", function (req, res) {

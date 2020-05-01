@@ -39,16 +39,14 @@ const GameList = (props) => {
                             )}
                         </ProgressProvider>
                     </div>
-                </CardImgOverlay>
-                <CardFooter>
-                    <CardTitle>{game.name}</CardTitle>
-                    <CardText>
-                        <small>franchise</small>
-                    </CardText>
-                </CardFooter>
-            </Card>
-        </Col>
-    ));
-};
+          </CardImgOverlay>
+          <CardFooter>
+            <CardTitle><a href={`/games/${game.name}`}>{game.name}</a></CardTitle>
+          </CardFooter>
+        </Card>
+      </Col>
+    )
+  )
+}
 
 export default GameList;
