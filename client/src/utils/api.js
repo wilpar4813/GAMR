@@ -21,7 +21,11 @@ export default {
     },
 
     search: function (keyword) {
-        return axios.get("/api/games/search/:" + keyword);
+        return axios.get("/api/games/search/" + keyword);
+    },
+
+    gameIdSearch: function (id) {
+        return axios.get("/api/games/" + id);
     },
 
     recentNews: function () {
@@ -67,5 +71,5 @@ export default {
 
     deleteGame: function (userId, gameId) {
         return axios.get("/api/games/:" + userId + "/:" + gameId);
-    }
+    },
 };

@@ -14,6 +14,7 @@ class App extends Component {
     username: "",
     isLogin: false
   }
+
   handleOnChange = (event) => {
     const { name, value} = event.target;
     this.setState({
@@ -22,7 +23,7 @@ class App extends Component {
   }
 
   handleOnSubmit = (loggedIn) => {
-    console.log("loged in", loggedIn)
+    console.log("logged in", loggedIn)
 
 
       api.logout().then(res => {

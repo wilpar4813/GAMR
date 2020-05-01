@@ -56,7 +56,7 @@ const Upcoming = (props) => {
               (newGame) => (
                 <Media className='mb-3'>
                   <Media left>
-                    <Media className='mr-2' object src={newGame.cover.url} alt={`${newGame.name} cover image`} />
+                    <Media className='mr-2' object src={newGame.cover.url} alt={`${newGame.name} cover image`} style={{ height: "75px", width: "75px" }} />
                   </Media>
                 <Media body>
                   <Media heading><a href={`/games/${newGame.name}`}>{newGame.name}</a></Media>
@@ -74,7 +74,7 @@ const Upcoming = (props) => {
               (upcomingGame) => (
                 <Media className='mb-3'>
                   <Media left>
-                    <Media className='mr-2' object src={upcomingGame.cover.url} alt={`${upcomingGame.name} cover image`} />
+                    <Media className='mr-2' object src={upcomingGame.cover.url} alt={`${upcomingGame.name} cover image`} style={{ height: "75px", width: "75px" }} />
                   </Media>
                 <Media body>
                   <Media heading><a href={`/games/${upcomingGame.name}`}>{upcomingGame.name}</a></Media>
@@ -92,7 +92,7 @@ const Upcoming = (props) => {
               (hypedGame) => (
                 <Media className='mb-3'>
                   <Media left>
-                    <Media className='mr-2' object src={hypedGame.cover.url} alt={`${hypedGame.name} cover image`} />
+                    <Media className='mr-2' object src={hypedGame.cover.url} alt={`${hypedGame.name} cover image`} style={{ height: "75px", width: "75px" }} />
                   </Media>
                 <Media body>
                   <Media heading><a href={`/games/${hypedGame.name}`}>{hypedGame.name}</a></Media>

@@ -24,33 +24,37 @@ const Screenshots = (props) => {
     setActiveIndex(newIndex);
   }
 
-  // const slides = props.screenShots.map((item) => {
-  //   return (
-  //     <CarouselItem
-  //       onExiting={() => setAnimating(true)}
-  //       onExited={() => setAnimating(false)}
-  //       key={item.id}
-  //     >
-  //       <img src={item.url} />
-  //     </CarouselItem>
-  //   );
-  // });
+  function getSlides() {
+    return props.screenShots ? (
+    props.screenShots.map((item) => {
+    return (
+      <CarouselItem
+        onExiting={() => setAnimating(true)}
+        onExited={() => setAnimating(false)}
+        key={item.id}
+      >
+        <img src={item.url} />
+      </CarouselItem>
+    );
+  })
+) : [];
+}
 
   return (
     <>
-      {!props.screenShots ? <div>Loading...</div> :
+      {!props.screenShots ? <div>Loading...</div> : (
     <Container className='bg-black'>
       <Row>
         <Col sm="12" md={{ size: 10, offset: 1 }}>
           <Carousel activeIndex={activeIndex} next={next} previous={previous}>
-            {props.screenShots.map(i=> i.url)}
+            {getSlides()}
             <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
             <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
           </Carousel>
         </Col>
       </Row>
     </Container>
-
+  )
 }
 </>
 )

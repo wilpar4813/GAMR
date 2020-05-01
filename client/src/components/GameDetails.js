@@ -1,34 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button} from 'reactstrap';
+import Screenshots from './Screenshots';
 import api from '../utils/api';
 
 const GameDetails = (props) => {
+    const [gameID, setGameID] = useState("");
+    const [gameData, setGameData] = useState([]);
 
-  const [gameID, setGameID] = useState('');
-  const [gameData, setGameData] = useState([]);
+    async function getID() {
+        const url = window.location.pathname;
+        const urlArray = url.split("/");
 
-  async function getID(){
-    const url = window.location.pathname;
-    const urlArray= url.split('/');
+        let id = urlArray[2];
 
-    let id = urlArray[2];
+        let idArray = id.split("%20").join(" ");
 
-    let idArray = id.split('%20').join(" ");
+        setGameID(idArray);
 
+        getGame(idArray);
+    }
 
-    setGameID(idArray);
+    async function getGame(query) {
+        const res = await api.search(query);
+        setGameData(res.data[0]);
+    }
 
-    getGame(idArray)
-  }
-
-  async function getGame(query){
-    const res = await api.search(query);
-    setGameData(res.data[0]);
-  }
-
-  useEffect(() => {
-    getID();
-  })
+    useEffect(() => {
+        getID();
+    });
 
     return (
       <div className='game-bg py-3'>
@@ -56,6 +55,7 @@ const GameDetails = (props) => {
             </div>
           </Col>
         </Row>
+        <Screenshots screenShots={gameData.screenshots} />
       </Container>
       </div>
     )
