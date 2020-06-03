@@ -13,6 +13,15 @@ Gamer database application made with React.
 
 -   Get all of your game data from GAMR. Find popular games, gaming news, recent releases, upcoming releases, as well as most anticipated games
 
+# Screenshots
+
+![GAMR Image](./client/public/images/readme/GAMR.png)
+![GAMR Image](./client/public/images/readme/GAMR2.png)
+![GAMR Image](./client/public/images/readme/GAMR3.png)
+![GAMR Image](./client/public/images/readme/GAMR4.png)
+![GAMR Image](./client/public/images/readme/GAMR5.png)
+![GAMR Image](./client/public/images/readme/GAMR6.png)
+
 **_Configuration instructions_**
 
 -   No configuration necessory
