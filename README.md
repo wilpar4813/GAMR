@@ -7,7 +7,7 @@
 
 ## About GAMR
 
-* Get all of your game data from GAMR. Find popular games, gaming news, recent releases, upcoming releases, as well as most anticipated games. Gamer database application made with React.
+* As a gamer, it's easy to lose track of the latest titles or to forget old favorites.  With GAMR, search popular games, gaming news, recent releases, upcoming releases, as well as most anticipated games. GAMR is a FULL STACK application created utilizing Mongo.js, Express.js, React.js, and Node.js.
 
 
 # Screenshots
