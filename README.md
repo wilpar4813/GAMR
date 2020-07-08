@@ -2,7 +2,7 @@
 
 ### READ ME
 * Version: 1.0.0
-* Web Design By Josh Fiason, Clint Gordy, Travis John, Tripp Parham
+* Web Design By Tripp Parham, Josh Fiason, Clint Gordy, Travis John
 * Published: Wednesday April 25th 2020
 
 ## About GAMR
