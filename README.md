@@ -35,7 +35,7 @@
 * No configuration necessory
 * Visit the following link to experience GAMR
 
-## https://GAMR-react-application.herokuapp.com
+## https://gamr2020.herokuapp.com/
 
 ## Installation instructions
 
