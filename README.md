@@ -1,17 +1,14 @@
-# GAMR-database-react-app
+# GAMR
 
-Gamer database application made with React.
-
-* READ ME
-* Project #3
-* GAMR
+### READ ME
 * Version: 1.0.0
 * Web Design By Josh Fiason, Clint Gordy, Travis John, Tripp Parham
 * Published: Wednesday April 25th 2020
 
 ## About GAMR
 
-* Get all of your game data from GAMR. Find popular games, gaming news, recent releases, upcoming releases, as well as most anticipated games
+* Get all of your game data from GAMR. Find popular games, gaming news, recent releases, upcoming releases, as well as most anticipated games. Gamer database application made with React.
+
 
 # Screenshots
 
