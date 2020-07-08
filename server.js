@@ -33,7 +33,7 @@ const controller = require("./routes/controller.js");
 controller(app);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user:password123@ds113815.mlab.com:13815/heroku_zbcrr9rb");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://users:password123@ds113815.mlab.com:13815/heroku_zbcrr9rb");
 
 const routes = require("./routes/api");
 routes(app);
